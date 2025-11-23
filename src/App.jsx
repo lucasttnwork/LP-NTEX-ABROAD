@@ -1,5 +1,4 @@
 import React from 'react';
-import { ThemeProvider } from './contexts/ThemeContext';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Hero from './components/sections/Hero';
@@ -17,26 +16,24 @@ import FloatingElements from './components/layout/FloatingElements';
 
 function App() {
   return (
-    <ThemeProvider>
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 font-sans text-navy dark:text-slate-100 transition-colors duration-300">
-        <Navbar />
-        <main>
-          <Hero />
-          <Problem />
-          <ELEE />
-          <Comparison />
-          <AIAdvantage />
-          <ICP />
-          <Pricing />
-          <CaseStudies />
-          <StrategySession />
-          <FAQ />
-          <FinalChoice />
-        </main>
-        <Footer />
-        <FloatingElements />
-      </div>
-    </ThemeProvider>
+    <div className="min-h-screen bg-linear-main font-sans text-white selection:bg-accent selection:text-black">
+      <Navbar />
+      <main>
+        <Hero />
+        <Problem />
+        <ELEE />
+        <Comparison />
+        <AIAdvantage />
+        <ICP />
+        <Pricing />
+        <CaseStudies />
+        <StrategySession />
+        <FAQ />
+        <FinalChoice />
+      </main>
+      <Footer />
+      <FloatingElements />
+    </div>
   );
 }
 

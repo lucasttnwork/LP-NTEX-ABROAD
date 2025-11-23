@@ -1,6 +1,6 @@
 import React from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
-import { Badge } from '../ui/badge';
+import { HelpCircle } from 'lucide-react';
 
 const FAQ = () => {
     const faqs = [
@@ -23,23 +23,30 @@ const FAQ = () => {
     ];
 
     return (
-        <section className="py-20 bg-slate-50 dark:bg-slate-900 transition-colors duration-300" id="faq">
-            <div className="container mx-auto px-4">
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <Badge variant="outline" className="mb-4">Common Questions</Badge>
-                    <h2 className="text-3xl md:text-4xl font-bold text-navy dark:text-white mb-6">
-                        Questions About <span className="text-primary">ELEE</span>
+        <section className="py-24 bg-linear-main relative overflow-hidden" id="faq">
+            <div className="container mx-auto px-4 relative z-10">
+                <div className="text-center max-w-3xl mx-auto mb-20">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
+                        <HelpCircle className="w-3 h-3 text-primary" />
+                        <span className="text-xs font-medium text-primary tracking-wide uppercase">Common Questions</span>
+                    </div>
+                    <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-6">
+                        Questions About <span className="text-gradient-silver">ELEE</span>
                     </h2>
                 </div>
 
                 <div className="max-w-3xl mx-auto">
                     <Accordion type="single" collapsible className="w-full space-y-4">
                         {faqs.map((faq, index) => (
-                            <AccordionItem key={index} value={`item-${index}`} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-4">
-                                <AccordionTrigger className="text-left font-bold text-navy dark:text-white hover:no-underline hover:text-primary">
+                            <AccordionItem
+                                key={index}
+                                value={`item-${index}`}
+                                className="glass-panel rounded-2xl px-6 border-white/5 data-[state=open]:bg-white/5 transition-all duration-300"
+                            >
+                                <AccordionTrigger className="text-left font-bold text-white hover:no-underline hover:text-primary py-6 text-lg">
                                     {faq.question}
                                 </AccordionTrigger>
-                                <AccordionContent className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                <AccordionContent className="text-slate-400 leading-relaxed pb-6 text-base">
                                     {faq.answer}
                                 </AccordionContent>
                             </AccordionItem>

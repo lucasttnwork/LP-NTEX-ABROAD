@@ -1,148 +1,141 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { AlertTriangle, XCircle, HelpCircle, Frown } from 'lucide-react';
-import { Card, CardContent } from '../ui/card';
+import { AlertTriangle, XCircle, HelpCircle, Frown, Activity, Search, TrendingDown, ArrowRight } from 'lucide-react';
+import { cn } from '../../lib/utils';
+
+const BentoCard = ({ children, className, delay = 0 }) => (
+    <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay, duration: 0.5 }}
+        className={cn(
+            "relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 hover:bg-white/10 transition-all duration-300 group",
+            className
+        )}
+    >
+        {children}
+    </motion.div>
+);
 
 const Problem = () => {
-    const timelineEvents = [
-        {
-            week: 'Week 1-2',
-            title: "Let's boost some posts!",
-            description: "Random testing without strategy",
-            icon: AlertTriangle,
-            color: 'text-yellow-500',
-            bg: 'bg-yellow-50',
-        },
-        {
-            week: 'Week 3-4',
-            title: "Why only likes, no bookings?",
-            description: "Vanity metrics vs Real results",
-            icon: HelpCircle,
-            color: 'text-orange-500',
-            bg: 'bg-orange-50',
-        },
-        {
-            week: 'Week 5-8',
-            title: "Try different everything...",
-            description: "Panic changes, zero data",
-            icon: XCircle,
-            color: 'text-red-500',
-            bg: 'bg-red-50',
-        },
-        {
-            week: 'Week 9+',
-            title: "Meta Ads don't work.",
-            description: "Giving up on a goldmine",
-            icon: Frown,
-            color: 'text-slate-500',
-            bg: 'bg-slate-100',
-        },
-    ];
-
-    const problems = [
-        { title: 'Lack of Methodology', desc: 'Throwing ideas at the wall hoping something sticks' },
-        { title: 'Random Testing', desc: 'Changing variables without isolating what works' },
-        { title: 'Scaling Too Early', desc: 'Spending budget on unproven campaigns' },
-        { title: 'Ignoring LTV', desc: 'Focusing only on the first sale, not the relationship' },
-    ];
-
     return (
-        <section className="py-20 bg-white dark:bg-slate-800 overflow-hidden transition-colors duration-300" id="problem">
-            <div className="container mx-auto px-4">
+        <section className="py-24 bg-slate-950 relative overflow-hidden" id="problem">
+            {/* Background Gradients */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-500/5 rounded-full blur-[120px]" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-500/5 rounded-full blur-[120px]" />
+            </div>
+
+            {/* Seamless Transition Gradient */}
+            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-slate-950 via-slate-950/80 to-transparent z-0 pointer-events-none" />
+
+            <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl md:text-4xl font-bold text-navy dark:text-white mb-6"
+                        className="text-3xl md:text-5xl font-heading font-bold text-white mb-6 leading-tight"
                     >
-                        97% of Meta Ads Campaigns Follow the Same <span className="text-alert">Failing Pattern</span>
+                        97% of Meta Ads Campaigns Follow the Same <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-white to-slate-200">Failing Pattern</span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-lg text-slate-600 dark:text-slate-300"
+                        className="text-lg text-slate-400"
                     >
                         Here's what we see every day when we audit UK clinics and studios.
-                        The problem isn't Meta. The problem is <strong>lack of methodology</strong>.
+                        The problem isn't Meta. The problem is <strong className="text-white">lack of methodology</strong>.
                     </motion.p>
                 </div>
 
-                {/* Timeline */}
-                <div className="relative max-w-4xl mx-auto mb-20">
-                    {/* Connecting Line */}
-                    <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 dark:bg-slate-700 -translate-x-1/2 hidden md:block" />
-
-                    <div className="space-y-12">
-                        {timelineEvents.map((event, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.2 }}
-                                className={`flex flex-col md:flex-row items-center gap-8 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''
-                                    }`}
-                            >
-                                <div className="flex-1 w-full md:w-auto text-center md:text-left">
-                                    <div className={`md:hidden mb-4 inline-flex p-3 rounded-full ${event.bg} ${event.color}`}>
-                                        <event.icon className="w-6 h-6" />
-                                    </div>
-                                    <h3 className="text-xl font-bold text-navy dark:text-white mb-1">{event.title}</h3>
-                                    <p className="text-slate-500 dark:text-slate-400">{event.description}</p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                    {/* Week 1-2: The Boost */}
+                    <BentoCard className="md:col-span-2 md:row-span-1 bg-gradient-to-br from-blue-500/5 to-purple-500/5 border-blue-500/10">
+                        <div className="flex flex-col md:flex-row items-start md:items-center gap-6 h-full">
+                            <div className="p-4 rounded-2xl bg-blue-500/10 text-blue-400 shrink-0">
+                                <Activity className="w-8 h-8" />
+                            </div>
+                            <div>
+                                <div className="flex items-center gap-3 mb-3">
+                                    <span className="px-3 py-1 rounded-full bg-blue-500/10 text-blue-300 text-xs font-mono border border-blue-500/20">Week 1-2</span>
+                                    <h3 className="text-xl font-bold text-white">"Let's boost some posts!"</h3>
                                 </div>
+                                <p className="text-slate-400 leading-relaxed">Random testing without strategy. Throwing budget at the wall to see what sticks, often relying on "Boost Post" buttons or simplified setups without proper tracking.</p>
+                            </div>
+                        </div>
+                    </BentoCard>
 
-                                <div className="relative z-10 flex-shrink-0">
-                                    <div className={`w-16 h-16 rounded-full border-4 border-white shadow-lg flex items-center justify-center ${event.bg} ${event.color} hidden md:flex`}>
-                                        <event.icon className="w-8 h-8" />
+                    {/* Week 3-4: The Confusion */}
+                    <BentoCard className="md:col-span-1 md:row-span-2 bg-gradient-to-br from-orange-500/5 to-red-500/5 border-orange-500/10" delay={0.1}>
+                        <div className="flex flex-col h-full justify-between">
+                            <div>
+                                <div className="mb-6 p-4 rounded-2xl bg-orange-500/10 text-orange-400 w-fit">
+                                    <HelpCircle className="w-8 h-8" />
+                                </div>
+                                <span className="px-3 py-1 rounded-full bg-orange-500/10 text-orange-300 text-xs font-mono border border-orange-500/20 mb-4 inline-block">Week 3-4</span>
+                                <h3 className="text-xl font-bold text-white mb-3">"Why only likes?"</h3>
+                                <p className="text-slate-400 text-sm leading-relaxed">Vanity metrics vs Real results. You see clicks and likes, but your calendar remains empty. The disconnect between engagement and revenue starts to show.</p>
+                            </div>
+                            <div className="mt-8 p-4 rounded-xl bg-black/40 border border-white/5 backdrop-blur-sm">
+                                <div className="flex justify-between items-center mb-2">
+                                    <span className="text-xs text-slate-500 font-medium">Ad Spend</span>
+                                    <div className="h-1.5 w-16 bg-red-500/20 rounded-full overflow-hidden">
+                                        <div className="h-full w-[80%] bg-red-500 rounded-full" />
                                     </div>
                                 </div>
-
-                                <div className={`flex-1 w-full md:w-auto text-center ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                                    <span className="inline-block px-4 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-bold text-sm">
-                                        {event.week}
-                                    </span>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* Key Statement */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    className="text-center mb-16"
-                >
-                    <h3 className="text-2xl md:text-3xl font-bold text-navy dark:text-white">
-                        But Meta Ads is <span className="text-primary">mathematics</span>, not magic.
-                    </h3>
-                </motion.div>
-
-                {/* Problems Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {problems.map((prob, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                        >
-                            <Card className="h-full hover:shadow-md transition-shadow border-slate-200 dark:border-slate-700 dark:bg-slate-900">
-                                <CardContent className="p-6 text-center">
-                                    <div className="w-12 h-12 bg-red-50 dark:bg-red-900/20 text-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <XCircle className="w-6 h-6" />
+                                <div className="flex justify-between items-center">
+                                    <span className="text-xs text-slate-500 font-medium">Bookings</span>
+                                    <div className="h-1.5 w-16 bg-slate-700/30 rounded-full overflow-hidden">
+                                        <div className="h-full w-[10%] bg-slate-500 rounded-full" />
                                     </div>
-                                    <h4 className="font-bold text-navy dark:text-white mb-2">{prob.title}</h4>
-                                    <p className="text-sm text-slate-500 dark:text-slate-400">{prob.desc}</p>
-                                </CardContent>
-                            </Card>
-                        </motion.div>
-                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </BentoCard>
+
+                    {/* Week 5-8: The Panic */}
+                    <BentoCard className="md:col-span-1 bg-gradient-to-br from-red-500/5 to-pink-500/5 border-red-500/10" delay={0.2}>
+                        <div className="p-4 rounded-2xl bg-red-500/10 text-red-400 w-fit mb-6">
+                            <Search className="w-8 h-8" />
+                        </div>
+                        <span className="px-3 py-1 rounded-full bg-red-500/10 text-red-300 text-xs font-mono border border-red-500/20 mb-4 inline-block">Week 5-8</span>
+                        <h3 className="text-xl font-bold text-white mb-2">Panic Changes</h3>
+                        <p className="text-slate-400 text-sm leading-relaxed">Changing audiences, creatives, and offers daily. Zero data accumulation.</p>
+                    </BentoCard>
+
+                    {/* Week 9+: The End */}
+                    <BentoCard className="md:col-span-1 bg-gradient-to-br from-slate-800/50 to-black/50 border-slate-700/30" delay={0.3}>
+                        <div className="p-4 rounded-2xl bg-slate-700/50 text-slate-400 w-fit mb-6">
+                            <Frown className="w-8 h-8" />
+                        </div>
+                        <span className="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-xs font-mono border border-slate-600/20 mb-4 inline-block">Week 9+</span>
+                        <h3 className="text-xl font-bold text-white mb-2">"Meta doesn't work"</h3>
+                        <p className="text-slate-400 text-sm leading-relaxed">Giving up on a goldmine because the approach was flawed from the start.</p>
+                    </BentoCard>
+
+                    {/* The Core Issue Summary */}
+                    <BentoCard className="md:col-span-3 bg-white/5 border-white/10 hover:border-white/20" delay={0.4}>
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+                            <div className="text-left max-w-2xl">
+                                <h3 className="text-2xl font-bold text-white mb-2">But Meta Ads is <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">mathematics</span>, not magic.</h3>
+                                <p className="text-slate-400">The common denominator in all these failing campaigns is the lack of a data-driven methodology. Without a system, you're just gambling.</p>
+                            </div>
+                            <div className="flex gap-4 shrink-0">
+                                <div className="px-6 py-4 rounded-2xl bg-black/40 border border-white/5 text-center min-w-[100px]">
+                                    <div className="text-red-400 font-bold text-2xl mb-1">0</div>
+                                    <div className="text-[10px] text-slate-500 uppercase tracking-widest font-medium">Predictability</div>
+                                </div>
+                                <div className="px-6 py-4 rounded-2xl bg-black/40 border border-white/5 text-center min-w-[100px]">
+                                    <div className="text-red-400 font-bold text-2xl mb-1">High</div>
+                                    <div className="text-[10px] text-slate-500 uppercase tracking-widest font-medium">Stress</div>
+                                </div>
+                            </div>
+                        </div>
+                    </BentoCard>
                 </div>
             </div>
         </section>
