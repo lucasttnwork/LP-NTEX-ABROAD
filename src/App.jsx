@@ -4,14 +4,10 @@ import Footer from './components/layout/Footer';
 import Hero from './components/sections/Hero';
 import Problem from './components/sections/Problem';
 import ELEE from './components/sections/ELEE';
-import Comparison from './components/sections/Comparison';
+import Timeline from './components/sections/Timeline';
 import AIAdvantage from './components/sections/AIAdvantage';
 import ICP from './components/sections/ICP';
-import Pricing from './components/sections/Pricing';
-import CaseStudies from './components/sections/CaseStudies';
 import StrategySession from './components/sections/StrategySession';
-import FAQ from './components/sections/FAQ';
-import FinalChoice from './components/sections/FinalChoice';
 import FloatingElements from './components/layout/FloatingElements';
 
 function App() {
@@ -21,15 +17,11 @@ function App() {
       <main>
         <Hero />
         <Problem />
-        <ELEE />
-        <Comparison />
         <AIAdvantage />
+        <ELEE />
+        <Timeline />
         <ICP />
-        <Pricing />
-        <CaseStudies />
         <StrategySession />
-        <FAQ />
-        <FinalChoice />
       </main>
       <Footer />
       <FloatingElements />

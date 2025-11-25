@@ -1,82 +1,27 @@
 import React from 'react';
-import { cn } from '../../lib/utils';
 
 const Footer = () => {
     return (
-        <footer className="relative bg-linear-main pt-24 pb-12 overflow-hidden">
-            {/* Background Glow */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-primary/20 blur-[100px] rounded-full pointer-events-none" />
+        <footer className="py-12 border-t border-white/10 bg-black/40 backdrop-blur-lg">
+            <div className="container mx-auto px-6">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div className="text-center md:text-left">
+                        <h3 className="text-2xl font-bold font-heading mb-2">NTEX</h3>
+                        <p className="text-white/40 text-sm">High-Performance Meta Ads Management</p>
+                    </div>
 
-            <div className="container mx-auto px-4 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
-                    <div className="col-span-1 md:col-span-5">
-                        <a href="#" className="flex items-center gap-3 mb-6 group">
-                            <div className="relative w-10 h-10 rounded-xl overflow-hidden">
-                                <div className="absolute inset-0 bg-gradient-to-tr from-primary to-accent opacity-80 group-hover:opacity-100 transition-opacity" />
-                                <img
-                                    src="/favicon.png"
-                                    alt="NTEX"
-                                    className="relative z-10 w-full h-full object-cover mix-blend-overlay"
-                                />
-                            </div>
-                            <span className="font-heading font-bold text-3xl tracking-tight text-white">
-                                NTEX
-                            </span>
+                    <div className="flex items-center gap-6">
+                        <a
+                            href="mailto:hello@ntexads.co.uk"
+                            className="text-white/60 hover:text-white transition-colors text-sm font-medium flex items-center gap-2"
+                        >
+                            📧 hello@ntexads.co.uk
                         </a>
-                        <p className="text-slate-400 text-lg leading-relaxed max-w-md">
-                            Engineering predictable growth for aesthetic clinics and boutique gyms through data-driven Meta Ads.
-                        </p>
-                    </div>
-
-                    <div className="col-span-1 md:col-span-2 md:col-start-7">
-                        <h4 className="font-heading font-bold text-white mb-6">Platform</h4>
-                        <ul className="space-y-4">
-                            {['Methodology', 'Results', 'Pricing', 'FAQ'].map((item) => (
-                                <li key={item}>
-                                    <a href={`#${item.toLowerCase()}`} className="text-slate-400 hover:text-primary transition-colors">
-                                        {item}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    <div className="col-span-1 md:col-span-2">
-                        <h4 className="font-heading font-bold text-white mb-6">Company</h4>
-                        <ul className="space-y-4">
-                            {['About', 'Careers', 'Contact', 'Privacy'].map((item) => (
-                                <li key={item}>
-                                    <a href="#" className="text-slate-400 hover:text-primary transition-colors">
-                                        {item}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    <div className="col-span-1 md:col-span-2">
-                        <h4 className="font-heading font-bold text-white mb-6">Socials</h4>
-                        <ul className="space-y-4">
-                            {['LinkedIn', 'Twitter', 'Instagram'].map((item) => (
-                                <li key={item}>
-                                    <a href="#" className="text-slate-400 hover:text-primary transition-colors">
-                                        {item}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
                     </div>
                 </div>
 
-                <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-slate-500 text-sm">
-                        &copy; {new Date().getFullYear()} NTEX Ads. All rights reserved.
-                    </p>
-                    <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                        <span className="text-slate-400 text-sm">All systems operational</span>
-                    </div>
+                <div className="mt-8 pt-8 border-t border-white/5 text-center text-white/20 text-xs">
+                    © {new Date().getFullYear()} NTEX. All rights reserved.
                 </div>
             </div>
         </footer>

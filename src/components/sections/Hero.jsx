@@ -1,178 +1,120 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Button } from '../ui/button';
-import { Badge } from '../ui/badge';
-import { ArrowRight, CheckCircle } from 'lucide-react';
-import heroVisual from '../../assets/hero-tablet.png';
-import heroBooking from '../../assets/hero-booking.png';
-import heroAi from '../../assets/hero-ai.png';
-import LogoSlider from '../ui/LogoSlider';
 
 const Hero = () => {
-    const [metrics, setMetrics] = useState({ cpl: '£??', bookings: '0', roas: '?.?x' });
-
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setMetrics({ cpl: '£18', bookings: '47', roas: '3.8x' });
-        }, 2000);
+        const loadUnicornScript = () => {
+            const scriptId = 'unicorn-studio-script';
+            const existingScript = document.getElementById(scriptId);
+
+            if (!existingScript) {
+                const script = document.createElement('script');
+                script.id = scriptId;
+                script.src = "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js";
+                script.onload = () => {
+                    if (window.UnicornStudio) {
+                        window.UnicornStudio.init();
+                    }
+                };
+                document.head.appendChild(script);
+            } else {
+                if (window.UnicornStudio) {
+                    window.UnicornStudio.init();
+                }
+            }
+        };
+
+        // Small delay to ensure DOM is ready
+        const timer = setTimeout(loadUnicornScript, 100);
         return () => clearTimeout(timer);
     }, []);
 
     return (
-        <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-slate-950 pt-20">
-            {/* Spline Background */}
-            <div className="spline-container absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
-                <iframe
-                    src="https://my.spline.design/aidatamodelinteraction-jipMLzxI5liMrspqcm4GRWTh"
-                    frameBorder="0"
-                    width="100%"
-                    height="100%"
-                    id="aura-spline"
-                    className="opacity-60"
-                ></iframe>
-            </div>
+        <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden isolate">
+            {/* Background Elements */}
+            <div data-us-project="p7Ff6pfTrb5Gs59C7nLC" className="absolute w-full h-full left-0 top-0 -z-10"></div>
 
-            {/* Background Elements - Kept for depth but reduced opacity */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute -top-[30%] -right-[10%] w-[70%] h-[70%] rounded-full bg-primary/10 blur-[120px]" />
-                <div className="absolute top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-accent/10 blur-[100px]" />
-            </div>
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="max-w-5xl mx-auto text-center">
 
-            {/* Seamless Transition Gradient */}
-            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent z-0 pointer-events-none" />
-
-            <div className="container mx-auto px-4 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
-                {/* Text Content */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="max-w-2xl"
-                >
+                    {/* Badge */}
                     <motion.div
-                        initial={{ opacity: 0, y: 10 }}
+                        initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="mb-6"
+                        transition={{ duration: 0.6 }}
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8"
                     >
-                        <Badge variant="elee" className="px-4 py-1.5 text-sm border-primary/30 bg-primary/10 text-primary-foreground backdrop-blur-md">
-                            ELEE® Methodology + AI
-                        </Badge>
+                        <Sparkles className="w-4 h-4 text-accent" />
+                        <span className="text-sm font-medium text-white/80">Meta Ads Management for Growth-Focused Businesses</span>
                     </motion.div>
 
-                    <h1 className="text-4xl md:text-6xl font-bold leading-tight text-white mb-6 drop-shadow-lg">
-                        Stop Experimenting With Meta Ads. <br />
-                        <span className="text-gradient-silver">Start Engineering Predictable Results</span>
-                    </h1>
+                    {/* Headline */}
 
-                    <p className="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed drop-shadow-md">
-                        We Build Customer Acquisition Machines Carefully Engineered to Actually Generate Bookings.
-                        By using our proprietary ELEE methodology + AI optimisation, we build Meta campaigns that generate
-                        <strong className="text-white"> trackable bookings at predictable costs</strong> for UK aesthetic clinics and boutique fitness studios.
-                    </p>
+                    <motion.h1
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.1 }}
+                        className="flex flex-col gap-2 mb-8"
+                    >
+                        <span className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-gradient-silver-fade uppercase">
+                            META ADS
+                        </span>
+                        <span className="text-4xl md:text-6xl lg:text-7xl font-light text-gradient-silver-fade">
+                            Solved with <span className="font-serif italic">Science.</span>
+                        </span>
+                        <span className="text-4xl md:text-6xl lg:text-7xl font-light text-gradient-silver-fade">
+                            <span className="font-serif italic">Enhanced</span> with AI.
+                        </span>
+                    </motion.h1>
 
-                    <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                        <Button
-                            variant="cta"
-                            size="lg"
-                            className="text-lg px-8 h-14"
-                            onClick={() => document.getElementById('methodology')?.scrollIntoView({ behavior: 'smooth' })}
+                    {/* Subheadline */}
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        className="text-xl md:text-2xl text-white/60 mb-12 max-w-3xl mx-auto leading-relaxed font-light"
+                    >
+                        We turn Meta Ads into a revenue engine for ambitious UK local businesses using high-performance data analysis and AI-driven creatives.
+                    </motion.p>
+
+                    {/* CTA Buttons */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
+                        className="flex flex-col sm:flex-row items-center justify-center gap-6"
+                    >
+                        <a
+                            href="#strategy-session"
+                            className="shiny-cta group inline-flex justify-center items-center"
                         >
-                            See How ELEE Works
-                            <ArrowRight className="ml-2 h-5 w-5" />
-                        </Button>
-                        <Button
-                            variant="outline"
-                            size="lg"
-                            className="text-lg h-14"
-                            onClick={() => document.getElementById('problem')?.scrollIntoView({ behavior: 'smooth' })}
+                            <span className="flex items-center gap-2 whitespace-nowrap">
+                                Book Your Free Strategy Session
+                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform flex-shrink-0" />
+                            </span>
+                        </a>
+
+                        <a
+                            href="#process"
+                            className="px-8 py-4 rounded-full border border-white/20 hover:bg-white/5 transition-all duration-300 text-lg font-medium backdrop-blur-sm"
                         >
-                            Why most Meta Ads fail ↓
-                        </Button>
-                    </div>
+                            See Our Process
+                        </a>
+                    </motion.div>
 
-                    <p className="text-sm text-slate-400 flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4 text-emerald-400" />
-                        Built for businesses ready to invest £2k–£10k/month in systematic growth
-                    </p>
-                </motion.div>
-
-                {/* Visual Content - Bento Grid Style */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.4, duration: 0.6 }}
-                    className="relative hidden lg:block h-[600px]"
-                >
-                    <div className="grid grid-cols-2 grid-rows-6 gap-4 h-full w-full p-4">
-
-                        {/* Card 1: Main Tablet (Top - Spans 2 cols, 4 rows) */}
-                        <motion.div
-                            className="col-span-2 row-span-4 relative rounded-2xl overflow-hidden border border-slate-700/50 shadow-2xl group"
-                            whileHover={{ scale: 1.02 }}
-                            transition={{ duration: 0.3 }}
-                        >
-                            <div className="absolute inset-0 bg-slate-900/20 z-10 group-hover:bg-transparent transition-colors duration-300" />
-                            <img
-                                src={heroVisual}
-                                alt="Analytics Dashboard"
-                                className="w-full h-full object-cover"
-                            />
-
-                            {/* Overlay Badge */}
-                            <div className="absolute bottom-4 left-4 z-20">
-                                <div className="bg-slate-900/90 backdrop-blur-md px-3 py-2 rounded-lg border border-slate-700/50 flex items-center gap-2">
-                                    <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                                    <span className="text-xs text-white font-medium">Live Performance Tracking</span>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        {/* Card 2: Booking Notification (Bottom Left - 1 col, 2 rows) */}
-                        <motion.div
-                            className="col-span-1 row-span-2 relative rounded-2xl overflow-hidden border border-slate-700/50 shadow-xl group"
-                            whileHover={{ scale: 1.02 }}
-                            transition={{ duration: 0.3, delay: 0.1 }}
-                        >
-                            <img
-                                src={heroBooking}
-                                alt="Booking Confirmation"
-                                className="w-full h-full object-cover"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent" />
-                            <div className="absolute bottom-3 left-3 z-20">
-                                <span className="text-xs text-slate-300 font-mono">CONVERSION_EVENT</span>
-                                <div className="text-sm text-white font-bold">New Booking</div>
-                            </div>
-                        </motion.div>
-
-                        {/* Card 3: AI Network (Bottom Right - 1 col, 2 rows) */}
-                        <motion.div
-                            className="col-span-1 row-span-2 relative rounded-2xl overflow-hidden border border-slate-700/50 shadow-xl group"
-                            whileHover={{ scale: 1.02 }}
-                            transition={{ duration: 0.3, delay: 0.2 }}
-                        >
-                            <img
-                                src={heroAi}
-                                alt="AI Optimization"
-                                className="w-full h-full object-cover"
-                            />
-                            <div className="absolute inset-0 bg-primary/10 mix-blend-overlay" />
-                            <div className="absolute top-3 right-3 z-20">
-                                <div className="bg-primary/20 p-1.5 rounded-md backdrop-blur-sm border border-primary/30">
-                                    <CheckCircle className="h-4 w-4 text-primary" />
-                                </div>
-                            </div>
-                            <div className="absolute bottom-3 left-3 z-20">
-                                <span className="text-xs text-slate-300 font-mono">AI_OPTIMIZER</span>
-                                <div className="text-sm text-white font-bold">Learning...</div>
-                            </div>
-                        </motion.div>
-
-                    </div>
-                </motion.div>
+                    {/* Social Proof / Trust Indicators (Optional placeholder) */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.6, delay: 0.5 }}
+                        className="mt-16 pt-8 border-t border-white/5"
+                    >
+                        <p className="text-sm text-white/40 uppercase tracking-widest mb-6">Trusted by ambitious brands</p>
+                        {/* Add logos here if available, or keep it minimal */}
+                    </motion.div>
+                </div>
             </div>
-            <LogoSlider />
         </section>
     );
 };

@@ -1,93 +1,65 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Search, Calculator, CheckCircle } from 'lucide-react';
-import { Button } from '../ui/button';
-import { Card, CardContent } from '../ui/card';
+import { ArrowRight, Calendar } from 'lucide-react';
 
 const StrategySession = () => {
-    const steps = [
-        {
-            icon: Search,
-            title: 'Analyse your current situation',
-            desc: 'What you\'re spending vs what you\'re getting. Where the gaps are.',
-        },
-        {
-            icon: Calendar,
-            title: 'Map out your ELEE implementation',
-            desc: 'Which offers to test. Expected costs. Realistic timeline.',
-        },
-        {
-            icon: Calculator,
-            title: 'Calculate your numbers',
-            desc: 'Probable cost per booking. ROI projections. Break-even point.',
-        },
-        {
-            icon: CheckCircle,
-            title: 'Decide on fit',
-            desc: 'If ELEE makes sense, we explain next steps. If not, we tell you why.',
-        },
-    ];
-
     return (
-        <section className="py-24 bg-linear-main relative overflow-hidden" id="strategy">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5 pointer-events-none" />
+        <section id="strategy-session" className="section-padding relative overflow-hidden">
+            {/* Background Glow */}
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] animate-pulse-slow" />
+            </div>
 
-            <div className="container mx-auto px-4 relative z-10">
-                <div className="grid lg:grid-cols-2 gap-16 items-center">
-
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="max-w-4xl mx-auto text-center">
                     <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-6">
-                            See How ELEE Would Work for <span className="text-gradient-silver">Your Specific Business</span>
+                        <span className="text-accent font-mono text-sm tracking-wider uppercase mb-4 block">Next Steps</span>
+                        <h2 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
+                            <span className="text-gradient-silver-fade">Stop Experimenting. <br />
+                                Get a Strategy.</span>
                         </h2>
-                        <p className="text-lg text-slate-400 mb-10 leading-relaxed">
-                            No pitch. No pressure. Just mathematical analysis of whether ELEE fits your business.
+                        <p className="text-xl text-white/60 mb-12 max-w-2xl mx-auto">
+                            We invite you to a <strong className="text-white">Free Strategy Session</strong>. This is not a sales pitch. It is a mathematical analysis of your business to see if our system fits your goals.
                         </p>
 
-                        <div className="space-y-8">
-                            {steps.map((step, index) => (
-                                <div key={index} className="flex gap-4 group">
-                                    <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 group-hover:border-primary/30 transition-all duration-300">
-                                        <step.icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
-                                    </div>
-                                    <div>
-                                        <h3 className="font-bold text-white text-lg mb-1">{step.title}</h3>
-                                        <p className="text-slate-500 group-hover:text-slate-400 transition-colors">{step.desc}</p>
-                                    </div>
+                        <div className="grid md:grid-cols-3 gap-6 mb-12 text-left max-w-3xl mx-auto">
+                            {[
+                                { title: "1. Analyze", desc: "We analyze your current ad performance." },
+                                { title: "2. Map", desc: "We map out a growth plan using our data-driven approach." },
+                                { title: "3. Project", desc: "We give you a clear projection of results." }
+                            ].map((step, index) => (
+                                <div key={index} className="glass-panel p-6 rounded-xl bg-white/5">
+                                    <h3 className="text-lg font-bold mb-2 text-white">{step.title}</h3>
+                                    <p className="text-white/60 text-sm">{step.desc}</p>
                                 </div>
                             ))}
                         </div>
+
+                        <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="inline-block"
+                        >
+                            <a
+                                href="https://calendly.com/your-link" // Replace with actual link if available, or keep generic
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group relative px-10 py-5 bg-white text-black rounded-full font-bold text-xl hover:bg-gray-100 transition-all duration-300 flex items-center gap-3 shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]"
+                            >
+                                <Calendar className="w-6 h-6" />
+                                Book Your Free Strategy Session
+                                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                            </a>
+                        </motion.div>
+
+                        <p className="mt-6 text-white/40 text-sm font-medium tracking-wide uppercase">
+                            Come with your numbers, leave with clarity.
+                        </p>
                     </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="relative"
-                    >
-                        <div className="absolute inset-0 bg-gradient-to-tr from-primary to-accent rounded-3xl rotate-2 opacity-20 blur-2xl" />
-                        <div className="relative glass-panel rounded-3xl p-1">
-                            <div className="bg-navy/80 backdrop-blur-xl rounded-[20px] p-10 text-center">
-                                <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10">
-                                    <Calendar className="w-10 h-10 text-primary" />
-                                </div>
-                                <h3 className="text-2xl font-bold text-white mb-2">Free ELEE Strategy Session</h3>
-                                <p className="text-slate-400 mb-8">30 Minute Video Call • Expert Analysis</p>
-
-                                <Button variant="cta" size="lg" className="w-full h-14 text-lg mb-4">
-                                    Book Your Free Session
-                                </Button>
-
-                                <p className="text-xs text-slate-500">
-                                    "This isn't a sales call. It's a business analysis. Come with your numbers, leave with clarity."
-                                </p>
-                            </div>
-                        </div>
-                    </motion.div>
-
                 </div>
             </div>
         </section>

@@ -1,141 +1,163 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { AlertTriangle, XCircle, HelpCircle, Frown, Activity, Search, TrendingDown, ArrowRight } from 'lucide-react';
-import { cn } from '../../lib/utils';
-
-const BentoCard = ({ children, className, delay = 0 }) => (
-    <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay, duration: 0.5 }}
-        className={cn(
-            "relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 hover:bg-white/10 transition-all duration-300 group",
-            className
-        )}
-    >
-        {children}
-    </motion.div>
-);
+import { Brain, BarChart3, Zap, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const Problem = () => {
     return (
-        <section className="py-24 bg-slate-950 relative overflow-hidden" id="problem">
-            {/* Background Gradients */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-500/5 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-500/5 rounded-full blur-[120px]" />
-            </div>
+        <section id="reality" className="section-padding relative overflow-hidden">
+            <div className="container mx-auto px-6">
+                <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-            {/* Seamless Transition Gradient */}
-            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-slate-950 via-slate-950/80 to-transparent z-0 pointer-events-none" />
-
-            <div className="container mx-auto px-4 relative z-10">
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                    {/* Left Column - Visual (Phone Mockup) */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl md:text-5xl font-heading font-bold text-white mb-6 leading-tight"
+                        transition={{ duration: 0.8 }}
+                        className="relative mx-auto lg:mx-0 max-w-[320px] lg:max-w-[380px]"
                     >
-                        97% of Meta Ads Campaigns Follow the Same <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-white to-slate-200">Failing Pattern</span>
-                    </motion.h2>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="text-lg text-slate-400"
-                    >
-                        Here's what we see every day when we audit UK clinics and studios.
-                        The problem isn't Meta. The problem is <strong className="text-white">lack of methodology</strong>.
-                    </motion.p>
-                </div>
+                        {/* Glow Effect */}
+                        <div className="absolute -inset-4 bg-accent/20 blur-3xl rounded-full opacity-50" />
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                    {/* Week 1-2: The Boost */}
-                    <BentoCard className="md:col-span-2 md:row-span-1 bg-gradient-to-br from-blue-500/5 to-purple-500/5 border-blue-500/10">
-                        <div className="flex flex-col md:flex-row items-start md:items-center gap-6 h-full">
-                            <div className="p-4 rounded-2xl bg-blue-500/10 text-blue-400 shrink-0">
-                                <Activity className="w-8 h-8" />
-                            </div>
-                            <div>
-                                <div className="flex items-center gap-3 mb-3">
-                                    <span className="px-3 py-1 rounded-full bg-blue-500/10 text-blue-300 text-xs font-mono border border-blue-500/20">Week 1-2</span>
-                                    <h3 className="text-xl font-bold text-white">"Let's boost some posts!"</h3>
+                        {/* Phone Frame */}
+                        <div className="relative z-10 bg-[#0a0a0a] border-[8px] border-[#1a1a1a] rounded-[3rem] overflow-hidden shadow-2xl shadow-black/50 aspect-[9/19]">
+                            {/* Status Bar */}
+                            <div className="h-6 bg-black flex items-center justify-between px-6 pt-2">
+                                <div className="text-[10px] text-white font-medium">9:41</div>
+                                <div className="flex gap-1">
+                                    <div className="w-3 h-3 rounded-full bg-white/20"></div>
+                                    <div className="w-3 h-3 rounded-full bg-white/20"></div>
                                 </div>
-                                <p className="text-slate-400 leading-relaxed">Random testing without strategy. Throwing budget at the wall to see what sticks, often relying on "Boost Post" buttons or simplified setups without proper tracking.</p>
                             </div>
-                        </div>
-                    </BentoCard>
 
-                    {/* Week 3-4: The Confusion */}
-                    <BentoCard className="md:col-span-1 md:row-span-2 bg-gradient-to-br from-orange-500/5 to-red-500/5 border-orange-500/10" delay={0.1}>
-                        <div className="flex flex-col h-full justify-between">
-                            <div>
-                                <div className="mb-6 p-4 rounded-2xl bg-orange-500/10 text-orange-400 w-fit">
-                                    <HelpCircle className="w-8 h-8" />
-                                </div>
-                                <span className="px-3 py-1 rounded-full bg-orange-500/10 text-orange-300 text-xs font-mono border border-orange-500/20 mb-4 inline-block">Week 3-4</span>
-                                <h3 className="text-xl font-bold text-white mb-3">"Why only likes?"</h3>
-                                <p className="text-slate-400 text-sm leading-relaxed">Vanity metrics vs Real results. You see clicks and likes, but your calendar remains empty. The disconnect between engagement and revenue starts to show.</p>
-                            </div>
-                            <div className="mt-8 p-4 rounded-xl bg-black/40 border border-white/5 backdrop-blur-sm">
-                                <div className="flex justify-between items-center mb-2">
-                                    <span className="text-xs text-slate-500 font-medium">Ad Spend</span>
-                                    <div className="h-1.5 w-16 bg-red-500/20 rounded-full overflow-hidden">
-                                        <div className="h-full w-[80%] bg-red-500 rounded-full" />
+                            {/* App Header */}
+                            <div className="px-6 py-4 flex items-center gap-3 border-b border-white/5 bg-black/40 backdrop-blur-md absolute top-6 left-0 right-0 z-20">
+                                <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-accent to-purple-500 p-[2px]">
+                                    <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-[10px] font-bold">
+                                        NT
                                     </div>
                                 </div>
-                                <div className="flex justify-between items-center">
-                                    <span className="text-xs text-slate-500 font-medium">Bookings</span>
-                                    <div className="h-1.5 w-16 bg-slate-700/30 rounded-full overflow-hidden">
-                                        <div className="h-full w-[10%] bg-slate-500 rounded-full" />
+                                <div>
+                                    <div className="text-xs font-bold text-white">NTEX Growth</div>
+                                    <div className="text-[10px] text-accent">Active Campaign</div>
+                                </div>
+                            </div>
+
+                            {/* Screen Content */}
+                            <div className="h-full w-full bg-[#050505] relative pt-20">
+                                {/* Main Visual - Abstract AI Art */}
+                                <div className="mx-4 h-[60%] rounded-2xl overflow-hidden relative group">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-purple-500/20 to-blue-500/20 animate-pulse-slow" />
+                                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1974&auto=format&fit=crop')] bg-cover bg-center opacity-60 mix-blend-overlay" />
+
+                                    {/* Floating Stats Cards inside the image */}
+                                    <div className="absolute bottom-4 left-4 right-4 flex gap-2">
+                                        <div className="flex-1 bg-black/60 backdrop-blur-md p-2 rounded-lg border border-white/10">
+                                            <div className="text-[10px] text-white/60">ROAS</div>
+                                            <div className="text-sm font-bold text-accent">4.8x</div>
+                                        </div>
+                                        <div className="flex-1 bg-black/60 backdrop-blur-md p-2 rounded-lg border border-white/10">
+                                            <div className="text-[10px] text-white/60">Conv. Rate</div>
+                                            <div className="text-sm font-bold text-white">3.2%</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Bottom Metrics */}
+                                <div className="p-6 space-y-4">
+                                    <div className="flex items-center justify-between">
+                                        <div className="text-xs text-white/60">Daily Spend</div>
+                                        <div className="text-xs font-mono text-white">£450.00</div>
+                                    </div>
+                                    <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                                        <div className="h-full w-[75%] bg-accent rounded-full" />
+                                    </div>
+                                    <div className="flex items-center justify-between pt-2">
+                                        <div className="text-xs text-white/60">AI Optimization</div>
+                                        <div className="text-xs text-accent flex items-center gap-1">
+                                            <Zap className="w-3 h-3" /> Active
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </BentoCard>
+                    </motion.div>
 
-                    {/* Week 5-8: The Panic */}
-                    <BentoCard className="md:col-span-1 bg-gradient-to-br from-red-500/5 to-pink-500/5 border-red-500/10" delay={0.2}>
-                        <div className="p-4 rounded-2xl bg-red-500/10 text-red-400 w-fit mb-6">
-                            <Search className="w-8 h-8" />
+                    {/* Right Column - Content */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                    >
+                        <div className="mb-2 flex items-center gap-2">
+                            <div className="h-[1px] w-8 bg-accent"></div>
+                            <span className="text-accent font-mono text-xs tracking-widest uppercase">The NTEX Reality</span>
                         </div>
-                        <span className="px-3 py-1 rounded-full bg-red-500/10 text-red-300 text-xs font-mono border border-red-500/20 mb-4 inline-block">Week 5-8</span>
-                        <h3 className="text-xl font-bold text-white mb-2">Panic Changes</h3>
-                        <p className="text-slate-400 text-sm leading-relaxed">Changing audiences, creatives, and offers daily. Zero data accumulation.</p>
-                    </BentoCard>
 
-                    {/* Week 9+: The End */}
-                    <BentoCard className="md:col-span-1 bg-gradient-to-br from-slate-800/50 to-black/50 border-slate-700/30" delay={0.3}>
-                        <div className="p-4 rounded-2xl bg-slate-700/50 text-slate-400 w-fit mb-6">
-                            <Frown className="w-8 h-8" />
-                        </div>
-                        <span className="px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-xs font-mono border border-slate-600/20 mb-4 inline-block">Week 9+</span>
-                        <h3 className="text-xl font-bold text-white mb-2">"Meta doesn't work"</h3>
-                        <p className="text-slate-400 text-sm leading-relaxed">Giving up on a goldmine because the approach was flawed from the start.</p>
-                    </BentoCard>
+                        <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                            We Don't Hope. <br />
+                            <span className="text-gradient-platinum">We Engineer.</span>
+                        </h2>
 
-                    {/* The Core Issue Summary */}
-                    <BentoCard className="md:col-span-3 bg-white/5 border-white/10 hover:border-white/20" delay={0.4}>
-                        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-                            <div className="text-left max-w-2xl">
-                                <h3 className="text-2xl font-bold text-white mb-2">But Meta Ads is <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">mathematics</span>, not magic.</h3>
-                                <p className="text-slate-400">The common denominator in all these failing campaigns is the lack of a data-driven methodology. Without a system, you're just gambling.</p>
-                            </div>
-                            <div className="flex gap-4 shrink-0">
-                                <div className="px-6 py-4 rounded-2xl bg-black/40 border border-white/5 text-center min-w-[100px]">
-                                    <div className="text-red-400 font-bold text-2xl mb-1">0</div>
-                                    <div className="text-[10px] text-slate-500 uppercase tracking-widest font-medium">Predictability</div>
+                        <p className="text-lg text-white/60 mb-10 leading-relaxed">
+                            Most agencies treat Meta Ads like a creative lottery. We replace the guesswork with a mathematical approach that turns ad spend into profit with mechanical consistency.
+                        </p>
+
+                        <div className="space-y-8">
+                            {/* Feature 1 */}
+                            <div className="flex gap-5 group">
+                                <div className="mt-1">
+                                    <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-accent/50 group-hover:bg-accent/10 transition-colors duration-300">
+                                        <Brain className="w-5 h-5 text-white/80 group-hover:text-accent transition-colors" />
+                                    </div>
                                 </div>
-                                <div className="px-6 py-4 rounded-2xl bg-black/40 border border-white/5 text-center min-w-[100px]">
-                                    <div className="text-red-400 font-bold text-2xl mb-1">High</div>
-                                    <div className="text-[10px] text-slate-500 uppercase tracking-widest font-medium">Stress</div>
+                                <div>
+                                    <h3 className="text-xl font-bold text-white mb-2">AI-Driven Precision</h3>
+                                    <p className="text-white/50 leading-relaxed">
+                                        Our systems analyze top-performing market patterns to generate high-converting creative variations 5x faster than traditional teams.
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Feature 2 */}
+                            <div className="flex gap-5 group">
+                                <div className="mt-1">
+                                    <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-accent/50 group-hover:bg-accent/10 transition-colors duration-300">
+                                        <BarChart3 className="w-5 h-5 text-white/80 group-hover:text-accent transition-colors" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-bold text-white mb-2">Statistical Significance</h3>
+                                    <p className="text-white/50 leading-relaxed">
+                                        We don't optimize based on "gut feeling." We track 20+ data points to ensure every decision is mathematically proven to drive revenue.
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Feature 3 */}
+                            <div className="flex gap-5 group">
+                                <div className="mt-1">
+                                    <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-accent/50 group-hover:bg-accent/10 transition-colors duration-300">
+                                        <CheckCircle2 className="w-5 h-5 text-white/80 group-hover:text-accent transition-colors" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-bold text-white mb-2">Mechanical Consistency</h3>
+                                    <p className="text-white/50 leading-relaxed">
+                                        A continuous engine that monitors performance 24/7, preventing ad fatigue and spotting scaling opportunities the moment they appear.
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                    </BentoCard>
+
+                        <div className="mt-10">
+                            <a href="#strategy-session" className="inline-flex items-center gap-2 text-white font-medium border-b border-accent/50 pb-1 hover:text-accent hover:border-accent transition-all duration-300">
+                                See how we scale
+                                <ArrowRight className="w-4 h-4" />
+                            </a>
+                        </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

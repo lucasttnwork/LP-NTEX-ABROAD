@@ -26,29 +26,27 @@ const Navbar = () => {
     return (
         <nav
             className={cn(
-                'fixed top-0 left-0 right-0 z-50 transition-all duration-300 flex justify-center',
-                isScrolled ? 'py-4' : 'py-6'
+                'fixed top-6 left-0 right-0 z-50 transition-all duration-500 flex justify-center px-4',
+                isScrolled ? 'top-4' : 'top-6'
             )}
         >
             <div
                 className={cn(
-                    "container mx-auto px-4 flex items-center justify-between transition-all duration-300",
-                    isScrolled
-                        ? "max-w-5xl bg-slate-900/80 backdrop-blur-xl border border-slate-700 rounded-full py-3 px-6 shadow-2xl shadow-purple-900/20"
-                        : "bg-transparent"
+                    "flex items-center justify-between transition-all duration-500 max-w-6xl w-full",
+                    "bg-slate-900/30 backdrop-blur-2xl border border-white/10 rounded-full py-3 px-6 shadow-2xl shadow-black/40"
                 )}
             >
                 {/* Logo */}
                 <a href="#" className="flex items-center gap-2 group">
                     <div className="relative w-8 h-8 rounded-lg overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-tr from-primary to-accent opacity-80 group-hover:opacity-100 transition-opacity" />
+                        <div className="absolute inset-0 bg-gradient-to-tr from-slate-300 via-slate-100 to-slate-400 opacity-90 group-hover:opacity-100 transition-opacity" />
                         <img
                             src="/favicon.png"
                             alt="NTEX"
                             className="relative z-10 w-full h-full object-cover mix-blend-overlay"
                         />
                     </div>
-                    <span className="font-heading font-bold text-xl tracking-tight text-white">
+                    <span className="font-heading font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-200 via-slate-100 to-slate-300">
                         NTEX
                     </span>
                 </a>
