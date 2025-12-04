@@ -149,12 +149,19 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  transform-origin: center;
   z-index: 1;
   width: 100%;
   aspect-ratio: 1;
-  background: linear-gradient(-50deg, transparent, #1d4ed8, transparent);
-  mask-image: radial-gradient(circle at bottom, transparent 40%, black);
-  opacity: 0.6;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg 35deg,
+    rgba(29, 78, 216, 0.85) 35deg 55deg,
+    rgba(59, 130, 246, 0.6) 55deg 70deg,
+    transparent 70deg 100deg
+  );
+  mask-image: radial-gradient(circle at center, transparent 40%, black 42%, black 60%, transparent 62%);
+  opacity: 0.65;
   animation: shimmer 4s linear infinite;
   animation-play-state: running;
 }
@@ -183,7 +190,11 @@
 }
 
 @keyframes shimmer {
-  to {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
     transform: translate(-50%, -50%) rotate(360deg);
   }
 }
@@ -197,5 +208,77 @@
 
   50% {
     transform: translate(-50%, -50%) scale(1.20);
+  }
+}
+
+.hero-light-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.hero-light {
+  position: absolute;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(37,99,235,0.95) 0%, rgba(59,130,246,0.2) 60%, transparent 100%);
+  filter: blur(40px);
+  opacity: 0.6;
+  animation: hero-light-pulse 6.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.hero-light-top-right {
+  width: 380px;
+  height: 380px;
+  top: 8%;
+  right: -4%;
+  animation-delay: 0s;
+}
+
+.hero-light-bottom-left {
+  width: 320px;
+  height: 320px;
+  bottom: 6%;
+  left: -10%;
+  animation-delay: 1.4s;
+}
+
+.hero-gradient-sweep {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(30,64,175,0.75) 0%, rgba(37,99,235,0.25) 60%, transparent 100%);
+  opacity: 0.45;
+  mix-blend-mode: screen;
+  animation: hero-gradient-shift 14s ease-in-out infinite alternate;
+}
+
+@keyframes hero-light-pulse {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.95);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes hero-gradient-shift {
+  0% {
+    opacity: 0.42;
+    transform: translateX(-10%);
+  }
+
+  100% {
+    opacity: 0.18;
+    transform: translateX(6%);
   }
 }

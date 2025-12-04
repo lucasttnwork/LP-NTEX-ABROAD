@@ -22,11 +22,19 @@ const NewHero = () => {
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-10 bg-black hero-section-stack">
             {/* Background Elements - Monotone */}
             <div className="absolute inset-0 z-0 pointer-events-none hero-background">
+                {/* Existing Neutral Lights */}
                 <span className="hero-light hero-light-one" />
                 <span className="hero-light hero-light-two" />
                 <span className="hero-light hero-light-three" />
                 <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-[128px] animate-pulse-slow" />
                 <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-[128px] animate-pulse-slow delay-1000" />
+
+                {/* NEW: Deep Blue Pulsing Lights */}
+                {/* 1. Upper Left Corner */}
+                <div className="absolute -top-20 -left-20 w-[600px] h-[600px] bg-blue-900/40 rounded-full blur-[120px] mix-blend-screen animate-pulse opacity-60" />
+                
+                {/* 2. Right of Left Column (Near Button & Image) */}
+                <div className="absolute top-[60%] left-[45%] lg:left-[40%] transform -translate-y-1/2 w-[500px] h-[500px] bg-blue-800/50 rounded-full blur-[100px] mix-blend-screen animate-pulse delay-700 opacity-70" />
             </div>
 
             <div className="container mx-auto px-6 relative z-10">

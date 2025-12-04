@@ -3,8 +3,21 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 import { motion as Motion } from 'framer-motion';
 
 const Hero = () => {
+    const handleScrollToStrategy = () => {
+        const target = document.querySelector('#strategy-session');
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden hero-section-stack">
+
+            <div className="absolute inset-0 pointer-events-none hero-light-background" aria-hidden="true">
+                <span className="hero-light hero-light-top-right" />
+                <span className="hero-light hero-light-bottom-left" />
+                <div className="hero-gradient-sweep" />
+            </div>
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="max-w-5xl mx-auto text-center">
@@ -50,29 +63,33 @@ const Hero = () => {
                     </Motion.p>
 
                     {/* CTA Buttons */}
-                    <Motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
-                        className="flex flex-col sm:flex-row items-center justify-center gap-6"
-                    >
-                        <a
-                            href="#strategy-session"
-                            className="shiny-cta group inline-flex justify-center items-center"
+                        <Motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
+                            className="flex flex-col sm:flex-row items-center justify-center gap-6"
                         >
-                            <span className="flex items-center gap-2 whitespace-nowrap">
-                                Book Your Free Strategy Session
-                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform flex-shrink-0" />
-                            </span>
-                        </a>
+                            <div className="inline-block bg-transparent">
+                                <button
+                                    type="button"
+                                    onClick={handleScrollToStrategy}
+                                    className="shiny-cta focus:outline-none group inline-flex justify-center items-center"
+                                    aria-label="Book your free strategy session"
+                                >
+                                    <span className="flex items-center gap-2 whitespace-nowrap">
+                                        Book Your Free Strategy Session
+                                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform flex-shrink-0" />
+                                    </span>
+                                </button>
+                            </div>
 
-                        <a
-                            href="#process"
-                            className="px-8 py-4 rounded-full border border-white/20 hover:bg-white/5 transition-all duration-300 text-lg font-medium backdrop-blur-sm"
-                        >
-                            See Our Process
-                        </a>
-                    </Motion.div>
+                            <a
+                                href="#process"
+                                className="px-8 py-4 rounded-full border border-white/20 hover:bg-white/5 transition-all duration-300 text-lg font-medium backdrop-blur-sm"
+                            >
+                                See Our Process
+                            </a>
+                        </Motion.div>
 
                     {/* Social Proof / Trust Indicators (Optional placeholder) */}
                     <Motion.div

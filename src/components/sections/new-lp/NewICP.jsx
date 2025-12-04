@@ -19,7 +19,11 @@ const NewICP = () => {
 
     return (
         <section className="py-32 bg-black relative overflow-hidden border-t border-white/5">
-            <div className="container mx-auto px-6">
+            {/* Background Lights */}
+            <div className="absolute top-[20%] -right-[10%] w-[600px] h-[600px] bg-blue-800/30 rounded-full blur-[120px] mix-blend-screen animate-pulse-slower pointer-events-none" />
+            <div className="absolute bottom-[20%] -left-[10%] w-[600px] h-[600px] bg-indigo-900/30 rounded-full blur-[120px] mix-blend-screen animate-pulse-slower pointer-events-none delay-1000" />
+            
+            <div className="container mx-auto px-6 relative z-10">
                 <div className="max-w-4xl mx-auto mb-20 text-center">
                     <motion.span
                         initial={{ opacity: 0, y: 20 }}
@@ -51,10 +55,13 @@ const NewICP = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="flex flex-col p-8 rounded-3xl border border-white/10 bg-zinc-900/50 relative overflow-hidden group hover:border-white/20 transition-colors"
+                        className="flex flex-col p-8 rounded-3xl border border-white/10 bg-gradient-to-br from-zinc-900/90 via-zinc-900/90 to-blue-600/20 relative overflow-hidden group hover:border-blue-500/40 transition-all duration-500 hover:shadow-[0_0_30px_-5px_rgba(37,99,235,0.2)]"
                     >
+                        {/* Glare Effect */}
+                        <div className="absolute inset-0 -translate-x-full group-hover:animate-shimmer bg-gradient-to-r from-transparent via-white/10 to-transparent z-0 pointer-events-none" />
+                        
                         {/* Top Bar */}
-                        <div className="flex justify-between items-start mb-8">
+                        <div className="flex justify-between items-start mb-8 relative z-10">
                             <div className="flex gap-1.5">
                                 <span className="text-xs font-mono text-zinc-500">01</span>
                                 <div className="flex gap-1 pt-1">

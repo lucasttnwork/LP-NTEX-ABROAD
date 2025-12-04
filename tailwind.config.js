@@ -42,11 +42,17 @@ export default {
       animation: {
         'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'pulse-slower': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'float': 'float 6s ease-in-out infinite',
         'gradient': 'gradient 8s linear infinite',
         'spin-slow': 'spin 8s linear infinite',
+        'shimmer': 'shimmer 0.6s linear forwards',
       },
       keyframes: {
+        shimmer: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
         fadeInUp: {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },

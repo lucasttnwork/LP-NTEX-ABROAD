@@ -102,7 +102,11 @@ const NewReality = () => {
             </section>
 
             <section id="campaigns" className="py-20 bg-black relative overflow-hidden border-t border-white/5">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Background Lights - Enhanced Visibility & Centered */}
+                <div className="absolute top-[20%] -right-[10%] w-[600px] h-[600px] bg-blue-800/30 rounded-full blur-[120px] mix-blend-screen animate-pulse-slower pointer-events-none" />
+                <div className="absolute bottom-[20%] -left-[10%] w-[600px] h-[600px] bg-indigo-900/30 rounded-full blur-[120px] mix-blend-screen animate-pulse-slower pointer-events-none delay-1000" />
+                
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
                         <div>
                             <p className="text-sm font-medium text-white/50 font-sans uppercase tracking-wider">The Hard Truth</p>
