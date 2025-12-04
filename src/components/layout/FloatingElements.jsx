@@ -38,8 +38,11 @@ const FloatingElements = () => {
         <>
             {/* Scroll Progress Bar */}
             <motion.div
-                className="fixed top-0 left-0 right-0 h-1 bg-primary origin-left z-50"
-                style={{ scaleX }}
+                className="fixed top-0 left-0 right-0 h-1 origin-left z-50"
+                style={{
+                    scaleX,
+                    background: 'linear-gradient(90deg, #A8A8A8 0%, #D4D4D4 50%, #E8E8E8 100%)'
+                }}
             />
 
             {/* Floating WhatsApp / Contact Button */}
