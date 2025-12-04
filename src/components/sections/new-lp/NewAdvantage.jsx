@@ -1,9 +1,32 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import OptimizedImage from '../../ui/OptimizedImage';
+import { buildImageSources } from '../../../lib/image-sources';
 import extractionVisual from '../../../assets/extraction_phase_visual_1764091726420.png';
+import extractionVisualWebp from '../../../assets/extraction_phase_visual_1764091726420.webp';
+import extractionVisualAvif from '../../../assets/extraction_phase_visual_1764091726420.avif';
 import heroAi from '../../../assets/hero-ai.png';
+import heroAiWebp from '../../../assets/hero-ai.webp';
+import heroAiAvif from '../../../assets/hero-ai.avif';
 import escalationVisual from '../../../assets/escalation_phase_visual_1764091702926.png';
+import escalationVisualWebp from '../../../assets/escalation_phase_visual_1764091702926.webp';
+import escalationVisualAvif from '../../../assets/escalation_phase_visual_1764091702926.avif';
+
+const extractionVisualSources = buildImageSources({
+    avif: extractionVisualAvif,
+    webp: extractionVisualWebp,
+});
+
+const heroAiSources = buildImageSources({
+    avif: heroAiAvif,
+    webp: heroAiWebp,
+});
+
+const escalationVisualSources = buildImageSources({
+    avif: escalationVisualAvif,
+    webp: escalationVisualWebp,
+});
 
 const NewAdvantage = () => {
     return (
@@ -91,8 +114,9 @@ const NewAdvantage = () => {
                                     className="group relative rounded-2xl bg-black/40 border border-white/10 overflow-hidden hover:border-white/20 transition-colors flex flex-col"
                                 >
                                     <div className="aspect-[4/3] overflow-hidden relative">
-                                        <img 
+                                        <OptimizedImage 
                                             src={extractionVisual} 
+                                            sources={extractionVisualSources}
                                             alt="Engineering" 
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                                         />
@@ -124,8 +148,9 @@ const NewAdvantage = () => {
                                     className="group relative rounded-2xl bg-black/40 border border-white/10 overflow-hidden hover:border-white/20 transition-colors flex flex-col"
                                 >
                                      <div className="aspect-[4/3] overflow-hidden relative">
-                                        <img 
+                                        <OptimizedImage 
                                             src={heroAi} 
+                                            sources={heroAiSources}
                                             alt="AI Technology" 
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" 
                                         />
@@ -157,8 +182,9 @@ const NewAdvantage = () => {
                                     className="group relative rounded-2xl bg-black/40 border border-white/10 overflow-hidden hover:border-white/20 transition-colors flex flex-col"
                                 >
                                      <div className="aspect-[4/3] overflow-hidden relative">
-                                        <img 
+                                        <OptimizedImage 
                                             src={escalationVisual} 
+                                            sources={escalationVisualSources}
                                             alt="Growth Results" 
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                                         />

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion as Motion } from 'framer-motion';
 import { ArrowRight, Zap, BarChart3, Globe, ShieldCheck } from 'lucide-react';
+import OptimizedImage from '../../ui/OptimizedImage';
 
 const InfiniteScrollText = ({ children, duration = 15 }) => {
     return (
@@ -93,14 +94,14 @@ const NewHero = () => {
                         {/* Main Image Container */}
                         <div className="relative w-full h-full lg:w-[120%] lg:-mr-32 lg:-mt-20">
                             {/* Abstract/Tech Image Placeholder */}
-                            <div className="absolute inset-0 bg-gradient-to-b from-gray-800 to-black rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-                                <img
-                                    src="/images/hero-woman-v3.png"
-                                    alt="Futuristic Meta Ads Specialist"
-                                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
-                            </div>
+                                <div className="absolute inset-0 bg-gradient-to-b from-gray-800 to-black rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+                                    <OptimizedImage
+                                        src="/images/hero-woman-v3.png"
+                                        alt="Futuristic Meta Ads Specialist"
+                                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                                </div>
 
                             {/* Floating Card 1 - Top Left (AI Speed) */}
                             <Motion.div

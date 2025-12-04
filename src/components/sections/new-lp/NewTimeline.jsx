@@ -1,10 +1,40 @@
 import React from "react";
 import { Timeline } from "../../ui/timeline";
+import OptimizedImage from '../../ui/OptimizedImage';
+import { buildImageSources } from '../../../lib/image-sources';
 
 import explorationVisual from "../../../assets/exploration_phase_visual_1764091514544.png";
+import explorationVisualWebp from "../../../assets/exploration_phase_visual_1764091514544.webp";
+import explorationVisualAvif from "../../../assets/exploration_phase_visual_1764091514544.avif";
 import lapidationVisual from "../../../assets/lapidation_phase_visual.png";
+import lapidationVisualWebp from "../../../assets/lapidation_phase_visual.webp";
+import lapidationVisualAvif from "../../../assets/lapidation_phase_visual.avif";
 import escalationVisual from "../../../assets/escalation_phase_visual_1764091702926.png";
+import escalationVisualWebp from "../../../assets/escalation_phase_visual_1764091702926.webp";
+import escalationVisualAvif from "../../../assets/escalation_phase_visual_1764091702926.avif";
 import extractionVisual from "../../../assets/extraction_phase_visual_1764091726420.png";
+import extractionVisualWebp from "../../../assets/extraction_phase_visual_1764091726420.webp";
+import extractionVisualAvif from "../../../assets/extraction_phase_visual_1764091726420.avif";
+
+const explorationVisualSources = buildImageSources({
+  avif: explorationVisualAvif,
+  webp: explorationVisualWebp,
+});
+
+const lapidationVisualSources = buildImageSources({
+  avif: lapidationVisualAvif,
+  webp: lapidationVisualWebp,
+});
+
+const escalationVisualSources = buildImageSources({
+  avif: escalationVisualAvif,
+  webp: escalationVisualWebp,
+});
+
+const extractionVisualSources = buildImageSources({
+  avif: extractionVisualAvif,
+  webp: extractionVisualWebp,
+});
 
 const NewTimeline = () => {
   const data = [
@@ -28,8 +58,9 @@ const NewTimeline = () => {
             </span>
           </div>
           <div className="grid grid-cols-1 gap-4">
-            <img
+            <OptimizedImage
               src={explorationVisual}
+              sources={explorationVisualSources}
               alt="Exploration Phase"
               className="rounded-lg object-cover h-48 md:h-64 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
             />
@@ -56,8 +87,9 @@ const NewTimeline = () => {
             </span>
           </div>
           <div className="grid grid-cols-1 gap-4">
-            <img
+            <OptimizedImage
               src={lapidationVisual}
+              sources={lapidationVisualSources}
               alt="Lapidation Phase"
               className="rounded-lg object-cover h-48 md:h-64 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
             />
@@ -85,13 +117,15 @@ const NewTimeline = () => {
             </span>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <img
+            <OptimizedImage
               src={escalationVisual}
+              sources={escalationVisualSources}
               alt="Escalation Phase"
               className="rounded-lg object-cover h-40 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
             />
-            <img
+            <OptimizedImage
               src={extractionVisual}
+              sources={extractionVisualSources}
               alt="Extraction Phase"
               className="rounded-lg object-cover h-40 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
             />

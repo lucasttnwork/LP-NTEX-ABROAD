@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import OptimizedImage from '../ui/OptimizedImage';
 import { cn } from '../../lib/utils';
 
 const NewLPNavbar = () => {
@@ -25,14 +26,14 @@ const NewLPNavbar = () => {
             >
                 {/* Logo */}
                 <a href="/" className="flex items-center gap-2 group">
-                    <div className="relative w-8 h-8 rounded-lg overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-tr from-slate-400 via-slate-200 to-slate-300 opacity-80 group-hover:opacity-100 transition-opacity" />
-                        <img
-                            src="/favicon.png"
-                            alt="NTEX"
-                            className="relative z-10 w-full h-full object-cover mix-blend-overlay"
-                        />
-                    </div>
+                        <div className="relative w-8 h-8 rounded-lg overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-tr from-slate-400 via-slate-200 to-slate-300 opacity-80 group-hover:opacity-100 transition-opacity" />
+                            <OptimizedImage
+                                src="/favicon.png"
+                                alt="NTEX"
+                                className="relative z-10 w-full h-full object-cover mix-blend-overlay"
+                            />
+                        </div>
                     <span className="font-heading font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-300 via-white to-slate-300">
                         NTEX
                     </span>

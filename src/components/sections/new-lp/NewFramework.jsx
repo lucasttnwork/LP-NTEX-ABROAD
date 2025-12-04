@@ -1,8 +1,22 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Search, Gem, TrendingUp, Repeat } from 'lucide-react';
+import OptimizedImage from '../../ui/OptimizedImage';
+import { buildImageSources } from '../../../lib/image-sources';
 
 import heroBg from '../../../assets/hero-visual.png';
+import heroBgWebp from '../../../assets/hero-visual.webp';
+import heroBgAvif from '../../../assets/hero-visual.avif';
+
+const heroBgSources = buildImageSources({
+    avif: heroBgAvif,
+    webp: heroBgWebp,
+});
+
+const heroBgImage = {
+    src: heroBg,
+    sources: heroBgSources,
+};
 
 const Card = ({ step, index, range, targetScale, progress }) => {
     const containerRef = useRef(null);
@@ -26,9 +40,10 @@ const Card = ({ step, index, range, targetScale, progress }) => {
                  {/* Background Image */}
                  <div className="absolute inset-0 overflow-hidden">
                     <motion.div className="w-full h-full absolute inset-0" style={{ scale: imageScale }}>
-                        <img 
-                            src={step.image} 
-                            alt={step.title} 
+                        <OptimizedImage
+                            src={step.image.src}
+                            sources={step.image.sources}
+                            alt={step.title}
                             className="w-full h-full object-cover"
                         />
                     </motion.div>
@@ -81,7 +96,7 @@ const NewFramework = () => {
             subtitle: "Find what works — fast.",
             description: "While traditional agencies take weeks to create 3-4 ads, our AI systems generate and test dozens of variations in days. We analyse market patterns, identify promising angles, and discover what resonates with your audience before the competition.",
             icon: <Search size={24} />,
-            image: heroBg,
+            image: heroBgImage,
         },
         {
             letter: "L",
@@ -89,7 +104,7 @@ const NewFramework = () => {
             subtitle: "Turn good into excellent.",
             description: "Ads that show potential go through surgical refinement. A/B testing on headlines, images, copy, CTAs — every element is optimised until cost-per-result hits its sweet spot. Mathematics, not guesswork.",
             icon: <Gem size={24} />,
-            image: heroBg,
+            image: heroBgImage,
         },
         {
             letter: "E",
@@ -97,7 +112,7 @@ const NewFramework = () => {
             subtitle: "Scale with confidence, not hope.",
             description: "We only increase investment on statistically proven campaigns. No \"let's see what happens.\" When we scale, we know — with data — that returns will follow.",
             icon: <TrendingUp size={24} />,
-            image: heroBg,
+            image: heroBgImage,
         },
         {
             letter: "E",
@@ -105,7 +120,7 @@ const NewFramework = () => {
             subtitle: "Maximise the value of every customer.",
             description: "Acquisition is just the beginning. We activate remarketing and retention sequences to increase the lifetime value of each customer. You don't just win customers — you profit more from each one.",
             icon: <Repeat size={24} />,
-            image: heroBg,
+            image: heroBgImage,
         }
     ];
 

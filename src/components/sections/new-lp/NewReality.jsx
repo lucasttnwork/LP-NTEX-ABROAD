@@ -1,11 +1,25 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import OptimizedImage from '../../ui/OptimizedImage';
+import { buildImageSources } from '../../../lib/image-sources';
 import heroVisual from '../../../assets/hero-visual.png';
+import heroVisualWebp from '../../../assets/hero-visual.webp';
+import heroVisualAvif from '../../../assets/hero-visual.avif';
 import explorationVisual from '../../../assets/exploration_phase_visual_1764091514544.png';
+import explorationVisualWebp from '../../../assets/exploration_phase_visual_1764091514544.webp';
+import explorationVisualAvif from '../../../assets/exploration_phase_visual_1764091514544.avif';
 import extractionVisual from '../../../assets/extraction_phase_visual_1764091726420.png';
+import extractionVisualWebp from '../../../assets/extraction_phase_visual_1764091726420.webp';
+import extractionVisualAvif from '../../../assets/extraction_phase_visual_1764091726420.avif';
 import escalationVisual from '../../../assets/escalation_phase_visual_1764091702926.png';
+import escalationVisualWebp from '../../../assets/escalation_phase_visual_1764091702926.webp';
+import escalationVisualAvif from '../../../assets/escalation_phase_visual_1764091702926.avif';
 import lapidationVisual from '../../../assets/lapidation_phase_visual.png';
+import lapidationVisualWebp from '../../../assets/lapidation_phase_visual.webp';
+import lapidationVisualAvif from '../../../assets/lapidation_phase_visual.avif';
 import heroAi from '../../../assets/hero-ai.png';
+import heroAiWebp from '../../../assets/hero-ai.webp';
+import heroAiAvif from '../../../assets/hero-ai.avif';
 
 const realityPatternStyle = {
     backgroundImage: `
@@ -24,6 +38,36 @@ const realityFadeMask = {
     WebkitMaskRepeat: 'no-repeat',
     maskRepeat: 'no-repeat',
 };
+
+const heroVisualSources = buildImageSources({
+    avif: heroVisualAvif,
+    webp: heroVisualWebp,
+});
+
+const explorationVisualSources = buildImageSources({
+    avif: explorationVisualAvif,
+    webp: explorationVisualWebp,
+});
+
+const extractionVisualSources = buildImageSources({
+    avif: extractionVisualAvif,
+    webp: extractionVisualWebp,
+});
+
+const escalationVisualSources = buildImageSources({
+    avif: escalationVisualAvif,
+    webp: escalationVisualWebp,
+});
+
+const lapidationVisualSources = buildImageSources({
+    avif: lapidationVisualAvif,
+    webp: lapidationVisualWebp,
+});
+
+const heroAiSources = buildImageSources({
+    avif: heroAiAvif,
+    webp: heroAiWebp,
+});
 
 // Removed realitySectionStyles combination to apply separately
 
@@ -128,9 +172,10 @@ const NewReality = () => {
                             className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 md:col-span-2 md:row-span-2"
                         >
                             <div className="relative h-64 sm:h-80 md:h-full min-h-[300px]">
-                                <img 
-                                    src={heroVisual} 
-                                    alt="System failure visualization" 
+                                <OptimizedImage
+                                    src={heroVisual}
+                                    sources={heroVisualSources}
+                                    alt="System failure visualization"
                                     className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
                                 />
                                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
@@ -169,7 +214,12 @@ const NewReality = () => {
                                     Campaigns launch before you hear from your customers, missing the cues your audience cares about.
                                 </p>
                                 <div className="mt-auto rounded-lg overflow-hidden border border-white/10 aspect-video relative">
-                                    <img src={explorationVisual} alt="Market signals gap" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                                    <OptimizedImage
+                                        src={explorationVisual}
+                                        sources={explorationVisualSources}
+                                        alt="Market signals gap"
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    />
                                 </div>
                             </div>
                         </motion.div>
@@ -193,7 +243,12 @@ const NewReality = () => {
                                     Creative variations are refreshed once a month—long after poorly performing ads burn through budget.
                                 </p>
                                 <div className="mt-auto rounded-lg overflow-hidden border border-white/10 aspect-video relative">
-                                    <img src={extractionVisual} alt="Creative feedback gap" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                                    <OptimizedImage
+                                        src={extractionVisual}
+                                        sources={extractionVisualSources}
+                                        alt="Creative feedback gap"
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    />
                                 </div>
                             </div>
                         </motion.div>
@@ -214,7 +269,12 @@ const NewReality = () => {
                                     Spend is dictated by what felt right last quarter instead of a model that forecasts ROI.
                                 </p>
                                 <div className="mt-auto rounded-lg overflow-hidden border border-white/10 aspect-video relative">
-                                     <img src={escalationVisual} alt="Budget misallocation" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                                     <OptimizedImage
+                                        src={escalationVisual}
+                                        sources={escalationVisualSources}
+                                        alt="Budget misallocation"
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                     />
                                 </div>
                             </div>
                         </motion.div>
@@ -235,7 +295,12 @@ const NewReality = () => {
                                     There is no cadence for analysis, so the campaign only changes when someone notices a drop.
                                 </p>
                                  <div className="mt-auto rounded-lg overflow-hidden border border-white/10 aspect-video relative">
-                                     <img src={lapidationVisual} alt="Optimization lag" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                                     <OptimizedImage
+                                        src={lapidationVisual}
+                                        sources={lapidationVisualSources}
+                                        alt="Optimization lag"
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                     />
                                 </div>
                             </div>
                         </motion.div>
@@ -256,7 +321,12 @@ const NewReality = () => {
                                     Reports celebrate impressions and clicks while the revenue column stays empty.
                                 </p>
                                  <div className="mt-auto rounded-lg overflow-hidden border border-white/10 aspect-video relative">
-                                     <img src={heroAi} alt="Vanity metrics" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                                     <OptimizedImage
+                                        src={heroAi}
+                                        sources={heroAiSources}
+                                        alt="Vanity metrics"
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                     />
                                 </div>
                             </div>
                         </motion.div>

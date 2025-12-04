@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import OptimizedImage from '../ui/OptimizedImage';
 import { Button } from '../ui/button';
 import { cn } from '../../lib/utils';
 
@@ -40,7 +41,7 @@ const Navbar = () => {
                 <a href="#" className="flex items-center gap-2 group">
                     <div className="relative w-8 h-8 rounded-lg overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-tr from-slate-300 via-slate-100 to-slate-400 opacity-90 group-hover:opacity-100 transition-opacity" />
-                        <img
+                        <OptimizedImage
                             src="/favicon.png"
                             alt="NTEX"
                             className="relative z-10 w-full h-full object-cover mix-blend-overlay"
