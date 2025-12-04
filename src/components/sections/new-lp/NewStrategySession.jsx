@@ -53,15 +53,20 @@ const NewStrategySession = () => {
                                 <span>Capacity Limit: Only 5 new clients per month.</span>
                             </div>
 
-                            <motion.button
+                            <motion.a
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="group relative px-10 py-6 bg-white text-black font-bold text-xl rounded-full overflow-hidden inline-flex items-center gap-3 shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:shadow-[0_0_60px_rgba(255,255,255,0.4)] transition-all"
+                                href="https://calendly.com/your-link"
+                                target="_blank"
+                                rel="noreferrer noopener"
+                                className="shiny-cta group inline-flex justify-center items-center w-fit"
                             >
-                                <Calendar className="w-6 h-6" />
-                                <span className="relative z-10">Book Your Free Strategy Analysis</span>
-                                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                            </motion.button>
+                                <span className="flex items-center gap-2 whitespace-nowrap">
+                                    <Calendar className="w-5 h-5" />
+                                    Book Your Free Strategy Analysis
+                                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                </span>
+                            </motion.a>
 
                             <p className="text-gray-500 text-sm italic">
                                 Come with your numbers. Leave with clarity.

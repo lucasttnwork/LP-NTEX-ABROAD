@@ -1,0 +1,317 @@
+---
+
+## **HERO SECTION**
+
+### Main Headline:
+> # Are Your Ads Driving Growth — or Just Draining Budget?
+
+### Subheadline:
+> Most businesses treat Meta Ads like an endless experiment. We turn them into a growth system — using scientific method and artificial intelligence so every pound you invest works with clear purpose.
+
+### Primary CTA:
+> **[Book Your Free Strategy Analysis]**
+
+### Micro-copy below CTA:
+> *Only 5 spots per month. Come with your numbers, leave with clarity.*
+
+---
+
+## **SECTION 1: THE PROBLEM (Validation)**
+
+### Headline:
+> ## Let's Be Honest About What's Happening
+
+### Copy:
+
+> You've probably been through this:
+>
+> Hired an agency (or tried it yourself). Invested a decent budget. Waited. Reports arrived full of metrics — impressions, clicks, reach — but when you looked at the actual revenue... nothing concrete.
+>
+> Or worse: some results appeared early on, then... silence. The agency said "the algorithm changed" or "it needs more time." You kept paying. Results stayed uncertain.
+>
+> **This isn't your fault. And it probably isn't your product's fault either.**
+>
+> The problem is that most agencies operate in the dark. They don't have a real method — they have "experience" and "gut feeling." And when gut feeling fails, you pay the price.
+>
+> If this sounds familiar, you're not alone. And there's a different way to do this.
+
+---
+
+## **SECTION 2: THE COMMON ENEMY (Why This Happens)**
+
+### Headline:
+> ## Why Most Campaigns Disappoint (And What Nobody Tells You)
+
+### Copy:
+
+> Here's the uncomfortable truth agencies don't like to admit:
+>
+> **The problem isn't Meta Ads. It's the method — or lack thereof.**
+>
+> The standard approach works roughly like this:
+>
+> → Create 3-4 ads based on "what worked for another client"
+> → Let them run for a couple of weeks
+> → Check the numbers and adjust "by feel"
+> → If it doesn't work, blame the algorithm
+> → Repeat until the budget runs out or your patience does
+>
+> This isn't strategy. It's trial and error with your money.
+>
+> **And the result?** You're stuck in a cycle of uncertainty — never knowing if the ads are actually working, if it's worth continuing to invest, or if you're simply throwing money away.
+>
+> The good news: it doesn't have to be this way.
+
+---
+
+## **SECTION 3: THE TURNING POINT (Introducing NTEX)**
+
+### Headline:
+> ## What If You Could Treat Growth Like Engineering, Not Guesswork?
+
+### Copy:
+
+> Think about any serious area of your business.
+>
+> You don't leave finances to "gut feeling." You don't manage inventory "hoping for the best." You don't hire people "seeing what happens."
+>
+> **Why should marketing be any different?**
+>
+> At NTEX, we treat Meta Ads as growth engineering. We don't gamble — we build. We don't hope — we measure. We don't guess — we prove.
+>
+> We use real scientific method: clear hypotheses, controlled tests, statistical analysis, and continuous optimisation. And we accelerate everything with artificial intelligence — finding what works before competitors even start testing.
+>
+> **The result?** Predictability. Clarity. And a system that improves every week, not an endless experiment draining your budget.
+
+---
+
+## **SECTION 4: THE ELEE METHOD (The Unique Mechanism)**
+
+### Headline:
+> ## Meet the ELEE Method: Our 4-Phase System
+
+### Copy:
+
+> ELEE is the proprietary framework we developed to transform Meta Ads from "necessary expense" into a "predictable growth engine."
+>
+> It's not a linear process that ends. It's a continuous cycle that self-optimises:
+>
+> ---
+>
+> **E — EXPLORATION**
+> *Find what works — fast.*
+>
+> While traditional agencies take weeks to create 3-4 ads, our AI systems generate and test dozens of variations in days. We analyse market patterns, identify promising angles, and discover what resonates with your audience before the competition.
+>
+> ---
+>
+> **L — LAPIDATION**
+> *Turn good into excellent.*
+>
+> Ads that show potential go through surgical refinement. A/B testing on headlines, images, copy, CTAs — every element is optimised until cost-per-result hits its sweet spot. Mathematics, not guesswork.
+>
+> ---
+>
+> **E — ESCALATION**
+> *Scale with confidence, not hope.*
+>
+> We only increase investment on statistically proven campaigns. No "let's see what happens." When we scale, we know — with data — that returns will follow.
+>
+> ---
+>
+> **E — EXTRACTION**
+> *Maximise the value of every customer.*
+>
+> Acquisition is just the beginning. We activate remarketing and retention sequences to increase the lifetime value of each customer. You don't just win customers — you profit more from each one.
+>
+> ---
+>
+> **The crucial part:** these phases run simultaneously.
+>
+> While we scale your winners, we're already testing the next generation of creatives. This means you never suffer "ad fatigue" — and your results never plateau because the system never stops evolving.
+
+---
+
+## **SECTION 5: HOW IT WORKS IN PRACTICE (Timeline)**
+
+### Headline:
+> ## What to Expect: From Chaos to Clarity in 90 Days
+
+### Copy:
+
+> Here's what happens when you stop experimenting and start engineering growth:
+>
+> ---
+>
+> **MONTH 1: Rapid Impact**
+> *Exploration + First Winners*
+>
+> In the first week, we launch multiple ad variations using AI. Within 10-14 days, we identify the first "winners" — the angles and messages that resonate with your audience.
+>
+> **What you see:** Results start appearing. Waste gets cut. You know exactly what's working and why.
+>
+> ---
+>
+> **MONTH 2: Optimisation + Protection**
+> *Lapidation + New Wave of Tests*
+>
+> While we refine Month 1's winners for maximum performance, we launch the second wave of exploration. This ensures you always have fresh creatives ready before current ones lose momentum.
+>
+> **What you see:** Cost-per-result dropping. Stable results. No unpleasant surprises.
+>
+> ---
+>
+> **MONTH 3+: Compounding Growth**
+> *Escalation + Extraction*
+>
+> With a proven system running, we scale investment with confidence. Simultaneously, we activate remarketing and retention to maximise each customer's value.
+>
+> **What you see:** Month-on-month growth. A system that adapts and continuously improves. Real predictability.
+
+---
+
+## **SECTION 6: PROOF (The Real Case)**
+
+### Headline:
+> ## Real Results, Not Promises
+
+### Copy:
+
+> We'd rather show than tell. Here's what happens when method replaces guesswork:
+>
+> ---
+>
+> **Case Study: Women's Fashion Boutique — UK**
+>
+> **Situation:** Sceptical owner who had tried ads before without clear results. Limited budget, fear of "throwing money away" again.
+>
+> **What we did:** Applied the complete ELEE Method. Intensive exploration in week one to identify winning angles. Lapidation of best creatives. Controlled escalation.
+>
+> **Results:**
+> - Ad spend: **under £3,000**
+> - Revenue generated: **over £15,000**
+> - ROAS: **5x** (every pound invested returned five)
+>
+> *"For the first time, I understood exactly where my customers were coming from and how much each sale cost me. It wasn't magic — it was clarity."*
+>
+> ---
+>
+> **[SPACE FOR MORE CASES AS YOU BUILD TRACK RECORD]**
+>
+> *We're constantly updating this section with new results. If you become our client, your case could be next here — with your permission, of course.*
+
+---
+
+## **SECTION 7: IS THIS FOR YOU? (Qualification)**
+
+### Headline:
+> ## Is This Right for You?
+
+### Copy:
+
+> We don't work with just any business. Not because we're arrogant — but because our method works best for a specific profile.
+>
+> **We work with businesses that:**
+>
+> → Already generate at least **£20,000/month** in revenue (need a solid foundation to scale)
+>
+> → Are ready to invest **£2,000–£10,000/month** in real growth
+>
+> → Want a **proven system**, not another experiment
+>
+> → Value **data and transparency** — not reports full of vanity metrics
+>
+> → Operate in the **United Kingdom**: local businesses, e-commerce, service providers, startups in growth phase
+>
+> **We're not the right choice if you:**
+>
+> → Want overnight magic results
+>
+> → Don't have budget to invest in ads consistently
+>
+> → Prefer "gut feeling" to data
+>
+> If you identified with the first group, let's talk.
+
+---
+
+## **SECTION 8: THE OFFER (CTA + Risk Reversal + Scarcity)**
+
+### Headline:
+> ## Next Step: Your Free Strategy Analysis
+
+### Copy:
+
+> Let's be direct: we don't do "sales calls" disguised as consultations.
+>
+> We offer a **Free Strategy Analysis** — a 30-minute conversation where we analyse your current situation and show you, clearly, whether our system makes sense for your business.
+>
+> **What happens on the call:**
+>
+> 1. We analyse your current ad performance (or your situation if you haven't advertised yet)
+>
+> 2. We map out specific opportunities using our methodology
+>
+> 3. We give you an honest projection of results — including whether we think you should even invest in ads right now
+>
+> **Our guarantee:** If you leave the call without at least 2-3 actionable insights about your business — even if you decide not to work with us — we apologise for wasting your time. Simple as that.
+>
+> ---
+>
+> **Important: Capacity Limit**
+>
+> We accept a maximum of **5 new clients per month**. This isn't a scarcity tactic — it's operational reality. Every new client receives dedicated attention during onboarding, and we don't compromise quality for volume.
+>
+> Spots available this month: **[X of 5]**
+>
+> ---
+>
+> **[BOOK YOUR FREE STRATEGY ANALYSIS]**
+>
+> *Come with your numbers. Leave with clarity.*
+
+---
+
+## **SECTION 9: P.S. (Cost of Inaction)**
+
+### Headline:
+> ## P.S. — One Final Thought
+
+### Copy:
+
+> If you've read this far, you're probably in one of two situations:
+>
+> **1)** You've tried ads before, they didn't work, and you're sceptical about trying again.
+>
+> **2)** You've never tried seriously, but you know you need to — and you're worried about wasting money.
+>
+> In both cases, we understand. That's why we created the no-strings-attached free analysis.
+>
+> But here's something to consider:
+>
+> **Every month that passes without a predictable acquisition system is a month you're letting customers go to your competition.** Not because your product is worse — but because they're showing up in front of your audience while you're still deciding.
+>
+> You don't need to decide to work with us today. But it's worth finding out, in 30 minutes, if there's a better path.
+>
+> **[Book your free analysis]**
+>
+> — The NTEX Team
+
+---
+
+# NOTAS DE BASTIDORES (Para Implementação)
+
+## Estrutura de Layout Recomendada
+
+| Seção | Elementos Visuais Sugeridos |
+|-------|----------------------------|
+| Hero | Headline grande, subheadline, CTA destacado, badge "5 vagas/mês" |
+| Problema | Texto em bloco, talvez ícone de "frustração" sutil |
+| Inimigo | Lista visual (→) para o processo falho das agências |
+| Virada | Transição visual (linha divisória ou mudança de cor de fundo) |
+| Método ELEE | Cards ou acordeões para cada fase, com ícones |
+| Timeline | Linha do tempo visual horizontal ou vertical |
+| Prova | Card destacado com números grandes, quote em destaque |
+| Qualificação | Duas colunas: "Para você se..." / "Não para você se..." |
+| Oferta | Box com fundo diferenciado, CTA grande, contador de vagas |
+| PS | Texto mais íntimo, fonte levemente menor, sensação de "nota pessoal" |

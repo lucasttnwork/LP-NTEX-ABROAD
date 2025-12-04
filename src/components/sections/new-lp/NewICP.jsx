@@ -44,53 +44,85 @@ const NewICP = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     {/* Ideal Client Column */}
                     <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="p-10 rounded-3xl bg-white/5 border border-white/10"
+                        transition={{ delay: 0.1 }}
+                        className="flex flex-col p-8 rounded-3xl border border-white/10 bg-zinc-900/50 relative overflow-hidden group hover:border-white/20 transition-colors"
                     >
-                        <h3 className="text-2xl font-heading font-bold mb-8 text-white flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center">
-                                <Check size={18} strokeWidth={3} />
-                            </div>
-                            We work with businesses that:
-                        </h3>
-                        <div className="space-y-6">
-                            {idealClients.map((item, index) => (
-                                <div key={index} className="flex items-start gap-4">
-                                    <Check className="text-white shrink-0 mt-1" size={20} />
-                                    <span className="text-gray-300 text-lg">{item}</span>
+                        {/* Top Bar */}
+                        <div className="flex justify-between items-start mb-8">
+                            <div className="flex gap-1.5">
+                                <span className="text-xs font-mono text-zinc-500">01</span>
+                                <div className="flex gap-1 pt-1">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500/20"></div>
+                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500/20"></div>
                                 </div>
-                            ))}
+                            </div>
+                            <span className="text-xs text-zinc-500 border border-white/10 rounded-full px-3 py-1">
+                                Recommended
+                            </span>
                         </div>
+
+                        <div className="mb-8">
+                            <h3 className="text-3xl font-bold text-white mb-2">Ideal Profile</h3>
+                            <p className="text-zinc-400">For businesses ready to scale.</p>
+                        </div>
+
+                        <ul className="space-y-4 mt-auto">
+                            {idealClients.map((item, index) => (
+                                <li key={index} className="flex items-start gap-3 text-sm text-zinc-300">
+                                    <div className="mt-0.5 min-w-4 flex justify-center">
+                                        <Check className="w-4 h-4 text-blue-500" />
+                                    </div>
+                                    <span>{item}</span>
+                                </li>
+                            ))}
+                        </ul>
                     </motion.div>
 
                     {/* Not Ideal Client Column */}
                     <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="p-10 rounded-3xl border border-white/5 bg-black"
+                        transition={{ delay: 0.2 }}
+                        className="flex flex-col p-8 rounded-3xl border border-white/10 bg-black relative overflow-hidden group hover:border-white/20 transition-colors"
                     >
-                        <h3 className="text-2xl font-heading font-bold mb-8 text-gray-400 flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-full bg-white/10 text-gray-400 flex items-center justify-center">
-                                <X size={18} strokeWidth={3} />
+                        {/* Top Bar */}
+                        <div className="flex justify-between items-start mb-8">
+                            <div className="flex gap-1.5">
+                                <span className="text-xs font-mono text-zinc-500">02</span>
+                                <div className="flex gap-1 pt-1">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-zinc-700"></div>
+                                    <div className="w-1.5 h-1.5 rounded-full bg-zinc-700/30"></div>
+                                    <div className="w-1.5 h-1.5 rounded-full bg-zinc-700/30"></div>
+                                </div>
                             </div>
-                            We're not the right choice if you:
-                        </h3>
-                        <div className="space-y-6">
+                        </div>
+
+                        <div className="mb-8">
+                            <h3 className="text-3xl font-bold text-white mb-2">Not For You</h3>
+                            <p className="text-zinc-400">We are not the right choice if you:</p>
+                        </div>
+
+                        <div className="space-y-4 mb-8">
                             {notIdealClients.map((item, index) => (
-                                <div key={index} className="flex items-start gap-4">
-                                    <X className="text-gray-500 shrink-0 mt-1" size={20} />
-                                    <span className="text-gray-500 text-lg">{item}</span>
+                                <div key={index} className="flex items-start gap-3 text-sm text-zinc-400">
+                                    <div className="mt-0.5 min-w-4 flex justify-center">
+                                        <X className="w-4 h-4 text-zinc-600" />
+                                    </div>
+                                    <span>{item}</span>
                                 </div>
                             ))}
                         </div>
-                        <div className="mt-12 pt-8 border-t border-white/5">
-                            <p className="text-white font-medium text-lg">
+
+                        <div className="mt-auto pt-8 border-t border-white/5">
+                            <p className="text-white font-medium text-sm text-center">
                                 If you identified with the first group, let's talk.
                             </p>
                         </div>

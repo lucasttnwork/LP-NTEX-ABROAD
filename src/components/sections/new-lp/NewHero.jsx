@@ -1,27 +1,30 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { ArrowRight, Zap, BarChart3, Globe, ShieldCheck } from 'lucide-react';
 
 const InfiniteScrollText = ({ children, duration = 15 }) => {
     return (
         <div className="overflow-hidden flex max-w-full">
-            <motion.div
+            <Motion.div
                 className="flex gap-4 whitespace-nowrap"
                 animate={{ x: ["0%", "-50%"] }}
                 transition={{ repeat: Infinity, duration: duration, ease: "linear" }}
             >
                 <span className="flex gap-4">{children}</span>
                 <span className="flex gap-4">{children}</span>
-            </motion.div>
+            </Motion.div>
         </div>
     );
 };
 
 const NewHero = () => {
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-10 bg-black">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-10 bg-black hero-section-stack">
             {/* Background Elements - Monotone */}
-            <div className="absolute inset-0 z-0 pointer-events-none">
+            <div className="absolute inset-0 z-0 pointer-events-none hero-background">
+                <span className="hero-light hero-light-one" />
+                <span className="hero-light hero-light-two" />
+                <span className="hero-light hero-light-three" />
                 <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-[128px] animate-pulse-slow" />
                 <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-[128px] animate-pulse-slow delay-1000" />
             </div>
@@ -30,7 +33,7 @@ const NewHero = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                     {/* Left Column: Content */}
-                    <motion.div
+                    <Motion.div
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -70,10 +73,10 @@ const NewHero = () => {
                         <p className="mt-6 text-sm text-gray-500 italic">
                             Only 5 spots per month. Come with your numbers, leave with clarity.
                         </p>
-                    </motion.div>
+                    </Motion.div>
 
                     {/* Right Column: Visuals */}
-                    <motion.div
+                    <Motion.div
                         initial={{ opacity: 0, x: 30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
@@ -92,7 +95,7 @@ const NewHero = () => {
                             </div>
 
                             {/* Floating Card 1 - Top Left (AI Speed) */}
-                            <motion.div
+                            <Motion.div
                                 animate={{ y: [0, -10, 0] }}
                                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                                 className="absolute top-20 left-4 md:left-8 w-64 bg-black/80 backdrop-blur-xl border border-white/10 rounded-xl p-4 shadow-2xl z-20"
@@ -110,10 +113,10 @@ const NewHero = () => {
                                         <span>OPTIMIZING CTR...</span>
                                     </InfiniteScrollText>
                                 </div>
-                            </motion.div>
+                            </Motion.div>
 
                             {/* Floating Card 2 - Bottom Right (Data Driven) */}
-                            <motion.div
+                            <Motion.div
                                 animate={{ y: [0, 10, 0] }}
                                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                                 className="absolute bottom-12 right-4 md:right-12 w-64 bg-black/80 backdrop-blur-xl border border-white/10 rounded-xl p-4 shadow-2xl z-20"
@@ -131,19 +134,19 @@ const NewHero = () => {
                                         <span>MAXIMIZING ROAS...</span>
                                     </InfiniteScrollText>
                                 </div>
-                            </motion.div>
+                            </Motion.div>
 
                             {/* Floating Card 3 - Bottom Left (Verified Results) */}
-                            <motion.div
+                            <Motion.div
                                 animate={{ y: [0, -5, 0] }}
                                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
                                 className="absolute bottom-32 left-4 md:left-12 bg-white text-black rounded-lg py-2 px-4 shadow-lg z-30 flex items-center gap-2"
                             >
                                 <ShieldCheck size={16} />
                                 <span className="text-xs font-bold">Verified Results</span>
-                            </motion.div>
+                            </Motion.div>
                         </div>
-                    </motion.div>
+                    </Motion.div>
                 </div>
             </div>
         </section>
