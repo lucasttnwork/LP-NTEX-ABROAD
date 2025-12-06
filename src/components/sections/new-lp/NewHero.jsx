@@ -831,7 +831,7 @@ const INFINITY_CARD_ENTRY_DELAY_MS = 2000;
 // ============================================================================
 // MAIN HERO COMPONENT
 // ============================================================================
-const NewHero = () => {
+const NewHero = ({ onContactRequest }) => {
     const [leftCardAutoActive, setLeftCardAutoActive] = useState(
         () => Array(LEFT_COLUMN_CARD_COUNT).fill(false)
     );
@@ -869,13 +869,6 @@ const NewHero = () => {
             }
         };
     }, []);
-
-    const handleScrollToStrategy = () => {
-        const target = document.querySelector('#strategy-session');
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -1136,7 +1129,7 @@ const NewHero = () => {
                             className="flex flex-col items-center lg:items-start gap-5"
                         >
                             <button
-                                onClick={handleScrollToStrategy}
+                                onClick={() => onContactRequest?.()}
                                 className="shiny-cta group"
                             >
                                 <span className="flex items-center gap-2">

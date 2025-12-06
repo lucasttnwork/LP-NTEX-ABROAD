@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Calendar, Clock, Users } from 'lucide-react';
 
-const NewStrategySession = () => {
+const NewStrategySession = ({ onContactRequest }) => {
     return (
         <section className="py-32 bg-black relative overflow-hidden border-t border-white/5">
             <div className="container mx-auto px-6 relative z-10">
@@ -53,12 +53,11 @@ const NewStrategySession = () => {
                                 <span>Capacity Limit: Only 5 new clients per month.</span>
                             </div>
 
-                            <motion.a
+                            <motion.button
+                                type="button"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                href="https://calendly.com/your-link"
-                                target="_blank"
-                                rel="noreferrer noopener"
+                                onClick={() => onContactRequest?.()}
                                 className="shiny-cta group inline-flex justify-center items-center w-fit"
                             >
                                 <span className="flex items-center gap-2 whitespace-nowrap">
@@ -66,7 +65,7 @@ const NewStrategySession = () => {
                                     Book Your Free Strategy Analysis
                                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                 </span>
-                            </motion.a>
+                            </motion.button>
 
                             <p className="text-gray-500 text-sm italic">
                                 Come with your numbers. Leave with clarity.

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NewLPNavbar from '../components/layout/NewLPNavbar';
 import Footer from '../components/layout/Footer';
 import FloatingElements from '../components/layout/FloatingElements';
@@ -12,23 +12,29 @@ import NewTimeline from '../components/sections/new-lp/NewTimeline';
 import NewProof from '../components/sections/new-lp/NewProof';
 import NewICP from '../components/sections/new-lp/NewICP';
 import NewStrategySession from '../components/sections/new-lp/NewStrategySession';
+import ContactModal from '../components/ui/ContactModal';
 
 function NewLP() {
+    const [isContactOpen, setIsContactOpen] = useState(false);
+    const openContactModal = () => setIsContactOpen(true);
+    const closeContactModal = () => setIsContactOpen(false);
+
     return (
         <div className="min-h-screen bg-linear-main font-sans text-white selection:bg-accent selection:text-black">
             <NewLPNavbar />
             <main>
-                <NewHero />
+                <NewHero onContactRequest={openContactModal} />
                 <NewReality />
                 <NewAdvantage />
                 <NewFramework />
                 <NewTimeline />
                 <NewProof />
                 <NewICP />
-                <NewStrategySession />
+                <NewStrategySession onContactRequest={openContactModal} />
             </main>
             <Footer />
             <FloatingElements />
+            <ContactModal isOpen={isContactOpen} onClose={closeContactModal} />
         </div>
     );
 }

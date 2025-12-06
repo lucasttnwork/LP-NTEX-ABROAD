@@ -53,6 +53,18 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-slate-200 via-slate-400 to-slate-600/30;
   }
 
+.custom-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 5 5-5' stroke='%23d6d6e0' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.25rem center;
+  background-size: 12px 8px;
+  transition: background-position 0.3s ease;
+}
+
+.custom-select:focus {
+  background-position: right 1rem center;
+}
+
   .section-padding {
     @apply py-24 md:py-32 lg:py-40;
   }
