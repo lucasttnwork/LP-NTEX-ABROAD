@@ -142,30 +142,6 @@
   pointer-events: none;
 }
 
-.shiny-cta::after {
-  content: '';
-  pointer-events: none;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  transform-origin: center;
-  z-index: 1;
-  width: 100%;
-  aspect-ratio: 1;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg 35deg,
-    rgba(29, 78, 216, 0.85) 35deg 55deg,
-    rgba(59, 130, 246, 0.6) 55deg 70deg,
-    transparent 70deg 100deg
-  );
-  mask-image: radial-gradient(circle at center, transparent 40%, black 42%, black 60%, transparent 62%);
-  opacity: 0.65;
-  animation: shimmer 4s linear infinite;
-  animation-play-state: running;
-}
-
 .shiny-cta span {
   position: relative;
   z-index: 2;
@@ -187,16 +163,6 @@
   border-radius: inherit;
   transition: opacity 800ms cubic-bezier(0.25, 1, 0.5, 1);
   animation: breathe 4.5s linear infinite;
-}
-
-@keyframes shimmer {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
 }
 
 @keyframes breathe {

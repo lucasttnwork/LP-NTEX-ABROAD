@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect, useRef } from 'react';
 import { ArrowRight, Brain, TrendingUp, Zap } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion as Motion, AnimatePresence } from 'framer-motion';
 
 // ============================================================================
 // PRISMATIC BACKGROUND - Orbs de luz animadas (FIXED - Higher z-index and opacity)
@@ -16,7 +16,7 @@ const PrismaticBackground = () => {
     return (
         <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 1 }}>
             {orbs.map((orb, i) => (
-                <motion.div
+                <Motion.div
                     key={i}
                     className="absolute rounded-full"
                     style={{
@@ -75,7 +75,7 @@ const FloatingParticles = () => {
     return (
         <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 2 }}>
             {particles.map((p) => (
-                <motion.div
+                <Motion.div
                     key={p.id}
                     className="absolute rounded-full"
                     style={{
@@ -107,16 +107,16 @@ const FloatingParticles = () => {
 // ============================================================================
 // INFINITY CARD MOTION - Símbolo de infinito para o card do bento grid
 // ============================================================================
-const InfinityCardMotion = () => (
+const InfinityCardMotion = ({ isReady = false }) => (
     <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-        <motion.svg
+        <Motion.svg
             className="w-full h-full"
             viewBox="0 0 400 80"
             fill="none"
             preserveAspectRatio="xMidYMid meet"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
+            animate={isReady ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
         >
             <defs>
                 {/* Gradiente prateado principal */}
@@ -169,7 +169,7 @@ const InfinityCardMotion = () => (
             </defs>
             
             {/* Camada de fundo difusa */}
-            <motion.path
+            <Motion.path
                 d="M80,40 C80,15 120,15 200,40 C280,65 320,65 320,40 C320,15 280,15 200,40 C120,65 80,65 80,40"
                 stroke="url(#infinityCardGlow)"
                 strokeWidth="20"
@@ -177,15 +177,15 @@ const InfinityCardMotion = () => (
                 fill="none"
                 filter="url(#infinityCardBlurIntense)"
                 initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 0.5 }}
+                animate={isReady ? { pathLength: 1, opacity: 0.5 } : { pathLength: 0, opacity: 0 }}
                 transition={{
-                    pathLength: { duration: 2, ease: "easeInOut", delay: 1 },
-                    opacity: { duration: 1.5, delay: 1 }
+                    pathLength: { duration: 2, ease: "easeInOut", delay: 0 },
+                    opacity: { duration: 1.2, delay: 0 },
                 }}
             />
             
             {/* Linha principal */}
-            <motion.path
+            <Motion.path
                 d="M80,40 C80,15 120,15 200,40 C280,65 320,65 320,40 C320,15 280,15 200,40 C120,65 80,65 80,40"
                 stroke="url(#infinityCardGradient)"
                 strokeWidth="2"
@@ -193,56 +193,58 @@ const InfinityCardMotion = () => (
                 fill="none"
                 filter="url(#infinityCardBlur)"
                 initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
+                animate={isReady ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{
-                    pathLength: { duration: 2, ease: "easeInOut", delay: 1.2 },
+                    pathLength: { duration: 2, ease: "easeInOut", delay: 0.1 },
                 }}
             />
             
             {/* Linha interna fina */}
-            <motion.path
+            <Motion.path
                 d="M80,40 C80,15 120,15 200,40 C280,65 320,65 320,40 C320,15 280,15 200,40 C120,65 80,65 80,40"
                 stroke="rgba(255,255,255,0.5)"
                 strokeWidth="0.5"
                 strokeLinecap="round"
                 fill="none"
                 initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
+                animate={isReady ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{
-                    pathLength: { duration: 2, ease: "easeInOut", delay: 1.5 },
+                    pathLength: { duration: 2, ease: "easeInOut", delay: 0.2 },
                 }}
             />
             
             {/* Partícula viajante */}
-            <motion.circle
-                r="4"
-                fill="url(#infinityParticle)"
-                filter="url(#infinityCardBlur)"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 1, 1, 0] }}
-                transition={{ duration: 4, delay: 2.5, repeat: Infinity, repeatDelay: 1 }}
-            >
-                <animateMotion
-                    dur="4s"
-                    repeatCount="indefinite"
-                    begin="2.5s"
-                    path="M80,40 C80,15 120,15 200,40 C280,65 320,65 320,40 C320,15 280,15 200,40 C120,65 80,65 80,40"
-                />
-            </motion.circle>
+            {isReady && (
+                <Motion.circle
+                    r="4"
+                    fill="url(#infinityParticle)"
+                    filter="url(#infinityCardBlur)"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: [0, 1, 1, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, repeatDelay: 1, delay: 0.3 }}
+                >
+                    <animateMotion
+                        dur="4s"
+                        repeatCount="indefinite"
+                        begin="0s"
+                        path="M80,40 C80,15 120,15 200,40 C280,65 320,65 320,40 C320,15 280,15 200,40 C120,65 80,65 80,40"
+                    />
+                </Motion.circle>
+            )}
             
             {/* Glow central pulsante */}
-            <motion.circle
+            <Motion.circle
                 cx="200"
                 cy="40"
                 r="15"
                 fill="url(#centerGlow)"
-                animate={{ 
+                animate={isReady ? {
                     opacity: [0.4, 0.7, 0.4],
                     scale: [0.9, 1.2, 0.9]
-                }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                } : { opacity: 0, scale: 1 }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
             />
-        </motion.svg>
+        </Motion.svg>
     </div>
 );
 
@@ -280,9 +282,12 @@ const BentoCard = ({
     className = '',
     delay = 0,
     glowColor = 'blue',
+    autoActive = false,
     onHoverChange,
+    onEntry,
 }) => {
     const [isHovered, setIsHovered] = useState(false);
+    const entryReported = useRef(false);
     
     const glowColors = {
         blue: 'rgba(59,130,246,0.2)',
@@ -310,18 +315,25 @@ const BentoCard = ({
         onHoverChange?.(false);
     };
 
+    const handleEntryComplete = () => {
+        if (entryReported.current) return;
+        entryReported.current = true;
+        onEntry?.();
+    };
+
     return (
-        <motion.div
+        <Motion.div
             initial={{ opacity: 0, y: 30, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             whileHover={{ scale: 1.02, y: -4 }}
             transition={{ duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+            onAnimationComplete={handleEntryComplete}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             className={`relative overflow-hidden rounded-2xl cursor-pointer ${className}`}
         >
             {/* Card background */}
-            <motion.div 
+            <Motion.div 
                 className="absolute inset-0 backdrop-blur-xl"
                 animate={{
                     background: isHovered 
@@ -332,7 +344,7 @@ const BentoCard = ({
             />
             
             {/* Border */}
-            <motion.div 
+            <Motion.div 
                 className="absolute inset-0 rounded-2xl"
                 animate={{
                     borderColor: isHovered ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.1)',
@@ -345,7 +357,7 @@ const BentoCard = ({
             />
             
             {/* Inner glow */}
-            <motion.div
+            <Motion.div
                 className="absolute -inset-1 rounded-2xl"
                 style={{ filter: 'blur(20px)' }}
                 animate={{ 
@@ -358,7 +370,7 @@ const BentoCard = ({
             {/* Shimmer on hover */}
             <AnimatePresence>
                 {isHovered && (
-                    <motion.div
+                    <Motion.div
                         className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.08] to-transparent pointer-events-none"
                         initial={{ x: '-100%', opacity: 0 }}
                         animate={{ x: '200%', opacity: 1 }}
@@ -370,9 +382,12 @@ const BentoCard = ({
             
             {/* Content - passing hover state to children */}
             <div className="relative z-10 h-full">
-                {typeof children === 'function' ? children(isHovered) : children}
+                {typeof children === 'function' ? children({
+                    isHovered,
+                    isActive: isHovered || autoActive,
+                }) : children}
             </div>
-        </motion.div>
+        </Motion.div>
     );
 };
 
@@ -419,7 +434,7 @@ const NeuralNetworkMotion = ({ isActive = false }) => {
                 
                 {/* Connections - linhas entre nós */}
                 {connections.map(([from, to], i) => (
-                    <motion.line
+                    <Motion.line
                         key={i}
                         x1={nodes[from].x}
                         y1={nodes[from].y}
@@ -442,7 +457,7 @@ const NeuralNetworkMotion = ({ isActive = false }) => {
                 
                 {/* Traveling pulses - ativados no hover */}
                 {isActive && connections.slice(0, 6).map(([from, to], i) => (
-                    <motion.circle
+                    <Motion.circle
                         key={`pulse-${i}`}
                         cx={nodes[from].x}
                         cy={nodes[from].y}
@@ -467,7 +482,7 @@ const NeuralNetworkMotion = ({ isActive = false }) => {
                 
                 {/* Nodes - nós da rede */}
                 {nodes.map((node, i) => (
-                    <motion.circle
+                    <Motion.circle
                         key={i}
                         cx={node.x}
                         cy={node.y}
@@ -488,7 +503,7 @@ const NeuralNetworkMotion = ({ isActive = false }) => {
                 ))}
                 
                 {/* Central glow ring - pulsante no hover */}
-                <motion.circle
+                <Motion.circle
                     cx="50"
                     cy="55"
                     fill="none"
@@ -504,7 +519,7 @@ const NeuralNetworkMotion = ({ isActive = false }) => {
                 
                 {/* Secondary pulse ring */}
                 {isActive && (
-                    <motion.circle
+                    <Motion.circle
                         cx="50"
                         cy="55"
                         fill="none"
@@ -546,7 +561,7 @@ const GrowthChartMotion = ({ isActive = false }) => {
                 const targetHeight = isActive ? height : height * 0.3;
                 
                 return (
-                    <motion.div
+                    <Motion.div
                         key={i}
                         className="flex-1 rounded-t-sm relative overflow-hidden"
                         style={{
@@ -568,7 +583,7 @@ const GrowthChartMotion = ({ isActive = false }) => {
                     >
                         {/* Shimmer effect on bars when active */}
                         {isActive && (
-                            <motion.div
+                            <Motion.div
                                 className="absolute inset-0 bg-gradient-to-t from-transparent via-white/30 to-transparent"
                                 initial={{ y: '100%' }}
                                 animate={{ y: '-100%' }}
@@ -580,7 +595,7 @@ const GrowthChartMotion = ({ isActive = false }) => {
                                 }}
                             />
                         )}
-                    </motion.div>
+                    </Motion.div>
                 );
             })}
             
@@ -601,7 +616,7 @@ const GrowthChartMotion = ({ isActive = false }) => {
                     </filter>
                 </defs>
                 
-                <motion.path
+                <Motion.path
                     d="M 5 70 Q 20 60, 35 55 T 65 40 T 95 15"
                     stroke="url(#silverTrendGradient)"
                     strokeWidth={isActive ? "2" : "1"}
@@ -617,7 +632,7 @@ const GrowthChartMotion = ({ isActive = false }) => {
                 
                 {/* Moving dot on trend line */}
                 {isActive && (
-                    <motion.circle
+                    <Motion.circle
                         r="3"
                         fill="rgba(255,255,255,0.95)"
                         filter="url(#trendGlow)"
@@ -629,7 +644,7 @@ const GrowthChartMotion = ({ isActive = false }) => {
                             repeatCount="indefinite"
                             path="M 5 70 Q 20 60, 35 55 T 65 40 T 95 15"
                         />
-                    </motion.circle>
+                    </Motion.circle>
                 )}
             </svg>
             
@@ -637,7 +652,7 @@ const GrowthChartMotion = ({ isActive = false }) => {
             {isActive && (
                 <>
                     {[...Array(4)].map((_, i) => (
-                        <motion.div
+                        <Motion.div
                             key={`particle-${i}`}
                             className="absolute w-1 h-1 rounded-full bg-white/60"
                             style={{ left: `${20 + i * 20}%` }}
@@ -700,7 +715,7 @@ const SpeedGaugeMotion = ({ isActive = false }) => {
                 />
                 
                 {/* Progress arc */}
-                <motion.circle
+                <Motion.circle
                     cx="50"
                     cy="50"
                     r="40"
@@ -725,7 +740,7 @@ const SpeedGaugeMotion = ({ isActive = false }) => {
                     const x2 = 50 + 36 * Math.cos(rad);
                     const y2 = 50 + 36 * Math.sin(rad);
                     return (
-                        <motion.line
+                        <Motion.line
                             key={i}
                             x1={x1} y1={y1}
                             x2={x2} y2={y2}
@@ -739,7 +754,7 @@ const SpeedGaugeMotion = ({ isActive = false }) => {
                 })}
                 
                 {/* Center text */}
-                <motion.text
+                <Motion.text
                     x="50"
                     y="50"
                     textAnchor="middle"
@@ -751,8 +766,8 @@ const SpeedGaugeMotion = ({ isActive = false }) => {
                     transition={{ duration: 0.3 }}
                 >
                     10x
-                </motion.text>
-                <motion.text
+                </Motion.text>
+                <Motion.text
                     x="50"
                     y="62"
                     textAnchor="middle"
@@ -763,12 +778,12 @@ const SpeedGaugeMotion = ({ isActive = false }) => {
                     transition={{ duration: 0.3 }}
                 >
                     Faster
-                </motion.text>
+                </Motion.text>
                 
                 {/* Pulse rings - only when active */}
                 {isActive && (
                     <>
-                        <motion.circle
+                        <Motion.circle
                             cx="50"
                             cy="50"
                             r="35"
@@ -779,7 +794,7 @@ const SpeedGaugeMotion = ({ isActive = false }) => {
                             animate={{ r: [35, 48], opacity: [0.5, 0] }}
                             transition={{ duration: 1.5, repeat: Infinity }}
                         />
-                        <motion.circle
+                        <Motion.circle
                             cx="50"
                             cy="50"
                             r="35"
@@ -809,10 +824,52 @@ const SpeedGaugeMotion = ({ isActive = false }) => {
     );
 };
 
+const LEFT_COLUMN_ENTRY_DELAYS_MS = [500, 1000, 1500];
+const LEFT_COLUMN_CARD_COUNT = LEFT_COLUMN_ENTRY_DELAYS_MS.length;
+const INFINITY_CARD_ENTRY_DELAY_MS = 2000;
+
 // ============================================================================
 // MAIN HERO COMPONENT
 // ============================================================================
 const NewHero = () => {
+    const [leftCardAutoActive, setLeftCardAutoActive] = useState(
+        () => Array(LEFT_COLUMN_CARD_COUNT).fill(false)
+    );
+    const [infinityReady, setInfinityReady] = useState(false);
+    const leftCardTimers = useRef([]);
+    const infinityTimer = useRef(null);
+
+    const scheduleLeftCardAutoplay = (index) => {
+        if (leftCardTimers.current[index]) return;
+        const delay = LEFT_COLUMN_ENTRY_DELAYS_MS[index] ?? LEFT_COLUMN_ENTRY_DELAYS_MS[0];
+        leftCardTimers.current[index] = setTimeout(() => {
+            setLeftCardAutoActive((prev) => {
+                if (prev[index]) return prev;
+                const next = [...prev];
+                next[index] = true;
+                return next;
+            });
+        }, delay);
+    };
+
+    const handleInfinityEntry = () => {
+        if (infinityTimer.current) return;
+        infinityTimer.current = setTimeout(() => {
+            setInfinityReady(true);
+        }, INFINITY_CARD_ENTRY_DELAY_MS);
+    };
+
+    useEffect(() => {
+        const timersRef = leftCardTimers;
+        const infinityRef = infinityTimer;
+        return () => {
+            timersRef.current.forEach((timer) => clearTimeout(timer));
+            if (infinityRef.current) {
+                clearTimeout(infinityRef.current);
+            }
+        };
+    }, []);
+
     const handleScrollToStrategy = () => {
         const target = document.querySelector('#strategy-session');
         if (target) {
@@ -866,7 +923,7 @@ const NewHero = () => {
                     {/* ========================================================
                         LEFT COLUMN - BENTO GRID
                     ======================================================== */}
-                    <motion.div
+                    <Motion.div
                         initial={{ opacity: 0, x: -40 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -879,7 +936,7 @@ const NewHero = () => {
                             <BentoCard className="relative h-[320px] md:h-[380px]" delay={0.3} glowColor="purple">
                                 {/* Image */}
                                 <div className="absolute inset-0 overflow-hidden rounded-2xl">
-                                    <motion.img
+                                    <Motion.img
                                         src="/images/hero-woman-v3.webp"
                                         alt="AI-Powered Growth"
                                         className="w-full h-full object-cover object-center"
@@ -893,7 +950,7 @@ const NewHero = () => {
                                     />
                                     
                                     {/* Prismatic overlay */}
-                                    <motion.div
+                                    <Motion.div
                                         className="absolute inset-0 pointer-events-none"
                                         style={{
                                             background: 'linear-gradient(135deg, rgba(139,92,246,0.1) 0%, transparent 40%, rgba(6,182,212,0.1) 100%)',
@@ -914,75 +971,98 @@ const NewHero = () => {
                             <div className="grid grid-cols-3 gap-4">
                                 
                                 {/* Card 1: AI/Neural Network */}
-                                <BentoCard className="h-[140px] md:h-[160px]" delay={0.5} glowColor="cyan">
-                                    {(isHovered) => (
+                                <BentoCard
+                                    className="h-[140px] md:h-[160px]"
+                                    delay={0.5}
+                                    glowColor="cyan"
+                                    autoActive={leftCardAutoActive[0]}
+                                    onEntry={() => scheduleLeftCardAutoplay(0)}
+                                >
+                                    {({ isHovered, isActive }) => (
                                         <>
-                                            <NeuralNetworkMotion isActive={isHovered} />
-                                            <motion.div 
+                                            <NeuralNetworkMotion isActive={isActive} />
+                                            <Motion.div 
                                                 className="absolute bottom-3 left-3 right-3 z-10"
                                                 animate={{ y: isHovered ? -2 : 0 }}
                                                 transition={{ duration: 0.3 }}
                                             >
                                                 <p className="text-[10px] text-slate-400 uppercase tracking-wider mb-0.5">Technology</p>
                                                 <p className="text-sm font-bold text-white flex items-center gap-1.5">
-                                                    <motion.span animate={{ scale: isHovered ? 1.1 : 1 }} transition={{ duration: 0.3 }}>
+                                                    <Motion.span animate={{ scale: isHovered ? 1.1 : 1 }} transition={{ duration: 0.3 }}>
                                                         <Brain className="w-3.5 h-3.5 text-cyan-400" />
-                                                    </motion.span>
+                                                    </Motion.span>
                                                     AI-Powered
                                                 </p>
-                                            </motion.div>
+                                            </Motion.div>
                                         </>
                                     )}
                                 </BentoCard>
                                 
                                 {/* Card 2: Growth/ROAS - Cores Prateadas */}
-                                <BentoCard className="h-[140px] md:h-[160px]" delay={0.6} glowColor="silver">
-                                    {(isHovered) => (
+                                <BentoCard
+                                    className="h-[140px] md:h-[160px]"
+                                    delay={0.6}
+                                    glowColor="silver"
+                                    autoActive={leftCardAutoActive[1]}
+                                    onEntry={() => scheduleLeftCardAutoplay(1)}
+                                >
+                                    {({ isHovered, isActive }) => (
                                         <>
-                                            <GrowthChartMotion isActive={isHovered} />
-                                            <motion.div 
+                                            <GrowthChartMotion isActive={isActive} />
+                                            <Motion.div 
                                                 className="absolute bottom-3 left-3 right-3 z-10"
                                                 animate={{ y: isHovered ? -2 : 0 }}
                                                 transition={{ duration: 0.3 }}
                                             >
                                                 <p className="text-[10px] text-slate-400 uppercase tracking-wider mb-0.5">Avg. Return</p>
                                                 <p className="text-sm font-bold text-white flex items-center gap-1.5">
-                                                    <motion.span animate={{ scale: isHovered ? 1.1 : 1 }} transition={{ duration: 0.3 }}>
+                                                    <Motion.span animate={{ scale: isHovered ? 1.1 : 1 }} transition={{ duration: 0.3 }}>
                                                         <TrendingUp className="w-3.5 h-3.5 text-slate-300" />
-                                                    </motion.span>
+                                                    </Motion.span>
                                                     5x ROAS
                                                 </p>
-                                            </motion.div>
+                                            </Motion.div>
                                         </>
                                     )}
                                 </BentoCard>
                                 
                                 {/* Card 3: Speed */}
-                                <BentoCard className="h-[140px] md:h-[160px]" delay={0.7} glowColor="cyan">
-                                    {(isHovered) => (
+                                <BentoCard
+                                    className="h-[140px] md:h-[160px]"
+                                    delay={0.7}
+                                    glowColor="cyan"
+                                    autoActive={leftCardAutoActive[2]}
+                                    onEntry={() => scheduleLeftCardAutoplay(2)}
+                                >
+                                    {({ isHovered, isActive }) => (
                                         <>
-                                            <SpeedGaugeMotion isActive={isHovered} />
-                                            <motion.div 
+                                            <SpeedGaugeMotion isActive={isActive} />
+                                            <Motion.div 
                                                 className="absolute bottom-3 left-3 right-3 z-10"
                                                 animate={{ y: isHovered ? -2 : 0 }}
                                                 transition={{ duration: 0.3 }}
                                             >
                                                 <p className="text-[10px] text-slate-400 uppercase tracking-wider mb-0.5">Testing</p>
                                                 <p className="text-sm font-bold text-white flex items-center gap-1.5">
-                                                    <motion.span animate={{ scale: isHovered ? 1.1 : 1 }} transition={{ duration: 0.3 }}>
+                                                    <Motion.span animate={{ scale: isHovered ? 1.1 : 1 }} transition={{ duration: 0.3 }}>
                                                         <Zap className="w-3.5 h-3.5 text-cyan-400" />
-                                                    </motion.span>
+                                                    </Motion.span>
                                                     10x Faster
                                                 </p>
-                                            </motion.div>
+                                            </Motion.div>
                                         </>
                                     )}
                                 </BentoCard>
                             </div>
                             
                             {/* Row 3: Infinity Symbol Card - Full Width */}
-                            <BentoCard className="h-[70px] md:h-[80px]" delay={0.8} glowColor="blue">
-                                <InfinityCardMotion />
+                            <BentoCard
+                                className="h-[70px] md:h-[80px]"
+                                delay={0.8}
+                                glowColor="blue"
+                                onEntry={handleInfinityEntry}
+                            >
+                                <InfinityCardMotion isReady={infinityReady} />
                                 <div className="absolute left-4 top-1/2 -translate-y-1/2 z-10">
                                     <p className="text-[10px] text-slate-500 uppercase tracking-wider">Continuous</p>
                                     <p className="text-xs font-medium text-slate-300">Optimization Loop</p>
@@ -993,7 +1073,7 @@ const NewHero = () => {
                                 </div>
                             </BentoCard>
                         </div>
-                    </motion.div>
+                    </Motion.div>
 
                     {/* ========================================================
                         RIGHT COLUMN - CONTENT
@@ -1001,38 +1081,38 @@ const NewHero = () => {
                     <div className="order-1 lg:order-2 text-center lg:text-left">
 
                         {/* Headline */}
-                        <motion.div
+                        <Motion.div
                             variants={containerVariants}
                             initial="hidden"
                             animate="visible"
                             className="mb-8"
                         >
                             <h1 className="font-heading leading-[1.05] tracking-tight">
-                                <motion.span
+                                <Motion.span
                                     variants={wordVariants}
                                     className="block text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-2"
                                 >
                                     Are Your Ads
-                                </motion.span>
-                                <motion.span
+                                </Motion.span>
+                                <Motion.span
                                     variants={wordVariants}
                                     className="block text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold"
                                 >
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400">
                                     Driving Growth
                                     </span>
-                                </motion.span>
-                                <motion.span
+                                </Motion.span>
+                                <Motion.span
                                     variants={wordVariants}
                                     className="block text-2xl sm:text-3xl lg:text-4xl xl:text-[2.75rem] font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-slate-300 via-slate-400 to-slate-600 mt-3"
                                 >
                                     — or Just Draining Budget?
-                                </motion.span>
+                                </Motion.span>
                             </h1>
-                        </motion.div>
+                        </Motion.div>
 
                         {/* Subheadline */}
-                        <motion.p
+                        <Motion.p
                             custom={0.8}
                             variants={fadeUpVariants}
                             initial="hidden"
@@ -1045,10 +1125,10 @@ const NewHero = () => {
                                 artificial intelligence
                             </span>{' '}
                             so every pound you invest works with clear purpose.
-                        </motion.p>
+                        </Motion.p>
 
                         {/* CTA Group */}
-                        <motion.div
+                        <Motion.div
                             custom={1.0}
                             variants={fadeUpVariants}
                             initial="hidden"
@@ -1066,7 +1146,7 @@ const NewHero = () => {
                             </button>
 
                             {/* Trust indicators */}
-                            <motion.div
+                            <Motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 1.4, duration: 0.6 }}
@@ -1074,7 +1154,7 @@ const NewHero = () => {
                             >
                                 <div className="flex items-center gap-2">
                                     <span className="relative flex h-2 w-2">
-                                        <motion.span
+                                        <Motion.span
                                             className="absolute inline-flex h-full w-full rounded-full bg-emerald-400"
                                             animate={{ scale: [1, 1.8, 1], opacity: [0.7, 0, 0.7] }}
                                             transition={{ duration: 1.5, repeat: Infinity }}
@@ -1085,8 +1165,8 @@ const NewHero = () => {
                                 </div>
                                 <span className="hidden sm:inline text-slate-600">•</span>
                                 <span className="font-medium tracking-wide">Come with numbers, leave with clarity</span>
-                            </motion.div>
-                        </motion.div>
+                            </Motion.div>
+                        </Motion.div>
 
                     </div>
                 </div>
