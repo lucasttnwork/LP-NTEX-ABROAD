@@ -3,7 +3,7 @@
 ## **HERO SECTION**
 
 ### Main Headline:
-> # Are Your Ads Driving Growth — or Just Draining Budget?
+> # Are Your Ads Driving Growth or Just Draining Budget?
 
 ### Subheadline:
 > Most businesses treat Meta Ads like an endless experiment. We turn them into a growth system — using scientific method and artificial intelligence so every pound you invest works with clear purpose.

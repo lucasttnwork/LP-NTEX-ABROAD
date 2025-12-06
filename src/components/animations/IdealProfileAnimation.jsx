@@ -232,3 +232,4 @@ const IdealProfileAnimation = ({ className = '' }) => {
 
 export default IdealProfileAnimation;
 
+

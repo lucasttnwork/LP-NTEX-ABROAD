@@ -17,3 +17,6 @@ export { default as ClarityMatrixAnimation } from './ClarityMatrixAnimation';
 export { default as IdealProfileAnimation } from './IdealProfileAnimation';
 export { default as FilterRejectAnimation } from './FilterRejectAnimation';
 
+// Hero Animations
+export { default as HeroNetworkAnimation } from './HeroNetworkAnimation';
+

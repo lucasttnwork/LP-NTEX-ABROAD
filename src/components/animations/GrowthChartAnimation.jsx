@@ -168,3 +168,4 @@ const GrowthChartAnimation = ({ className = '' }) => {
 export default GrowthChartAnimation;
 
 
+
