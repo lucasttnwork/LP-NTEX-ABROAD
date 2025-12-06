@@ -31,7 +31,7 @@ export default {
       },
       fontFamily: {
         sans: ['Outfit', 'Inter', 'sans-serif'],
-        heading: ['Contrax', 'Syne', 'sans-serif'],
+        heading: ['Poppins', 'Syne', 'sans-serif'],
         serif: ['Cormorant Garamond', 'serif'],
       },
       backgroundImage: {
