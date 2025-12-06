@@ -1,25 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import OptimizedImage from '../../ui/OptimizedImage';
-import { buildImageSources } from '../../../lib/image-sources';
-import heroVisual from '../../../assets/hero-visual.png';
-import heroVisualWebp from '../../../assets/hero-visual.webp';
-import heroVisualAvif from '../../../assets/hero-visual.avif';
-import explorationVisual from '../../../assets/exploration_phase_visual_1764091514544.png';
-import explorationVisualWebp from '../../../assets/exploration_phase_visual_1764091514544.webp';
-import explorationVisualAvif from '../../../assets/exploration_phase_visual_1764091514544.avif';
-import extractionVisual from '../../../assets/extraction_phase_visual_1764091726420.png';
-import extractionVisualWebp from '../../../assets/extraction_phase_visual_1764091726420.webp';
-import extractionVisualAvif from '../../../assets/extraction_phase_visual_1764091726420.avif';
-import escalationVisual from '../../../assets/escalation_phase_visual_1764091702926.png';
-import escalationVisualWebp from '../../../assets/escalation_phase_visual_1764091702926.webp';
-import escalationVisualAvif from '../../../assets/escalation_phase_visual_1764091702926.avif';
-import lapidationVisual from '../../../assets/lapidation_phase_visual.png';
-import lapidationVisualWebp from '../../../assets/lapidation_phase_visual.webp';
-import lapidationVisualAvif from '../../../assets/lapidation_phase_visual.avif';
-import heroAi from '../../../assets/hero-ai.png';
-import heroAiWebp from '../../../assets/hero-ai.webp';
-import heroAiAvif from '../../../assets/hero-ai.avif';
+import {
+    SystemFailureAnimation,
+    BlindSignalsAnimation,
+    CreativeLoopAnimation,
+    BudgetTiltAnimation,
+    IterationLagAnimation,
+    VanityMetricsAnimation,
+} from '../../animations';
 
 const realityPatternStyle = {
     backgroundImage: `
@@ -38,38 +26,6 @@ const realityFadeMask = {
     WebkitMaskRepeat: 'no-repeat',
     maskRepeat: 'no-repeat',
 };
-
-const heroVisualSources = buildImageSources({
-    avif: heroVisualAvif,
-    webp: heroVisualWebp,
-});
-
-const explorationVisualSources = buildImageSources({
-    avif: explorationVisualAvif,
-    webp: explorationVisualWebp,
-});
-
-const extractionVisualSources = buildImageSources({
-    avif: extractionVisualAvif,
-    webp: extractionVisualWebp,
-});
-
-const escalationVisualSources = buildImageSources({
-    avif: escalationVisualAvif,
-    webp: escalationVisualWebp,
-});
-
-const lapidationVisualSources = buildImageSources({
-    avif: lapidationVisualAvif,
-    webp: lapidationVisualWebp,
-});
-
-const heroAiSources = buildImageSources({
-    avif: heroAiAvif,
-    webp: heroAiWebp,
-});
-
-// Removed realitySectionStyles combination to apply separately
 
 const truthParagraphs = [
     {
@@ -164,25 +120,33 @@ const NewReality = () => {
                     </div>
 
                     <div className="grid gap-6 md:grid-cols-3">
-                        {/* Big feature */}
+                        {/* Big feature - System Failure */}
                         <motion.div 
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
+                            whileHover={{ scale: 1.01 }}
+                            transition={{ duration: 0.3 }}
                             className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 md:col-span-2 md:row-span-2"
                         >
                             <div className="relative h-64 sm:h-80 md:h-full min-h-[300px]">
-                                <OptimizedImage
-                                    src={heroVisual}
-                                    sources={heroVisualSources}
-                                    alt="System failure visualization"
-                                    className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
-                                />
+                                <SystemFailureAnimation className="absolute inset-0 w-full h-full" />
                                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                                 
                                 <div className="absolute bottom-0 left-0 p-6 sm:p-8 w-full">
                                     <div className="flex items-center gap-2 mb-3">
-                                        <span className="inline-flex items-center gap-1 rounded-full border border-red-500/30 bg-red-500/15 px-2 py-0.5 text-[11px] font-medium text-red-300 font-sans">CRITICAL</span>
+                                        <motion.span 
+                                            className="inline-flex items-center gap-1 rounded-full border border-red-500/30 bg-red-500/15 px-2 py-0.5 text-[11px] font-medium text-red-300 font-sans"
+                                            animate={{
+                                                borderColor: ['rgba(239,68,68,0.3)', 'rgba(239,68,68,0.6)', 'rgba(239,68,68,0.3)'],
+                                            }}
+                                            transition={{
+                                                duration: 2,
+                                                repeat: Infinity,
+                                            }}
+                                        >
+                                            CRITICAL
+                                        </motion.span>
                                         <span className="text-xs text-white/60 font-sans">System Failure</span>
                                     </div>
                                     <h3 className="text-2xl sm:text-3xl font-medium tracking-tight font-heading text-white mb-3">
@@ -201,6 +165,10 @@ const NewReality = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
+                            whileHover={{ 
+                                scale: 1.02,
+                                borderColor: 'rgba(255,255,255,0.2)',
+                            }}
                             className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 group"
                         >
                             <div className="p-5 sm:p-6 flex flex-col h-full">
@@ -214,12 +182,7 @@ const NewReality = () => {
                                     Campaigns launch before you hear from your customers, missing the cues your audience cares about.
                                 </p>
                                 <div className="mt-auto rounded-lg overflow-hidden border border-white/10 aspect-video relative">
-                                    <OptimizedImage
-                                        src={explorationVisual}
-                                        sources={explorationVisualSources}
-                                        alt="Market signals gap"
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                    />
+                                    <BlindSignalsAnimation className="w-full h-full" />
                                 </div>
                             </div>
                         </motion.div>
@@ -230,6 +193,10 @@ const NewReality = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
+                            whileHover={{ 
+                                scale: 1.02,
+                                borderColor: 'rgba(255,255,255,0.2)',
+                            }}
                             className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 group"
                         >
                              <div className="p-5 sm:p-6 flex flex-col h-full">
@@ -243,12 +210,7 @@ const NewReality = () => {
                                     Creative variations are refreshed once a month—long after poorly performing ads burn through budget.
                                 </p>
                                 <div className="mt-auto rounded-lg overflow-hidden border border-white/10 aspect-video relative">
-                                    <OptimizedImage
-                                        src={extractionVisual}
-                                        sources={extractionVisualSources}
-                                        alt="Creative feedback gap"
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                    />
+                                    <CreativeLoopAnimation className="w-full h-full" />
                                 </div>
                             </div>
                         </motion.div>
@@ -259,6 +221,10 @@ const NewReality = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.3 }}
+                            whileHover={{ 
+                                scale: 1.02,
+                                borderColor: 'rgba(255,255,255,0.2)',
+                            }}
                             className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 group"
                         >
                             <div className="p-5 sm:p-6 flex flex-col h-full">
@@ -269,12 +235,7 @@ const NewReality = () => {
                                     Spend is dictated by what felt right last quarter instead of a model that forecasts ROI.
                                 </p>
                                 <div className="mt-auto rounded-lg overflow-hidden border border-white/10 aspect-video relative">
-                                     <OptimizedImage
-                                        src={escalationVisual}
-                                        sources={escalationVisualSources}
-                                        alt="Budget misallocation"
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                     />
+                                    <BudgetTiltAnimation className="w-full h-full" />
                                 </div>
                             </div>
                         </motion.div>
@@ -285,6 +246,10 @@ const NewReality = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.4 }}
+                            whileHover={{ 
+                                scale: 1.02,
+                                borderColor: 'rgba(255,255,255,0.2)',
+                            }}
                             className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 group"
                         >
                              <div className="p-5 sm:p-6 flex flex-col h-full">
@@ -295,12 +260,7 @@ const NewReality = () => {
                                     There is no cadence for analysis, so the campaign only changes when someone notices a drop.
                                 </p>
                                  <div className="mt-auto rounded-lg overflow-hidden border border-white/10 aspect-video relative">
-                                     <OptimizedImage
-                                        src={lapidationVisual}
-                                        sources={lapidationVisualSources}
-                                        alt="Optimization lag"
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                     />
+                                    <IterationLagAnimation className="w-full h-full" />
                                 </div>
                             </div>
                         </motion.div>
@@ -311,6 +271,10 @@ const NewReality = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.5 }}
+                            whileHover={{ 
+                                scale: 1.02,
+                                borderColor: 'rgba(255,255,255,0.2)',
+                            }}
                             className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 group"
                         >
                              <div className="p-5 sm:p-6 flex flex-col h-full">
@@ -321,12 +285,7 @@ const NewReality = () => {
                                     Reports celebrate impressions and clicks while the revenue column stays empty.
                                 </p>
                                  <div className="mt-auto rounded-lg overflow-hidden border border-white/10 aspect-video relative">
-                                     <OptimizedImage
-                                        src={heroAi}
-                                        sources={heroAiSources}
-                                        alt="Vanity metrics"
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                     />
+                                    <VanityMetricsAnimation className="w-full h-full" />
                                 </div>
                             </div>
                         </motion.div>
