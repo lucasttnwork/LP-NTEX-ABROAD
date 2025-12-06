@@ -57,23 +57,49 @@ const SystemFailureAnimation = ({ className = '' }) => {
             key={cycleKey}
             className={`relative w-full h-full min-h-[300px] overflow-hidden ${className}`}
                 style={{
-                background: 'radial-gradient(ellipse at center, rgba(10,10,20,0.95) 0%, rgba(0,0,0,1) 100%)',
+                background: 'linear-gradient(135deg, rgba(15,23,42,1) 0%, rgba(30,41,59,0.95) 35%, rgba(51,65,85,0.85) 65%, rgba(30,41,59,0.95) 100%)',
             }}
         >
-            {/* Hexagonal Grid Background */}
-            <svg className="absolute inset-0 w-full h-full opacity-20" preserveAspectRatio="xMidYMid slice">
+            {/* Subtle noise texture */}
+            <div 
+                className="absolute inset-0 opacity-[0.03] pointer-events-none"
+                style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                }}
+            />
+
+            {/* Hexagonal Grid Background - more visible */}
+            <svg className="absolute inset-0 w-full h-full opacity-40" preserveAspectRatio="xMidYMid slice">
                 <defs>
                     <pattern id="hexGrid" width="56" height="100" patternUnits="userSpaceOnUse">
                         <path 
                             d="M28 0 L56 16 L56 48 L28 64 L0 48 L0 16 Z M28 64 L56 80 L56 100 M28 64 L0 80 L0 100"
                             fill="none" 
-                            stroke="rgba(59,130,246,0.3)" 
-                            strokeWidth="0.5"
+                            stroke="rgba(100,150,255,0.25)" 
+                            strokeWidth="0.8"
                         />
                     </pattern>
+                    <linearGradient id="hexFade" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="rgba(59,130,246,0.15)" />
+                        <stop offset="50%" stopColor="rgba(139,92,246,0.1)" />
+                        <stop offset="100%" stopColor="rgba(59,130,246,0.15)" />
+                    </linearGradient>
                 </defs>
                 <rect width="100%" height="100%" fill="url(#hexGrid)" />
+                <rect width="100%" height="100%" fill="url(#hexFade)" />
             </svg>
+
+            {/* Ambient glow spots for depth */}
+            <div 
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                    background: `
+                        radial-gradient(ellipse 60% 40% at 20% 30%, rgba(59,130,246,0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse 50% 50% at 80% 60%, rgba(139,92,246,0.06) 0%, transparent 50%),
+                        radial-gradient(ellipse 70% 30% at 50% 80%, rgba(59,130,246,0.05) 0%, transparent 50%)
+                    `,
+                }}
+            />
 
             {/* Animated gradient pulse */}
             <motion.div
@@ -81,7 +107,7 @@ const SystemFailureAnimation = ({ className = '' }) => {
                 animate={{
                     background: currentPhase >= 1 ? [
                         'radial-gradient(circle at 50% 50%, rgba(239,68,68,0) 0%, transparent 50%)',
-                        'radial-gradient(circle at 50% 50%, rgba(239,68,68,0.15) 0%, transparent 60%)',
+                        'radial-gradient(circle at 50% 50%, rgba(239,68,68,0.12) 0%, transparent 60%)',
                         'radial-gradient(circle at 50% 50%, rgba(239,68,68,0) 0%, transparent 50%)',
                     ] : 'radial-gradient(circle at 50% 50%, transparent 0%, transparent 100%)',
                 }}
@@ -379,19 +405,19 @@ const SystemFailureAnimation = ({ className = '' }) => {
                 )}
             </AnimatePresence>
 
-            {/* Scan lines effect */}
+            {/* Scan lines effect - mais sutil */}
             <motion.div
                 className="absolute inset-0 pointer-events-none"
                 style={{
                     background: `repeating-linear-gradient(
                         0deg,
                         transparent,
-                        transparent 2px,
-                        rgba(0,0,0,0.1) 2px,
-                        rgba(0,0,0,0.1) 4px
+                        transparent 3px,
+                        rgba(255,255,255,0.01) 3px,
+                        rgba(255,255,255,0.01) 4px
                     )`,
                 }}
-                animate={{ opacity: [0.3, 0.5, 0.3] }}
+                animate={{ opacity: [0.4, 0.6, 0.4] }}
                 transition={{ duration: 3, repeat: Infinity }}
             />
 
@@ -474,11 +500,11 @@ const SystemFailureAnimation = ({ className = '' }) => {
                 </motion.div>
             </div>
 
-            {/* Vignette overlay */}
+            {/* Subtle edge definition - muito mais suave */}
             <div 
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                    background: 'radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%)',
+                    background: 'radial-gradient(ellipse at center, transparent 40%, rgba(15,23,42,0.3) 100%)',
                 }}
             />
         </div>

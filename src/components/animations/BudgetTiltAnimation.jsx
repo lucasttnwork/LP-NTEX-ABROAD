@@ -38,7 +38,7 @@ const BudgetTiltAnimation = ({ className = '' }) => {
             <motion.div 
                 className="absolute -bottom-4 -right-4 w-[70%] h-[70%]"
                 style={{
-                    background: 'radial-gradient(ellipse at bottom right, rgba(220,38,38,0.25) 0%, rgba(220,38,38,0.08) 40%, transparent 70%)'
+                    background: 'radial-gradient(ellipse at bottom right, rgba(100,116,139,0.3) 0%, rgba(71,85,105,0.12) 40%, transparent 70%)'
                 }}
                 animate={{
                     opacity: [0.6, 1, 0.6],
@@ -66,7 +66,7 @@ const BudgetTiltAnimation = ({ className = '' }) => {
                 <div className="relative">
                     {/* Outer ring */}
                     <motion.div
-                        className="absolute -inset-4 rounded-full border border-red-500/20"
+                        className="absolute -inset-4 rounded-full border border-slate-400/25"
                         animate={{ 
                             rotate: 360,
                             scale: [1, 1.1, 1],
@@ -77,14 +77,14 @@ const BudgetTiltAnimation = ({ className = '' }) => {
                         }}
                     />
                     <motion.div
-                        className="absolute -inset-6 rounded-full border border-red-500/10"
+                        className="absolute -inset-6 rounded-full border border-slate-500/15"
                         animate={{ rotate: -360 }}
                         transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
                     />
                     {/* Center vortex */}
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-red-900/80 to-black flex items-center justify-center">
+                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-slate-600/80 to-slate-900 flex items-center justify-center">
                         <motion.div 
-                            className="w-3 h-3 rounded-full bg-red-800/60"
+                            className="w-3 h-3 rounded-full bg-slate-400/60"
                             animate={{
                                 scale: [0.8, 1.2, 0.8],
                             }}
@@ -135,7 +135,7 @@ const BudgetTiltAnimation = ({ className = '' }) => {
                     
                     {/* Glowing edge on tilt */}
                     <motion.div 
-                        className="absolute bottom-0 left-0 right-[50%] h-[2px] bg-gradient-to-r from-amber-500/60 via-amber-400/40 to-transparent rounded-full"
+                        className="absolute bottom-0 left-0 right-[50%] h-[2px] bg-gradient-to-r from-slate-300/60 via-zinc-400/40 to-transparent rounded-full"
                         animate={{
                             opacity: [0.5, 0.9, 0.5],
                         }}
@@ -150,7 +150,7 @@ const BudgetTiltAnimation = ({ className = '' }) => {
                 <div className="absolute left-4 top-0 bottom-0 flex items-center gap-3">
                     {/* Label */}
                     <div className="flex flex-col items-start gap-1">
-                        <span className="text-[10px] font-mono text-amber-400/90 tracking-wider font-medium">LAST Q</span>
+                        <span className="text-[10px] font-mono text-zinc-300/90 tracking-wider font-medium">LAST Q</span>
                         <motion.div 
                             className="flex gap-0.5"
                             animate={{
@@ -162,7 +162,7 @@ const BudgetTiltAnimation = ({ className = '' }) => {
                             }}
                         >
                             {[...Array(3)].map((_, i) => (
-                                <div key={i} className="w-1 h-2 bg-amber-400/50 rounded-sm" />
+                                <div key={i} className="w-1 h-2 bg-zinc-400/50 rounded-sm" />
                             ))}
                         </motion.div>
                     </div>
@@ -187,11 +187,11 @@ const BudgetTiltAnimation = ({ className = '' }) => {
                                 {[...Array(Math.floor(height / 5))].map((_, j) => (
                                     <div 
                                         key={j}
-                                        className="w-5 h-[5px] rounded-[2px] bg-gradient-to-b from-amber-300 via-amber-500 to-amber-700 border-t border-amber-200/40"
+                                        className="w-5 h-[5px] rounded-[2px] bg-gradient-to-b from-zinc-200 via-zinc-400 to-zinc-600 border-t border-white/30"
                                         style={{ 
                                             position: 'absolute',
                                             bottom: j * 4,
-                                            boxShadow: '0 1px 2px rgba(0,0,0,0.3)',
+                                            boxShadow: '0 1px 2px rgba(0,0,0,0.3), inset 0 0 1px rgba(255,255,255,0.2)',
                                         }}
                                     />
                                 ))}
@@ -225,9 +225,9 @@ const BudgetTiltAnimation = ({ className = '' }) => {
                         repeat: Infinity,
                     }}
                 >
-                    <div className="w-4 h-4 rounded-full bg-gray-800 border-2 border-white/20" />
+                    <div className="w-4 h-4 rounded-full bg-gray-800 border-2 border-zinc-400/30" />
                     <motion.div 
-                        className="absolute inset-1 rounded-full bg-amber-500/60"
+                        className="absolute inset-1 rounded-full bg-slate-300/60"
                         animate={{
                             opacity: [0.4, 0.8, 0.4],
                         }}
@@ -268,14 +268,14 @@ const BudgetTiltAnimation = ({ className = '' }) => {
                         style={{
                             width: coin.size,
                             height: coin.size,
-                            background: 'linear-gradient(145deg, #fcd34d 0%, #f59e0b 40%, #b45309 100%)',
-                            boxShadow: '0 2px 8px rgba(251, 191, 36, 0.4), inset 0 1px 2px rgba(255,255,255,0.3)',
+                            background: 'linear-gradient(145deg, #e4e4e7 0%, #a1a1aa 40%, #71717a 100%)',
+                            boxShadow: '0 2px 8px rgba(161, 161, 170, 0.5), inset 0 1px 2px rgba(255,255,255,0.4)',
                         }}
                     >
                         {/* Coin edge detail */}
-                        <div className="absolute inset-[2px] rounded-full border border-amber-300/30" />
+                        <div className="absolute inset-[2px] rounded-full border border-white/30" />
                         {/* $ symbol */}
-                        <span className="absolute inset-0 flex items-center justify-center text-[8px] font-bold text-amber-900/60">$</span>
+                        <span className="absolute inset-0 flex items-center justify-center text-[8px] font-bold text-zinc-600/70">$</span>
                     </div>
                 </motion.div>
             ))}
@@ -288,7 +288,7 @@ const BudgetTiltAnimation = ({ className = '' }) => {
                     style={{
                         left: `${particle.x}%`,
                         top: `${particle.y}%`,
-                        background: 'radial-gradient(circle, rgba(239,68,68,0.8) 0%, rgba(185,28,28,0.4) 100%)',
+                        background: 'radial-gradient(circle, rgba(148,163,184,0.8) 0%, rgba(100,116,139,0.4) 100%)',
                     }}
                     animate={{
                         x: [0, 30],
@@ -326,7 +326,7 @@ const BudgetTiltAnimation = ({ className = '' }) => {
                         repeat: Infinity,
                     }}
                 >
-                    <span className="text-xs font-mono font-bold text-red-400/80 drop-shadow-lg">{text}</span>
+                    <span className="text-xs font-mono font-bold text-slate-400/90 drop-shadow-lg">{text}</span>
                 </motion.div>
             ))}
 
@@ -343,7 +343,7 @@ const BudgetTiltAnimation = ({ className = '' }) => {
                     }}
                 >
                     <motion.div
-                        className="absolute -inset-2 rounded-full bg-amber-500/20"
+                        className="absolute -inset-2 rounded-full bg-zinc-400/20"
                         animate={{
                             scale: [1, 2],
                             opacity: [0.5, 0],
@@ -353,10 +353,10 @@ const BudgetTiltAnimation = ({ className = '' }) => {
                             repeat: Infinity,
                         }}
                     />
-                    <div className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-zinc-400" />
                 </motion.div>
                 <motion.span 
-                    className="text-[10px] font-mono text-amber-400 tracking-wider font-medium"
+                    className="text-[10px] font-mono text-zinc-300 tracking-wider font-medium"
                     animate={{
                         opacity: [0.7, 1, 0.7],
                     }}
@@ -385,12 +385,12 @@ const BudgetTiltAnimation = ({ className = '' }) => {
                         {[1, 0.7, 0.4, 0.2].map((opacity, i) => (
                             <div 
                                 key={i}
-                                className="w-[3px] h-3 bg-amber-400 rounded-sm"
+                                className="w-[3px] h-3 bg-zinc-400 rounded-sm"
                                 style={{ opacity }}
                             />
                         ))}
                     </motion.div>
-                    <span className="text-[8px] font-mono text-amber-400/70 tracking-wide">ALLOCATION</span>
+                    <span className="text-[8px] font-mono text-zinc-400/70 tracking-wide">ALLOCATION</span>
                 </div>
             </div>
 
@@ -406,11 +406,11 @@ const BudgetTiltAnimation = ({ className = '' }) => {
                         ease: 'linear',
                     }}
                 >
-                    <svg className="w-3 h-3 text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <svg className="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                         <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/>
                     </svg>
                 </motion.div>
-                <span className="text-[9px] font-mono text-red-400/80 tracking-wide font-medium">DRAINING</span>
+                <span className="text-[9px] font-mono text-slate-400/80 tracking-wide font-medium">DRAINING</span>
             </div>
 
             {/* Flow direction arrows */}
@@ -434,7 +434,7 @@ const BudgetTiltAnimation = ({ className = '' }) => {
                             repeat: Infinity,
                         }}
                     >
-                        <svg className="w-3 h-3 text-red-500/50" viewBox="0 0 24 24" fill="currentColor">
+                        <svg className="w-3 h-3 text-slate-500/50" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 4l-8 8h5v8h6v-8h5z" transform="rotate(135 12 12)"/>
                         </svg>
                     </motion.div>
@@ -459,7 +459,7 @@ const BudgetTiltAnimation = ({ className = '' }) => {
                     y1="45%"
                     x2="75%"
                     y2="60%"
-                    stroke="rgba(239,68,68,0.3)"
+                    stroke="rgba(148,163,184,0.35)"
                     strokeWidth="1.5"
                     strokeDasharray="8 4"
                     animate={{

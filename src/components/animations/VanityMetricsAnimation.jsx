@@ -14,19 +14,18 @@ const VanityMetricsAnimation = ({ className = '' }) => {
 
     // Vanity metrics data - these will animate UP with celebration
     const vanityBars = [
-        { label: 'IMPRESSIONS', value: '2.4M', growth: '+847%', color: 'from-blue-500 to-cyan-400', delay: 0 },
-        { label: 'REACH', value: '890K', growth: '+523%', color: 'from-purple-500 to-pink-400', delay: 0.15 },
-        { label: 'CLICKS', value: '156K', growth: '+312%', color: 'from-amber-500 to-orange-400', delay: 0.3 },
-        { label: 'ENGAGEMENT', value: '89K', growth: '+267%', color: 'from-emerald-500 to-teal-400', delay: 0.45 },
+        { label: 'IMPRESSIONS', value: '2.4M', growth: '+847%', color: 'from-slate-400 to-slate-300', delay: 0 },
+        { label: 'REACH', value: '890K', growth: '+523%', color: 'from-zinc-400 to-zinc-300', delay: 0.15 },
+        { label: 'CLICKS', value: '156K', growth: '+312%', color: 'from-gray-400 to-slate-300', delay: 0.3 },
     ];
 
-    // Floating celebration particles
+    // Floating celebration particles - silver/metallic tones
     const confettiParticles = Array.from({ length: 12 }, (_, i) => ({
         id: i,
         x: Math.random() * 100,
         delay: Math.random() * 2,
         size: Math.random() * 4 + 2,
-        color: ['#60a5fa', '#a78bfa', '#f472b6', '#34d399', '#fbbf24'][Math.floor(Math.random() * 5)],
+        color: ['#94a3b8', '#a1a1aa', '#cbd5e1', '#d4d4d8', '#e2e8f0'][Math.floor(Math.random() * 5)],
     }));
 
     return (
@@ -44,7 +43,7 @@ const VanityMetricsAnimation = ({ className = '' }) => {
                         <path 
                             d="M 40 0 L 0 0 0 40" 
                             fill="none" 
-                            stroke="rgba(99,102,241,0.15)" 
+                            stroke="rgba(148,163,184,0.12)" 
                             strokeWidth="0.5"
                         />
                     </pattern>
@@ -80,39 +79,12 @@ const VanityMetricsAnimation = ({ className = '' }) => {
                 />
             ))}
 
-            {/* SUCCESS badges floating */}
-            <motion.div
-                className="absolute top-4 left-4 px-2 py-1 rounded-full bg-gradient-to-r from-emerald-500/20 to-green-500/20 border border-emerald-500/30"
-                initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                animate={{ 
-                    opacity: [0, 1, 1, 0.8],
-                    scale: [0.8, 1.1, 1, 1],
-                    y: [10, 0, -2, 0],
-                }}
-                transition={{ delay: 1.5, duration: 1.5 }}
-            >
-                <span className="text-[8px] font-bold text-emerald-400 tracking-wider">🎉 TRENDING</span>
-            </motion.div>
-
-            <motion.div
-                className="absolute top-4 right-[35%] px-2 py-1 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30"
-                initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                animate={{ 
-                    opacity: [0, 1, 1, 0.8],
-                    scale: [0.8, 1.1, 1, 1],
-                    y: [10, 0, -2, 0],
-                }}
-                transition={{ delay: 2, duration: 1.5 }}
-            >
-                <span className="text-[8px] font-bold text-purple-400 tracking-wider">✨ VIRAL</span>
-            </motion.div>
-
             {/* Left side - Vanity Metrics with celebration */}
-            <div className="absolute left-3 top-14 bottom-3 w-[55%] flex flex-col gap-2">
+            <div className="absolute left-3 top-4 w-[55%] flex flex-col gap-1.5">
                 {vanityBars.map((metric, idx) => (
                     <motion.div
                         key={metric.label}
-                        className="relative flex-1 flex flex-col justify-center"
+                        className="relative flex flex-col justify-center"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: metric.delay + 0.3 }}
@@ -121,7 +93,7 @@ const VanityMetricsAnimation = ({ className = '' }) => {
                         <div className="flex items-center justify-between mb-1">
                             <span className="text-[8px] font-mono text-white/50 tracking-wider">{metric.label}</span>
                         <motion.span
-                                className="text-[9px] font-bold text-emerald-400 font-mono"
+                                className="text-[9px] font-bold text-slate-300 font-mono"
                                 animate={{
                                     opacity: [0.7, 1, 0.7],
                                     scale: [1, 1.05, 1],
@@ -184,7 +156,7 @@ const VanityMetricsAnimation = ({ className = '' }) => {
                                 repeatDelay: 2,
                             }}
                         >
-                            <svg className="w-3 h-3 text-yellow-400" viewBox="0 0 24 24" fill="currentColor">
+                            <svg className="w-3 h-3 text-slate-300" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 2L13.5 8.5L20 10L13.5 11.5L12 18L10.5 11.5L4 10L10.5 8.5L12 2Z"/>
                         </svg>
                         </motion.div>
@@ -194,17 +166,17 @@ const VanityMetricsAnimation = ({ className = '' }) => {
 
             {/* Vertical divider - the "reality check" line */}
             <motion.div
-                className="absolute top-14 bottom-3 left-[60%] w-[1px]"
+                className="absolute top-4 bottom-12 left-[60%] w-[1px]"
                 initial={{ scaleY: 0 }}
                 animate={{ scaleY: 1 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
                 style={{
-                    background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.1) 20%, rgba(255,255,255,0.1) 80%, transparent)',
+                    background: 'linear-gradient(to bottom, transparent, rgba(148,163,184,0.15) 20%, rgba(148,163,184,0.15) 80%, transparent)',
                 }}
             />
 
             {/* Right side - REVENUE: The Empty Reality */}
-            <div className="absolute right-3 top-14 bottom-3 w-[35%] flex flex-col items-center justify-center">
+            <div className="absolute right-3 top-4 bottom-12 w-[35%] flex flex-col items-center justify-center">
                 {/* Revenue label */}
                 <motion.div
                     className="text-center mb-4"
@@ -227,9 +199,9 @@ const VanityMetricsAnimation = ({ className = '' }) => {
                         className="absolute inset-0 -m-6"
                         animate={{
                             background: [
-                                'radial-gradient(circle, rgba(239,68,68,0) 0%, transparent 70%)',
-                                'radial-gradient(circle, rgba(239,68,68,0.1) 0%, transparent 70%)',
-                                'radial-gradient(circle, rgba(239,68,68,0) 0%, transparent 70%)',
+                                'radial-gradient(circle, rgba(148,163,184,0) 0%, transparent 70%)',
+                                'radial-gradient(circle, rgba(148,163,184,0.08) 0%, transparent 70%)',
+                                'radial-gradient(circle, rgba(148,163,184,0) 0%, transparent 70%)',
                             ],
                         }}
                         transition={{ duration: 2, repeat: Infinity }}
@@ -237,12 +209,12 @@ const VanityMetricsAnimation = ({ className = '' }) => {
                     
                     {/* The zero amount */}
                     <motion.span
-                        className="text-4xl font-bold font-mono text-gray-600/80"
+                        className="text-4xl font-bold font-mono text-zinc-500/80"
                         animate={{
                             opacity: [0.6, 0.8, 0.6],
                             textShadow: [
                                 '0 0 20px rgba(0,0,0,0.5)',
-                                '0 0 30px rgba(239,68,68,0.2)',
+                                '0 0 30px rgba(148,163,184,0.15)',
                                 '0 0 20px rgba(0,0,0,0.5)',
                             ],
                         }}
@@ -282,7 +254,7 @@ const VanityMetricsAnimation = ({ className = '' }) => {
                         <motion.path
                             d="M 0 25 Q 15 25, 20 24 Q 30 22, 40 23 Q 50 24, 60 24.5 Q 80 25, 100 25"
                             fill="url(#deadGradient)"
-                            stroke="rgba(239,68,68,0.5)"
+                            stroke="rgba(161,161,170,0.5)"
                             strokeWidth="1.5"
                             initial={{ pathLength: 0, opacity: 0 }}
                             animate={{ pathLength: 1, opacity: 1 }}
@@ -299,14 +271,14 @@ const VanityMetricsAnimation = ({ className = '' }) => {
                     transition={{ delay: 4 }}
                 >
                     <motion.div
-                        className="w-1.5 h-1.5 bg-red-500 rounded-full"
+                        className="w-1.5 h-1.5 bg-zinc-400 rounded-full"
                         animate={{
                             opacity: [1, 0.4, 1],
                             scale: [1, 0.8, 1],
                         }}
                         transition={{ duration: 1, repeat: Infinity }}
                     />
-                    <span className="text-[8px] font-mono text-red-400/70">NO GROWTH</span>
+                    <span className="text-[8px] font-mono text-zinc-400/70">NO GROWTH</span>
                 </motion.div>
 
                 {/* Down arrow */}
@@ -341,23 +313,23 @@ const VanityMetricsAnimation = ({ className = '' }) => {
                             }}
                             transition={{ duration: 2, repeat: Infinity }}
                         >
-                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                            <span className="text-[8px] font-mono text-emerald-400">4 METRICS UP</span>
+                            <div className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+                            <span className="text-[8px] font-mono text-slate-300">3 METRICS UP</span>
                         </motion.div>
                     </div>
                     
                     {/* Right: Reality indicator */}
                     <motion.div
-                        className="flex items-center gap-1 px-2 py-0.5 rounded bg-red-500/10 border border-red-500/20"
+                        className="flex items-center gap-1 px-2 py-0.5 rounded bg-zinc-500/10 border border-zinc-500/20"
                         animate={{
-                            borderColor: ['rgba(239,68,68,0.2)', 'rgba(239,68,68,0.5)', 'rgba(239,68,68,0.2)'],
+                            borderColor: ['rgba(161,161,170,0.2)', 'rgba(161,161,170,0.4)', 'rgba(161,161,170,0.2)'],
                         }}
                         transition={{ duration: 2, repeat: Infinity }}
                     >
-                        <svg className="w-2.5 h-2.5 text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <svg className="w-2.5 h-2.5 text-zinc-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="M12 9v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
-                        <span className="text-[8px] font-mono text-red-400 font-medium">ROI: 0%</span>
+                        <span className="text-[8px] font-mono text-zinc-400 font-medium">ROI: 0%</span>
                     </motion.div>
                 </div>
             </motion.div>
@@ -365,21 +337,21 @@ const VanityMetricsAnimation = ({ className = '' }) => {
             {/* Diagonal "disconnect" visual between the two sides */}
             <AnimatePresence>
                 <motion.svg
-                    className="absolute top-14 bottom-10 left-[58%] w-8 pointer-events-none"
-                    viewBox="0 0 30 200"
+                    className="absolute top-4 bottom-14 left-[58%] w-8 pointer-events-none"
+                    viewBox="0 0 30 120"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 3.5 }}
                 >
                     {/* Broken connection lines */}
-                    {[30, 70, 110, 150].map((y, i) => (
+                    {[25, 55, 85].map((y, i) => (
                         <motion.g key={i}>
                             <motion.line
                                 x1="5"
                                 y1={y}
                                 x2="12"
                                 y2={y + 5}
-                                stroke="rgba(239,68,68,0.3)"
+                                stroke="rgba(148,163,184,0.3)"
                                 strokeWidth="1"
                                 strokeDasharray="3 2"
                                 animate={{
@@ -396,7 +368,7 @@ const VanityMetricsAnimation = ({ className = '' }) => {
                                 y1={y + 8}
                                 x2="25"
                                 y2={y + 10}
-                                stroke="rgba(239,68,68,0.2)"
+                                stroke="rgba(148,163,184,0.2)"
                                 strokeWidth="1"
                                 strokeDasharray="3 2"
                                 animate={{
@@ -412,7 +384,7 @@ const VanityMetricsAnimation = ({ className = '' }) => {
                             <motion.text
                                 x="12"
                                 y={y + 8}
-                                fill="rgba(239,68,68,0.4)"
+                                fill="rgba(148,163,184,0.4)"
                                 fontSize="8"
                                 fontFamily="monospace"
                 animate={{
