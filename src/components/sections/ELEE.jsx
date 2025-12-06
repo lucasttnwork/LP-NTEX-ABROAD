@@ -88,7 +88,7 @@ const ELEE = () => {
                                     Our Framework
                                 </span>
                                 <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                                    <span className="text-gradient-platinum">Powered by the ELEE Method</span>
+                                    <span className="text-gradient-platinum">Powered by the <span className="font-serif italic">ELEE</span> Method</span>
                                 </h2>
                                 <p className="text-xl text-white/60">
                                     A continuous 4-phase cycle engineered for consistent growth

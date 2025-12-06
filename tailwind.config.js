@@ -30,9 +30,9 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Outfit', 'sans-serif'],
-        heading: ['Space Grotesk', 'sans-serif'],
-        serif: ['Playfair Display', 'serif'],
+        sans: ['Outfit', 'Inter', 'sans-serif'],
+        heading: ['Contrax', 'Syne', 'sans-serif'],
+        serif: ['Cormorant Garamond', 'serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

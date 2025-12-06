@@ -96,7 +96,7 @@ const Problem = () => {
                         </div>
 
                         <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                            We Don't Hope. <br />
+                            We Don't <span className="font-serif italic text-white/70">Hope.</span> <br />
                             <span className="text-gradient-platinum">We Engineer.</span>
                         </h2>
 

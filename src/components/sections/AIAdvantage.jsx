@@ -39,8 +39,8 @@ const AIAdvantage = () => {
 
             {/* Heading */}
             <h2 className="mt-6 text-center text-4xl md:text-6xl font-semibold tracking-tight text-white">
-                High-Performance Management.
-                <span className="block text-white/50">Accelerated by AI.</span>
+                High-Performance <span className="font-serif italic">Management.</span>
+                <span className="block text-white/50">Accelerated by <span className="font-serif italic text-white/50">AI.</span></span>
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-center text-base md:text-lg text-white/70 font-normal">
                 We don't just run ads; we build a data-driven ecosystem for your business.

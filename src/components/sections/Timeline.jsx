@@ -81,7 +81,7 @@ const Timeline = () => {
                             The Process in Action
                         </span>
                         <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                            <span className="text-gradient-silver-fade">From Chaos to Predictability</span>
+                            <span className="text-gradient-silver-fade">From <span className="font-serif italic">Chaos</span> to Predictability</span>
                         </h2>
                         <p className="text-xl text-white/60">
                             Here is what happens when a business stops guessing and starts engineering growth with NTEX.

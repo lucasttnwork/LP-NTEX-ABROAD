@@ -15,7 +15,7 @@ const ICP = () => {
                         <span className="text-accent font-mono text-sm tracking-wider uppercase mb-4 block">Is This For You?</span>
                         <h2 className="text-4xl md:text-5xl font-bold mb-6">
                             <span className="text-gradient-platinum">Built for Businesses <br />
-                                Ready to Scale</span>
+                                <span className="font-serif italic">Ready to Scale</span></span>
                         </h2>
                         <p className="text-xl text-white/60">
                             We work exclusively with Growth-Focused Businesses who meet specific criteria.

@@ -57,8 +57,8 @@ const NewHero = () => {
                         </div>
 
                         <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tighter leading-[1.1] mb-6 text-white">
-                            Are Your Ads Driving Growth — <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 via-gray-400 to-gray-600">
+                            Are Your Ads Driving Growth <br />
+                            <span className="font-serif italic font-light text-transparent bg-clip-text bg-gradient-to-r from-gray-200 via-gray-400 to-gray-600">
                                 or Just Draining Budget?
                             </span>
                         </h1>

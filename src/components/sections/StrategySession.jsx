@@ -19,8 +19,8 @@ const StrategySession = () => {
                     >
                         <span className="text-accent font-mono text-sm tracking-wider uppercase mb-4 block">Next Steps</span>
                         <h2 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
-                            <span className="text-gradient-silver-fade">Stop Experimenting. <br />
-                                Get a Strategy.</span>
+                            <span className="text-gradient-silver-fade">Stop <span className="font-serif italic">Experimenting.</span> <br />
+                                Get a <span className="font-serif italic">Strategy.</span></span>
                         </h2>
                         <p className="text-xl text-white/60 mb-12 max-w-2xl mx-auto">
                             We invite you to a <strong className="text-white">Free Strategy Session</strong>. This is not a sales pitch. It is a mathematical analysis of your business to see if our system fits your goals.
