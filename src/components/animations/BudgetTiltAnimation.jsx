@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const BudgetTiltAnimation = ({ className = '' }) => {
+const BudgetTiltAnimation = ({ className = '', isPlaying = false, ...rest }) => {
     // Moedas deslizando na plataforma
     const slidingCoins = Array.from({ length: 6 }, (_, i) => ({
         id: i,
@@ -17,8 +17,112 @@ const BudgetTiltAnimation = ({ className = '' }) => {
         y: 50 + Math.random() * 30,
     }));
 
+    if (!isPlaying) {
+        return (
+            <div
+                className={`relative w-full h-full min-h-[160px] overflow-hidden ${className}`}
+                {...rest}
+            >
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-black to-gray-950" />
+                <div
+                    className="absolute inset-0 opacity-[0.04]"
+                    style={{
+                        backgroundImage: `
+                        linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)
+                    `,
+                        backgroundSize: '24px 24px',
+                    }}
+                />
+                <div
+                    className="absolute -bottom-4 -right-4 w-[70%] h-[70%]"
+                    style={{
+                        background: 'radial-gradient(ellipse at bottom right, rgba(100,116,139,0.3) 0%, rgba(71,85,105,0.12) 40%, transparent 70%)',
+                    }}
+                />
+                <div className="absolute bottom-6 right-6">
+                    <div className="relative">
+                        <div className="absolute -inset-5 rounded-full border border-slate-400/25" />
+                        <div className="absolute -inset-7 rounded-full border border-slate-500/15" />
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-slate-600/80 to-slate-900 flex items-center justify-center">
+                            <div className="w-3 h-3 rounded-full bg-slate-400/60" />
+                        </div>
+                    </div>
+                </div>
+                <div
+                    className="absolute left-[10%] right-[15%] top-[35%] h-[35%] rounded-lg border border-white/10 overflow-hidden"
+                    style={{ background: 'linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02))' }}
+                >
+                    <div className="absolute inset-0 opacity-30">
+                        {[...Array(5)].map((_, i) => (
+                            <div
+                                key={i}
+                                className="absolute h-[1px] left-0 right-0 bg-gradient-to-r from-white/20 via-white/5 to-transparent"
+                                style={{ top: `${20 + i * 15}%` }}
+                            />
+                        ))}
+                    </div>
+                    <div className="absolute -bottom-1 left-0 right-0 h-2 bg-gradient-to-b from-gray-800/50 to-gray-900/80 rounded-b-lg border-t border-white/5" />
+                    <div className="absolute left-4 top-0 bottom-0 flex items-center gap-3">
+                        <div className="flex flex-col items-start gap-1">
+                            <span className="text-[10px] font-mono text-zinc-300/90 tracking-wider font-medium">LAST Q</span>
+                            <div className="flex gap-0.5">
+                                {[...Array(3)].map((_, i) => (
+                                    <div key={i} className="w-1 h-2 bg-zinc-400/50 rounded-sm" />
+                                ))}
+                            </div>
+                        </div>
+                        <div className="flex items-end gap-1 -mt-6">
+                            {[32, 26, 18, 12].map((height, i) => (
+                                <div
+                                    key={i}
+                                    className="relative"
+                                    style={{ height: `${height}px` }}
+                                >
+                                    {[...Array(Math.floor(height / 5))].map((_, j) => (
+                                        <div
+                                            key={j}
+                                            className="w-5 h-[5px] rounded-[2px] bg-gradient-to-b from-zinc-200 via-zinc-400 to-zinc-600 border-t border-white/30"
+                                            style={{
+                                                position: 'absolute',
+                                                bottom: j * 4,
+                                                boxShadow: '0 1px 2px rgba(0,0,0,0.3), inset 0 0 1px rgba(255,255,255,0.2)',
+                                            }}
+                                        />
+                                    ))}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="absolute right-4 top-0 bottom-0 flex items-center opacity-30">
+                        <div className="flex flex-col items-end gap-1">
+                            <span className="text-[9px] font-mono text-white/50 tracking-wider line-through">ROI MODEL</span>
+                            <div className="flex gap-0.5">
+                                {[...Array(3)].map((_, i) => (
+                                    <div key={i} className="w-1 h-1.5 bg-white/20 rounded-sm" />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="absolute top-3 left-3 flex items-center gap-2 z-20">
+                    <div className="w-2.5 h-2.5 rounded-full bg-zinc-400 relative">
+                        <div className="absolute -inset-2 rounded-full bg-zinc-400/10" />
+                    </div>
+                    <span className="text-[10px] font-mono text-zinc-300 tracking-wider font-medium">IMBALANCED</span>
+                </div>
+                <div className="absolute bottom-3 right-3 flex items-center gap-1.5">
+                    <svg className="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/>
+                    </svg>
+                    <span className="text-[9px] font-mono text-slate-400/80 tracking-wide font-medium">DRAINING</span>
+                </div>
+            </div>
+        );
+    }
+
     return (
-        <div className={`relative w-full h-full min-h-[160px] overflow-hidden ${className}`}>
+        <div className={`relative w-full h-full min-h-[160px] overflow-hidden ${className}`} {...rest}>
             {/* Dark gradient background */}
             <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-black to-gray-950" />
             

@@ -20,3 +20,9 @@ export { default as FilterRejectAnimation } from './FilterRejectAnimation';
 // Hero Animations
 export { default as HeroNetworkAnimation } from './HeroNetworkAnimation';
 
+// Framework Cycle Animations (ELEE Simultaneous Phases)
+export { default as ZeroAdFatigueAnimation } from './ZeroAdFatigueAnimation';
+export { default as ParallelScalingAnimation } from './ParallelScalingAnimation';
+export { default as CreativePipelineAnimation } from './CreativePipelineAnimation';
+export { default as AlwaysOnFeedbackAnimation } from './AlwaysOnFeedbackAnimation';
+

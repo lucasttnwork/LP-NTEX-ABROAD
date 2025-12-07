@@ -42,58 +42,18 @@ const NewAdvantage = () => {
                     </motion.p>
                 </div>
 
-                {/* Master Card Container - Styled as Animated Stats Card */}
-                <div className="rounded-[2.5rem] p-[1px] relative w-full"
-                    style={{ background: 'radial-gradient(circle 230px at 0% 0%, #ffffff, #0c0d0d)' }}>
-                    
-                    <motion.div 
-                        className="dot w-[5px] aspect-square absolute bg-white rounded-full z-[2]"
-                        style={{
-                            boxShadow: '0 0 10px #ffffff',
-                            right: '20px',
-                            top: '20px',
-                        }}
-                        animate={{
-                            boxShadow: ['0 0 10px #ffffff', '0 0 20px #ffffff', '0 0 10px #ffffff'],
-                        }}
-                        transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                        }}
-                    />
-                    
-                    <div className="relative flex flex-col w-full h-full border-[#202222] border rounded-[2.4rem] overflow-hidden"
-                        style={{ background: 'radial-gradient(circle 280px at 0% 0%, #444444, #0c0d0d)' }}>
-                        
-                        <div className="ray absolute blur-[10px] transform top-0 left-0 opacity-40 w-[220px] h-[45px] rounded-full rotate-[40deg]"
-                            style={{
-                                backgroundColor: '#c7c7c7',
-                                boxShadow: '0 0 50px #fff',
-                                transformOrigin: '10%'
-                            }}></div>
-
-                        <div className="line topl absolute w-full h-[1px]"
-                            style={{ top: '20px', background: 'linear-gradient(90deg, #888888 30%, #1d1f1f 70%)' }}></div>
-                        <div className="line leftl absolute w-[1px] h-full"
-                            style={{ left: '20px', background: 'linear-gradient(180deg, #747474 30%, #222424 70%)' }}></div>
-                        <div className="line bottoml absolute w-full h-[1px] bg-[#2c2c2c]" style={{ bottom: '20px' }}></div>
-                        <div className="line rightl absolute w-[1px] h-full bg-[#2c2c2c]" style={{ right: '20px' }}></div>
+                {/* Master Card Container - simplified background */}
+                <div className="relative w-full rounded-[2.5rem] border border-white/10 bg-[#0a0b0b] shadow-[0_24px_90px_rgba(0,0,0,0.55)]">
+                    <div className="relative flex flex-col w-full h-full rounded-[2.4rem] overflow-hidden bg-[#0e1011] border border-white/5">
 
                         {/* Inner Content */}
                         <div className="relative z-10 p-6 md:p-10">
                             {/* Optional Header inside Master Card */}
-                            <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 px-2 gap-4">
+                            <div className="flex flex-col gap-2 mb-8 px-2">
                                 <div>
                                     <h3 className="text-2xl font-heading font-bold text-white">Our Methodology</h3>
                                     <p className="text-gray-400 text-sm mt-1">Systematic growth engineering</p>
                                 </div>
-                                <motion.button 
-                                    className="text-sm text-white border border-white/20 rounded-full px-4 py-2 hover:bg-white hover:text-black transition-colors flex items-center gap-2"
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.98 }}
-                                >
-                                    View process <ArrowUpRight size={14} />
-                                </motion.button>
                             </div>
 
                             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

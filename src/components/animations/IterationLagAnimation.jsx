@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const IterationLagAnimation = ({ className = '' }) => {
+const IterationLagAnimation = ({ className = '', isPlaying = false, ...rest }) => {
     const timelinePoints = [
         { active: true, label: 'W1' },
         { active: true, label: 'W2' },
@@ -19,10 +19,12 @@ const IterationLagAnimation = ({ className = '' }) => {
     };
 
     return (
-        <div className={`relative w-full h-full min-h-[120px] overflow-hidden p-4 flex flex-col justify-center ${className}`}
+        <div
+            className={`relative w-full h-full min-h-[120px] overflow-hidden p-4 flex flex-col justify-center ${className}`}
             style={{
                 background: 'linear-gradient(135deg, rgba(20,20,22,0.95) 0%, rgba(30,30,35,0.9) 50%, rgba(25,25,28,0.95) 100%)',
             }}
+            {...rest}
         >
             {/* Subtle grid pattern overlay */}
             <div 
@@ -39,14 +41,12 @@ const IterationLagAnimation = ({ className = '' }) => {
                 style={{
                     background: 'linear-gradient(90deg, transparent 0%, rgba(192,192,192,0.15) 50%, transparent 100%)',
                 }}
-                animate={{
-                    opacity: [0.3, 0.6, 0.3],
-                }}
-                transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                }}
+                animate={isPlaying ? { opacity: [0.3, 0.6, 0.3] } : { opacity: 0.4 }}
+                transition={
+                    isPlaying
+                        ? { duration: 4, repeat: Infinity, ease: 'easeInOut' }
+                        : { duration: 0 }
+                }
             />
 
             {/* Timeline */}
@@ -66,14 +66,12 @@ const IterationLagAnimation = ({ className = '' }) => {
                         background: `linear-gradient(90deg, ${colors.silver} 0%, ${colors.silverLight} 70%, rgba(192,192,192,0.3) 100%)`,
                         boxShadow: '0 0 8px rgba(192,192,192,0.25), 0 0 2px rgba(220,220,225,0.4)',
                     }}
-                    animate={{
-                        width: ['35%', '40%', '35%'],
-                    }}
-                    transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: 'easeInOut',
-                    }}
+                    animate={isPlaying ? { width: ['35%', '40%', '35%'] } : { width: '40%' }}
+                    transition={
+                        isPlaying
+                            ? { duration: 3, repeat: Infinity, ease: 'easeInOut' }
+                            : { duration: 0 }
+                    }
                 />
 
                 {timelinePoints.map((point, index) => (
@@ -91,21 +89,34 @@ const IterationLagAnimation = ({ className = '' }) => {
                                     ? '0 0 6px rgba(192,192,192,0.3), inset 0 1px 2px rgba(255,255,255,0.2)'
                                     : 'inset 0 1px 2px rgba(0,0,0,0.3)',
                             }}
-                            animate={point.active ? {
-                                scale: [1, 1.15, 1],
-                                boxShadow: [
-                                    '0 0 6px rgba(192,192,192,0.3), inset 0 1px 2px rgba(255,255,255,0.2)',
-                                    '0 0 12px rgba(192,192,192,0.5), inset 0 1px 2px rgba(255,255,255,0.3)',
-                                    '0 0 6px rgba(192,192,192,0.3), inset 0 1px 2px rgba(255,255,255,0.2)',
-                                ],
-                            } : {
-                                opacity: [0.7, 0.85, 0.7],
-                            }}
-                            transition={{
-                                duration: point.active ? 2 : 3,
-                                repeat: Infinity,
-                                delay: point.active ? 0 : index * 0.2,
-                            }}
+                            animate={
+                                isPlaying
+                                    ? point.active
+                                        ? {
+                                              scale: [1, 1.15, 1],
+                                              boxShadow: [
+                                                  '0 0 6px rgba(192,192,192,0.3), inset 0 1px 2px rgba(255,255,255,0.2)',
+                                                  '0 0 12px rgba(192,192,192,0.5), inset 0 1px 2px rgba(255,255,255,0.3)',
+                                                  '0 0 6px rgba(192,192,192,0.3), inset 0 1px 2px rgba(255,255,255,0.2)',
+                                              ],
+                                          }
+                                        : {
+                                              opacity: [0.7, 0.85, 0.7],
+                                          }
+                                    : {
+                                          scale: 1,
+                                          opacity: 1,
+                                      }
+                            }
+                            transition={
+                                isPlaying
+                                    ? {
+                                          duration: point.active ? 2 : 3,
+                                          repeat: Infinity,
+                                          delay: point.active ? 0 : index * 0.2,
+                                      }
+                                    : { duration: 0 }
+                            }
                         />
                         <span 
                             className="text-[9px] font-mono tracking-wide"
@@ -134,25 +145,18 @@ const IterationLagAnimation = ({ className = '' }) => {
                         border: '1.5px solid rgba(100,100,105,0.6)',
                         borderTopColor: colors.silver,
                     }}
-                    animate={{
-                        rotate: 360,
-                    }}
-                    transition={{
-                        duration: 1.2,
-                        repeat: Infinity,
-                        ease: 'linear',
-                    }}
+                    animate={isPlaying ? { rotate: 360 } : { rotate: 0 }}
+                    transition={
+                        isPlaying
+                            ? { duration: 1.2, repeat: Infinity, ease: 'linear' }
+                            : { duration: 0 }
+                    }
                 />
                 <motion.span 
                     className="text-[9px] font-mono tracking-wider"
                     style={{ color: colors.silverDark }}
-                    animate={{
-                        opacity: [0.5, 0.9, 0.5],
-                    }}
-                    transition={{
-                        duration: 1.5,
-                        repeat: Infinity,
-                    }}
+                    animate={isPlaying ? { opacity: [0.5, 0.9, 0.5] } : { opacity: 0.75 }}
+                    transition={isPlaying ? { duration: 1.5, repeat: Infinity } : { duration: 0 }}
                 >
                     WAITING
                 </motion.span>
@@ -161,14 +165,12 @@ const IterationLagAnimation = ({ className = '' }) => {
             {/* Gap indicator - muted rose/warm gray */}
             <motion.div
                 className="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5"
-                animate={{
-                    opacity: [0.5, 0.85, 0.5],
-                }}
-                transition={{
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                }}
+                animate={isPlaying ? { opacity: [0.5, 0.85, 0.5] } : { opacity: 0.7 }}
+                transition={
+                    isPlaying
+                        ? { duration: 2.5, repeat: Infinity, ease: 'easeInOut' }
+                        : { duration: 0 }
+                }
             >
                 <motion.div 
                     className="w-6 h-[1px]"

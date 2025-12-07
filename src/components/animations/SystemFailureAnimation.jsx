@@ -1,26 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const SystemFailureAnimation = ({ className = '' }) => {
+const SystemFailureAnimation = ({ className = '', isPlaying = false, ...rest }) => {
     const [cycleKey, setCycleKey] = useState(0);
     const [currentPhase, setCurrentPhase] = useState(0);
+    const intervalRef = React.useRef(null);
 
-    // Cycle the animation
     useEffect(() => {
         const phases = [0, 1, 2, 3, 4, 5];
         let phaseIndex = 0;
-        
-        const phaseInterval = setInterval(() => {
-            phaseIndex++;
-            if (phaseIndex >= phases.length) {
-                phaseIndex = 0;
-                setCycleKey(prev => prev + 1);
-            }
-            setCurrentPhase(phases[phaseIndex]);
-        }, 1200);
 
-        return () => clearInterval(phaseInterval);
-    }, []);
+        if (isPlaying) {
+            setCurrentPhase(0);
+            setCycleKey((prev) => prev + 1);
+            intervalRef.current = setInterval(() => {
+                phaseIndex++;
+                if (phaseIndex >= phases.length) {
+                    phaseIndex = 0;
+                    setCycleKey((prev) => prev + 1);
+                }
+                setCurrentPhase(phases[phaseIndex]);
+            }, 1200);
+        }
+
+        return () => {
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+                intervalRef.current = null;
+            }
+            if (!isPlaying) {
+                setCurrentPhase(0);
+            }
+        };
+    }, [isPlaying]);
 
     // System modules representing campaign components
     const modules = [
@@ -56,6 +68,7 @@ const SystemFailureAnimation = ({ className = '' }) => {
             <div 
             key={cycleKey}
             className={`relative w-full h-full min-h-[300px] overflow-hidden ${className}`}
+            {...rest}
                 style={{
                 background: 'linear-gradient(135deg, rgba(15,23,42,1) 0%, rgba(30,41,59,0.95) 35%, rgba(51,65,85,0.85) 65%, rgba(30,41,59,0.95) 100%)',
             }}

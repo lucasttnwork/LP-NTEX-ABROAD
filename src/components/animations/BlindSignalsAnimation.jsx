@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const BlindSignalsAnimation = ({ className = '' }) => {
+const BlindSignalsAnimation = ({ className = '', isPlaying = false, ...rest }) => {
     const dataPoints = [
         { x: 25, y: 30 },
         { x: 50, y: 60 },
@@ -11,7 +11,10 @@ const BlindSignalsAnimation = ({ className = '' }) => {
     ];
 
     return (
-        <div className={`relative w-full h-full min-h-[120px] overflow-hidden bg-black/40 ${className}`}>
+        <div
+            className={`relative w-full h-full min-h-[120px] overflow-hidden bg-black/40 ${className}`}
+            {...rest}
+        >
             {/* Radar center */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 {/* Radar circles */}
@@ -23,15 +26,23 @@ const BlindSignalsAnimation = ({ className = '' }) => {
                             width: `${ring * 60}px`,
                             height: `${ring * 60}px`,
                         }}
-                        animate={{
-                            scale: [1, 1.05, 1],
-                            opacity: [0.2, 0.3, 0.2],
-                        }}
-                        transition={{
-                            duration: 2,
-                            delay: ring * 0.2,
-                            repeat: Infinity,
-                        }}
+                        animate={
+                            isPlaying
+                                ? {
+                                      scale: [1, 1.05, 1],
+                                      opacity: [0.2, 0.3, 0.2],
+                                  }
+                                : { scale: 1, opacity: 0.2 }
+                        }
+                        transition={
+                            isPlaying
+                                ? {
+                                      duration: 2,
+                                      delay: ring * 0.2,
+                                      repeat: Infinity,
+                                  }
+                                : { duration: 0 }
+                        }
                     />
                 ))}
 
@@ -41,26 +52,33 @@ const BlindSignalsAnimation = ({ className = '' }) => {
                     style={{
                         background: 'linear-gradient(90deg, rgba(59,130,246,0.8) 0%, transparent 100%)',
                     }}
-                    animate={{
-                        rotate: [0, 360],
-                    }}
-                    transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: 'linear',
-                    }}
+                    animate={isPlaying ? { rotate: [0, 360] } : { rotate: 0 }}
+                    transition={
+                        isPlaying
+                            ? { duration: 3, repeat: Infinity, ease: 'linear' }
+                            : { duration: 0 }
+                    }
                 />
 
                 {/* Center dot */}
                 <motion.div
                     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-blue-500 rounded-full"
-                    animate={{
-                        boxShadow: ['0 0 10px rgba(59,130,246,0.5)', '0 0 20px rgba(59,130,246,0.8)', '0 0 10px rgba(59,130,246,0.5)'],
-                    }}
-                    transition={{
-                        duration: 1.5,
-                        repeat: Infinity,
-                    }}
+                    animate={
+                        isPlaying
+                            ? {
+                                  boxShadow: [
+                                      '0 0 10px rgba(59,130,246,0.5)',
+                                      '0 0 20px rgba(59,130,246,0.8)',
+                                      '0 0 10px rgba(59,130,246,0.5)',
+                                  ],
+                              }
+                            : { boxShadow: '0 0 10px rgba(59,130,246,0.5)' }
+                    }
+                    transition={
+                        isPlaying
+                            ? { duration: 1.5, repeat: Infinity }
+                            : { duration: 0 }
+                    }
                 />
             </div>
 
@@ -73,28 +91,26 @@ const BlindSignalsAnimation = ({ className = '' }) => {
                         left: `${point.x}%`,
                         top: `${point.y}%`,
                     }}
-                    animate={{
-                        opacity: [0.3, 0.6, 0.3],
-                        scale: [1, 1.2, 1],
-                    }}
-                    transition={{
-                        duration: 2,
-                        delay: index * 0.3,
-                        repeat: Infinity,
-                    }}
+                    animate={
+                        isPlaying
+                            ? { opacity: [0.3, 0.6, 0.3], scale: [1, 1.2, 1] }
+                            : { opacity: 0.6, scale: 1 }
+                    }
+                    transition={
+                        isPlaying
+                            ? { duration: 2, delay: index * 0.3, repeat: Infinity }
+                            : { duration: 0 }
+                    }
                 />
             ))}
 
             {/* "Missed" indicator */}
             <motion.div
                 className="absolute bottom-2 right-2 text-[10px] font-mono text-gray-500 flex items-center gap-1"
-                animate={{
-                    opacity: [0.5, 1, 0.5],
-                }}
-                transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                }}
+                animate={isPlaying ? { opacity: [0.5, 1, 0.5] } : { opacity: 0.8 }}
+                transition={
+                    isPlaying ? { duration: 2, repeat: Infinity } : { duration: 0 }
+                }
             >
                 <span className="w-1.5 h-1.5 rounded-full bg-gray-500" />
                 SIGNALS MISSED
@@ -104,6 +120,7 @@ const BlindSignalsAnimation = ({ className = '' }) => {
 };
 
 export default BlindSignalsAnimation;
+
 
 
 
