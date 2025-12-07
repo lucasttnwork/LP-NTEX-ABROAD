@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TrendingUp, ArrowUpRight, ArrowRight } from 'lucide-react';
 import { cn } from '../../../lib/utils';
+import resultsUkFashion from '../../../assets/results-uk-fashion.png';
+import resultsSaasPlatform from '../../../assets/results-saas-platform.png';
+import resultsLuxuryConsultant from '../../../assets/results-luxury-consultant.png';
 
 // Dados dos resultados (simulando uma curadoria de galeria)
 const resultsData = [
@@ -16,7 +19,7 @@ const resultsData = [
             { label: "Revenue", value: "£15k+" },
             { label: "Return", value: "500%" }
         ],
-        image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1000&auto=format&fit=crop", // Placeholder visual (Fashion store vibe)
+        image: resultsUkFashion,
         quote: "It wasn't magic — it was clarity."
     },
     {
@@ -30,7 +33,7 @@ const resultsData = [
             { label: "Leads", value: "3.2x" },
             { label: "Timeframe", value: "60 Days" }
         ],
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop", // Placeholder visual (Data/Tech vibe)
+        image: resultsSaasPlatform,
         quote: "Finally, a system that feeds sales automatically."
     },
     {
@@ -44,7 +47,7 @@ const resultsData = [
             { label: "Avg. Value", value: "£4.2k" },
             { label: "ROI", value: "8.5x" }
         ],
-        image: "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1000&auto=format&fit=crop", // Placeholder visual (Luxury/Meeting vibe)
+        image: resultsLuxuryConsultant,
         quote: "Quality over quantity. Exactly what I needed."
     }
 ];

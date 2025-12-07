@@ -3,28 +3,30 @@ import { Timeline } from "../../ui/timeline";
 import OptimizedImage from '../../ui/OptimizedImage';
 import { buildImageSources } from '../../../lib/image-sources';
 
-import explorationVisual from "../../../assets/exploration_phase_visual_1764091514544.png";
-import explorationVisualWebp from "../../../assets/exploration_phase_visual_1764091514544.webp";
-import explorationVisualAvif from "../../../assets/exploration_phase_visual_1764091514544.avif";
-import lapidationVisual from "../../../assets/lapidation_phase_visual.png";
-import lapidationVisualWebp from "../../../assets/lapidation_phase_visual.webp";
-import lapidationVisualAvif from "../../../assets/lapidation_phase_visual.avif";
 import escalationVisual from "../../../assets/escalation_phase_visual_1764091702926.png";
 import escalationVisualWebp from "../../../assets/escalation_phase_visual_1764091702926.webp";
 import escalationVisualAvif from "../../../assets/escalation_phase_visual_1764091702926.avif";
 import extractionVisual from "../../../assets/extraction_phase_visual_1764091726420.png";
 import extractionVisualWebp from "../../../assets/extraction_phase_visual_1764091726420.webp";
 import extractionVisualAvif from "../../../assets/extraction_phase_visual_1764091726420.avif";
-
-const explorationVisualSources = buildImageSources({
-  avif: explorationVisualAvif,
-  webp: explorationVisualWebp,
-});
-
-const lapidationVisualSources = buildImageSources({
-  avif: lapidationVisualAvif,
-  webp: lapidationVisualWebp,
-});
+import timelineLightBeams from "../../../assets/timeline-light-beams.png";
+import timelineLightBeamsWebp from "../../../assets/timeline-light-beams.webp";
+import timelineLightBeamsAvif from "../../../assets/timeline-light-beams.avif";
+import timelineIceField from "../../../assets/timeline-ice-field.png";
+import timelineIceFieldWebp from "../../../assets/timeline-ice-field.webp";
+import timelineIceFieldAvif from "../../../assets/timeline-ice-field.avif";
+import timelinePrism from "../../../assets/timeline-prism.png";
+import timelinePrismWebp from "../../../assets/timeline-prism.webp";
+import timelinePrismAvif from "../../../assets/timeline-prism.avif";
+import timelineBeamFocus from "../../../assets/timeline-beam-focus.png";
+import timelineBeamFocusWebp from "../../../assets/timeline-beam-focus.webp";
+import timelineBeamFocusAvif from "../../../assets/timeline-beam-focus.avif";
+import timelineDiamondVelvet from "../../../assets/timeline-diamond-velvet.png";
+import timelineDiamondVelvetWebp from "../../../assets/timeline-diamond-velvet.webp";
+import timelineDiamondVelvetAvif from "../../../assets/timeline-diamond-velvet.avif";
+import timelineDiamondCloseup from "../../../assets/timeline-diamond-closeup.png";
+import timelineDiamondCloseupWebp from "../../../assets/timeline-diamond-closeup.webp";
+import timelineDiamondCloseupAvif from "../../../assets/timeline-diamond-closeup.avif";
 
 const escalationVisualSources = buildImageSources({
   avif: escalationVisualAvif,
@@ -34,6 +36,36 @@ const escalationVisualSources = buildImageSources({
 const extractionVisualSources = buildImageSources({
   avif: extractionVisualAvif,
   webp: extractionVisualWebp,
+});
+
+const timelineLightBeamsSources = buildImageSources({
+  avif: timelineLightBeamsAvif,
+  webp: timelineLightBeamsWebp,
+});
+
+const timelineIceFieldSources = buildImageSources({
+  avif: timelineIceFieldAvif,
+  webp: timelineIceFieldWebp,
+});
+
+const timelinePrismSources = buildImageSources({
+  avif: timelinePrismAvif,
+  webp: timelinePrismWebp,
+});
+
+const timelineBeamFocusSources = buildImageSources({
+  avif: timelineBeamFocusAvif,
+  webp: timelineBeamFocusWebp,
+});
+
+const timelineDiamondVelvetSources = buildImageSources({
+  avif: timelineDiamondVelvetAvif,
+  webp: timelineDiamondVelvetWebp,
+});
+
+const timelineDiamondCloseupSources = buildImageSources({
+  avif: timelineDiamondCloseupAvif,
+  webp: timelineDiamondCloseupWebp,
 });
 
 const NewTimeline = () => {
@@ -59,15 +91,15 @@ const NewTimeline = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <OptimizedImage
-              src={explorationVisual}
-              sources={explorationVisualSources}
-              alt="Exploration Phase"
+              src={timelineLightBeams}
+              sources={timelineLightBeamsSources}
+              alt="Feixes de luz prismáticos refletidos em cristais"
               className="rounded-lg object-cover h-48 md:h-64 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
             />
             <OptimizedImage
-              src={lapidationVisual}
-              sources={lapidationVisualSources}
-              alt="Lapidation Phase"
+              src={timelineIceField}
+              sources={timelineIceFieldSources}
+              alt="Cristais iridescentes sobre terreno escuro"
               className="rounded-lg object-cover h-48 md:h-64 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
             />
           </div>
@@ -94,15 +126,15 @@ const NewTimeline = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <OptimizedImage
-              src={lapidationVisual}
-              sources={lapidationVisualSources}
-              alt="Lapidation Phase"
+              src={timelinePrism}
+              sources={timelinePrismSources}
+              alt="Prisma único emitindo feixes de luz"
               className="rounded-lg object-cover h-48 md:h-64 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
             />
             <OptimizedImage
-              src={explorationVisual}
-              sources={explorationVisualSources}
-              alt="Exploration Phase - New Wave"
+              src={timelineBeamFocus}
+              sources={timelineBeamFocusSources}
+              alt="Feixe de luz concentrado atravessando diamante"
               className="rounded-lg object-cover h-48 md:h-64 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
             />
           </div>
@@ -130,15 +162,15 @@ const NewTimeline = () => {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <OptimizedImage
-              src={escalationVisual}
-              sources={escalationVisualSources}
-              alt="Escalation Phase"
+              src={timelineDiamondVelvet}
+              sources={timelineDiamondVelvetSources}
+              alt="Diamante pairando sobre veludo preto"
               className="rounded-lg object-cover h-40 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
             />
             <OptimizedImage
-              src={extractionVisual}
-              sources={extractionVisualSources}
-              alt="Extraction Phase"
+              src={timelineDiamondCloseup}
+              sources={timelineDiamondCloseupSources}
+              alt="Close-up de diamante com faíscas e reflexos"
               className="rounded-lg object-cover h-40 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
             />
           </div>
