@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
     SystemFailureAnimation,
@@ -43,7 +43,50 @@ const truthParagraphs = [
     },
 ];
 
+const useHoverPlayback = (ids, exitDelay = 1000) => {
+    const [playing, setPlaying] = useState(() =>
+        ids.reduce((acc, id) => ({ ...acc, [id]: false }), {})
+    );
+    const timersRef = useRef({});
+
+    const play = (id) => {
+        if (timersRef.current[id]) {
+            clearTimeout(timersRef.current[id]);
+            timersRef.current[id] = null;
+        }
+        setPlaying((prev) => ({ ...prev, [id]: true }));
+    };
+
+    const pauseWithGrace = (id) => {
+        if (timersRef.current[id]) clearTimeout(timersRef.current[id]);
+        timersRef.current[id] = setTimeout(() => {
+            setPlaying((prev) => ({ ...prev, [id]: false }));
+            timersRef.current[id] = null;
+        }, exitDelay);
+    };
+
+    return {
+        isPlaying: (id) => !!playing[id],
+        play,
+        pauseWithGrace,
+    };
+};
+
 const NewReality = () => {
+    const cardIds = useMemo(
+        () => ({
+            system: 'system-failure',
+            signals: 'blind-signals',
+            creative: 'creative-loop',
+            budget: 'budget-tilt',
+            iteration: 'iteration-lag',
+            vanity: 'vanity-metrics',
+        }),
+        []
+    );
+
+    const hoverPlayback = useHoverPlayback(Object.values(cardIds));
+
     return (
         <>
             <section
@@ -130,7 +173,12 @@ const NewReality = () => {
                             className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 md:col-span-2 md:row-span-2"
                         >
                             <div className="relative h-64 sm:h-80 md:h-full min-h-[300px]">
-                                <SystemFailureAnimation className="absolute inset-0 w-full h-full" />
+                                <SystemFailureAnimation
+                                    isPlaying={hoverPlayback.isPlaying(cardIds.system)}
+                                    className="absolute inset-0 w-full h-full"
+                                    onMouseEnter={() => hoverPlayback.play(cardIds.system)}
+                                    onMouseLeave={() => hoverPlayback.pauseWithGrace(cardIds.system)}
+                                />
                                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                                 
                                 <div className="absolute bottom-0 left-0 p-6 sm:p-8 w-full">
@@ -182,7 +230,12 @@ const NewReality = () => {
                                     Campaigns launch before you hear from your customers, missing the cues your audience cares about.
                                 </p>
                                 <div className="mt-auto rounded-lg overflow-hidden border border-white/10 aspect-video relative">
-                                    <BlindSignalsAnimation className="w-full h-full" />
+                                    <BlindSignalsAnimation
+                                        isPlaying={hoverPlayback.isPlaying(cardIds.signals)}
+                                        className="w-full h-full"
+                                        onMouseEnter={() => hoverPlayback.play(cardIds.signals)}
+                                        onMouseLeave={() => hoverPlayback.pauseWithGrace(cardIds.signals)}
+                                    />
                                 </div>
                             </div>
                         </motion.div>
@@ -210,7 +263,12 @@ const NewReality = () => {
                                     Creative variations are refreshed once a month—long after poorly performing ads burn through budget.
                                 </p>
                                 <div className="mt-auto rounded-lg overflow-hidden border border-white/10 aspect-video relative">
-                                    <CreativeLoopAnimation className="w-full h-full" />
+                                    <CreativeLoopAnimation
+                                        isPlaying={hoverPlayback.isPlaying(cardIds.creative)}
+                                        className="w-full h-full"
+                                        onMouseEnter={() => hoverPlayback.play(cardIds.creative)}
+                                        onMouseLeave={() => hoverPlayback.pauseWithGrace(cardIds.creative)}
+                                    />
                                 </div>
                             </div>
                         </motion.div>
@@ -235,7 +293,12 @@ const NewReality = () => {
                                     Spend is dictated by what felt right last quarter instead of a model that forecasts ROI.
                                 </p>
                                 <div className="mt-auto rounded-lg overflow-hidden border border-white/10 aspect-video relative">
-                                    <BudgetTiltAnimation className="w-full h-full" />
+                                    <BudgetTiltAnimation
+                                        isPlaying={hoverPlayback.isPlaying(cardIds.budget)}
+                                        className="w-full h-full"
+                                        onMouseEnter={() => hoverPlayback.play(cardIds.budget)}
+                                        onMouseLeave={() => hoverPlayback.pauseWithGrace(cardIds.budget)}
+                                    />
                                 </div>
                             </div>
                         </motion.div>
@@ -260,7 +323,12 @@ const NewReality = () => {
                                     There is no cadence for analysis, so the campaign only changes when someone notices a drop.
                                 </p>
                                  <div className="mt-auto rounded-lg overflow-hidden border border-white/10 aspect-video relative">
-                                    <IterationLagAnimation className="w-full h-full" />
+                                    <IterationLagAnimation
+                                        isPlaying={hoverPlayback.isPlaying(cardIds.iteration)}
+                                        className="w-full h-full"
+                                        onMouseEnter={() => hoverPlayback.play(cardIds.iteration)}
+                                        onMouseLeave={() => hoverPlayback.pauseWithGrace(cardIds.iteration)}
+                                    />
                                 </div>
                             </div>
                         </motion.div>
@@ -285,7 +353,12 @@ const NewReality = () => {
                                     Reports celebrate impressions and clicks while the revenue column stays empty.
                                 </p>
                                  <div className="mt-auto rounded-lg overflow-hidden border border-white/10 aspect-video relative">
-                                    <VanityMetricsAnimation className="w-full h-full" />
+                                    <VanityMetricsAnimation
+                                        isPlaying={hoverPlayback.isPlaying(cardIds.vanity)}
+                                        className="w-full h-full"
+                                        onMouseEnter={() => hoverPlayback.play(cardIds.vanity)}
+                                        onMouseLeave={() => hoverPlayback.pauseWithGrace(cardIds.vanity)}
+                                    />
                                 </div>
                             </div>
                         </motion.div>

@@ -13,9 +13,34 @@ const heroBgSources = buildImageSources({
     webp: heroBgWebp,
 });
 
+import cardExploration from '../../../assets/card-exploration.png';
+import cardLapidation from '../../../assets/card-lapidation.png';
+import cardEscalation from '../../../assets/card-escalation.png';
+import cardExtraction from '../../../assets/card-extraction.png';
+
 const heroBgImage = {
     src: heroBg,
     sources: heroBgSources,
+};
+
+const explorationImage = {
+    src: cardExploration,
+    sources: [] // Disable auto-generation of webp/avif sources as they don't exist yet
+};
+
+const lapidationImage = {
+    src: cardLapidation,
+    sources: [] // Disable auto-generation of webp/avif sources as they don't exist yet
+};
+
+const escalationImage = {
+    src: cardEscalation,
+    sources: []
+};
+
+const extractionImage = {
+    src: cardExtraction,
+    sources: []
 };
 
 const Card = ({ step, index, range, targetScale, progress }) => {
@@ -37,8 +62,8 @@ const Card = ({ step, index, range, targetScale, progress }) => {
                 }}
                 className="relative -top-[25%] w-full max-w-5xl h-[60vh] rounded-3xl overflow-hidden shadow-2xl origin-top"
             >
-                 {/* Background Image */}
-                 <div className="absolute inset-0 overflow-hidden">
+                {/* Background Image */}
+                <div className="absolute inset-0 overflow-hidden">
                     <motion.div className="w-full h-full absolute inset-0" style={{ scale: imageScale }}>
                         <OptimizedImage
                             src={step.image.src}
@@ -58,15 +83,15 @@ const Card = ({ step, index, range, targetScale, progress }) => {
                             {step.icon}
                         </div>
                     </div>
-                    
+
                     <h3 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">
                         {step.title}
                     </h3>
-                    
+
                     <p className="text-xl md:text-2xl text-white/90 font-medium mb-6 italic font-serif">
                         {step.subtitle}
                     </p>
-                    
+
                     <p className="text-gray-200 leading-relaxed text-lg md:text-xl max-w-3xl mx-auto">
                         {step.description}
                     </p>
@@ -96,7 +121,7 @@ const NewFramework = () => {
             subtitle: "Find what works — fast.",
             description: "While traditional agencies take weeks to create 3-4 ads, our AI systems generate and test dozens of variations in days. We analyse market patterns, identify promising angles, and discover what resonates with your audience before the competition.",
             icon: <Search size={24} />,
-            image: heroBgImage,
+            image: explorationImage,
         },
         {
             letter: "L",
@@ -104,7 +129,7 @@ const NewFramework = () => {
             subtitle: "Turn good into excellent.",
             description: "Ads that show potential go through surgical refinement. A/B testing on headlines, images, copy, CTAs — every element is optimised until cost-per-result hits its sweet spot. Mathematics, not guesswork.",
             icon: <Gem size={24} />,
-            image: heroBgImage,
+            image: lapidationImage,
         },
         {
             letter: "E",
@@ -112,7 +137,7 @@ const NewFramework = () => {
             subtitle: "Scale with confidence, not hope.",
             description: "We only increase investment on statistically proven campaigns. No \"let's see what happens.\" When we scale, we know — with data — that returns will follow.",
             icon: <TrendingUp size={24} />,
-            image: heroBgImage,
+            image: escalationImage,
         },
         {
             letter: "E",
@@ -120,7 +145,7 @@ const NewFramework = () => {
             subtitle: "Maximise the value of every customer.",
             description: "Acquisition is just the beginning. We activate remarketing and retention sequences to increase the lifetime value of each customer. You don't just win customers — you profit more from each one.",
             icon: <Repeat size={24} />,
-            image: heroBgImage,
+            image: extractionImage,
         }
     ];
 
@@ -154,23 +179,23 @@ const NewFramework = () => {
                         Our proprietary framework to transform Meta Ads from "necessary expense" into a "predictable growth engine." It's not a linear process that ends. It's a continuous cycle that self-optimises.
                     </motion.p>
                 </div>
-                                </div>
+            </div>
 
             <div className="container mx-auto px-6 relative z-10 pb-32">
                 {steps.map((step, index) => {
-                    const targetScale = 1 - ( (steps.length - index) * 0.05);
+                    const targetScale = 1 - ((steps.length - index) * 0.05);
                     return (
-                        <Card 
-                            key={index} 
-                            index={index} 
-                            step={step} 
-                            range={[index * 0.25, 1]} 
+                        <Card
+                            key={index}
+                            index={index}
+                            step={step}
+                            range={[index * 0.25, 1]}
                             targetScale={targetScale}
-                            progress={scrollYProgress} 
+                            progress={scrollYProgress}
                         />
                     );
                 })}
-                </div>
+            </div>
 
             <div className="container mx-auto px-6 relative z-10 pb-32">
                 <motion.div

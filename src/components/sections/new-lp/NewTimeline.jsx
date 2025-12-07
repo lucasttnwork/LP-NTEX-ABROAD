@@ -57,11 +57,17 @@ const NewTimeline = () => {
               working and why.
             </span>
           </div>
-          <div className="grid grid-cols-1 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <OptimizedImage
               src={explorationVisual}
               sources={explorationVisualSources}
               alt="Exploration Phase"
+              className="rounded-lg object-cover h-48 md:h-64 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+            <OptimizedImage
+              src={lapidationVisual}
+              sources={lapidationVisualSources}
+              alt="Lapidation Phase"
               className="rounded-lg object-cover h-48 md:h-64 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
             />
           </div>
@@ -86,11 +92,17 @@ const NewTimeline = () => {
               Cost-per-result dropping. Stable results. No unpleasant surprises.
             </span>
           </div>
-          <div className="grid grid-cols-1 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <OptimizedImage
               src={lapidationVisual}
               sources={lapidationVisualSources}
               alt="Lapidation Phase"
+              className="rounded-lg object-cover h-48 md:h-64 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+            />
+            <OptimizedImage
+              src={explorationVisual}
+              sources={explorationVisualSources}
+              alt="Exploration Phase - New Wave"
               className="rounded-lg object-cover h-48 md:h-64 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
             />
           </div>
@@ -140,10 +152,12 @@ const NewTimeline = () => {
       <Timeline
         data={data}
         title={
-          <span>
-            What to Expect: <br />
-            <span className="text-neutral-500">
-              From Chaos to Clarity in 90 Days.
+          <span className="flex flex-col gap-1">
+            <span className="text-4xl md:text-6xl font-heading font-bold leading-tight tracking-tight text-white">
+              What to Expect:
+            </span>
+            <span className="text-3xl md:text-4xl font-serif italic text-neutral-300 leading-tight">
+              From chaos to clarity in 90 days.
             </span>
           </span>
         }

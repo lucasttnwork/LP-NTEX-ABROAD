@@ -53,7 +53,7 @@ const NewProof = () => {
     const [activeIndex, setActiveIndex] = useState(0);
 
     return (
-        <section id="results" className="py-24 md:py-32 bg-black relative overflow-hidden border-t border-white/5">
+        <section id="results" className="pt-24 md:pt-32 pb-12 md:pb-16 bg-black relative overflow-hidden border-t border-white/5">
             <div className="container mx-auto px-6">
                 
                 {/* Header Section */}
@@ -204,10 +204,6 @@ const NewProof = () => {
                     </div>
                 </div>
 
-                <div className="mt-20 border-t border-white/5 pt-8 flex justify-between items-center text-gray-500 text-sm">
-                    <p>© {new Date().getFullYear()} NTEX Abroad</p>
-                    <p className="italic">Results vary by industry and commitment level.</p>
-                </div>
             </div>
         </section>
     );

@@ -1,33 +1,32 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const CreativeLoopAnimation = ({ className = '' }) => {
+const CreativeLoopAnimation = ({ className = '', isPlaying = false, ...rest }) => {
     return (
-        <div className={`relative w-full h-full min-h-[120px] overflow-hidden bg-black/40 flex items-center justify-center ${className}`}>
+        <div
+            className={`relative w-full h-full min-h-[120px] overflow-hidden bg-black/40 flex items-center justify-center ${className}`}
+            {...rest}
+        >
             {/* Outer rotating ring */}
             <motion.div
                 className="absolute w-20 h-20 rounded-full border-2 border-dashed border-blue-500/30"
-                animate={{
-                    rotate: 360,
-                }}
-                transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: 'linear',
-                }}
+                animate={isPlaying ? { rotate: 360 } : { rotate: 0 }}
+                transition={
+                    isPlaying
+                        ? { duration: 8, repeat: Infinity, ease: 'linear' }
+                        : { duration: 0 }
+                }
             />
 
             {/* Inner rotating ring (opposite direction) */}
             <motion.div
                 className="absolute w-14 h-14 rounded-full border border-blue-400/40"
-                animate={{
-                    rotate: -360,
-                }}
-                transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                    ease: 'linear',
-                }}
+                animate={isPlaying ? { rotate: -360 } : { rotate: 0 }}
+                transition={
+                    isPlaying
+                        ? { duration: 5, repeat: Infinity, ease: 'linear' }
+                        : { duration: 0 }
+                }
             >
                 {/* Dots on the ring */}
                 {[0, 90, 180, 270].map((angle) => (
@@ -46,15 +45,12 @@ const CreativeLoopAnimation = ({ className = '' }) => {
             {/* Center refresh icon */}
             <motion.div
                 className="relative z-10"
-                animate={{
-                    rotate: 360,
-                }}
-                transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                    repeatDelay: 1,
-                }}
+                animate={isPlaying ? { rotate: 360 } : { rotate: 0 }}
+                transition={
+                    isPlaying
+                        ? { duration: 2, repeat: Infinity, ease: 'easeInOut', repeatDelay: 1 }
+                        : { duration: 0 }
+                }
             >
                 <svg
                     className="w-6 h-6 text-blue-500/70"
@@ -80,9 +76,11 @@ const CreativeLoopAnimation = ({ className = '' }) => {
                         <motion.div
                             key={i}
                             className="w-4 h-1 bg-gray-600 rounded-full"
-                            animate={{
-                                backgroundColor: ['rgb(75, 85, 99)', 'rgb(75, 85, 99)'],
-                            }}
+                            animate={
+                                isPlaying
+                                    ? { backgroundColor: ['rgb(75, 85, 99)', 'rgb(75, 85, 99)'] }
+                                    : { backgroundColor: 'rgb(75, 85, 99)' }
+                            }
                         />
                     ))}
                 </div>
@@ -92,19 +90,17 @@ const CreativeLoopAnimation = ({ className = '' }) => {
             {/* Pulsing background */}
             <motion.div
                 className="absolute inset-0 bg-blue-500/5 rounded-lg"
-                animate={{
-                    opacity: [0.05, 0.1, 0.05],
-                }}
-                transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                }}
+                animate={isPlaying ? { opacity: [0.05, 0.1, 0.05] } : { opacity: 0.07 }}
+                transition={
+                    isPlaying ? { duration: 2, repeat: Infinity } : { duration: 0 }
+                }
             />
         </div>
     );
 };
 
 export default CreativeLoopAnimation;
+
 
 
 
