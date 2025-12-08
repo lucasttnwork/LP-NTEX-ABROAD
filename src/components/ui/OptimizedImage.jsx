@@ -22,7 +22,15 @@ const deriveSourcesFromPath = (src) => {
   ];
 };
 
-const OptimizedImage = ({ src, alt = '', sources, className, ...imgProps }) => {
+const OptimizedImage = ({
+  src,
+  alt = '',
+  sources,
+  className = '',
+  loading = 'lazy',
+  decoding = 'async',
+  ...imgProps
+}) => {
   const resolvedSources = sources ?? deriveSourcesFromPath(src);
 
   return (
@@ -34,8 +42,8 @@ const OptimizedImage = ({ src, alt = '', sources, className, ...imgProps }) => {
         src={src}
         alt={alt}
         className={className}
-        loading="lazy"
-        decoding="async"
+        loading={loading}
+        decoding={decoding}
         {...imgProps}
       />
     </picture>

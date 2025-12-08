@@ -5,6 +5,7 @@ import {
     IdealProfileAnimation,
     FilterRejectAnimation,
 } from '../../animations';
+import ViewportAnimationBoundary from '../../animations/ViewportAnimationBoundary';
 
 const NewICP = () => {
     const idealClients = [
@@ -87,7 +88,9 @@ const NewICP = () => {
                                             <Sparkles className="w-3 h-3" /> Recommended
                                         </span>
                                     </div>
-                                    <IdealProfileAnimation className="w-full h-full opacity-90" />
+                                    <ViewportAnimationBoundary className="w-full h-full" rootMargin="-10% 0px">
+                                        <IdealProfileAnimation className="w-full h-full opacity-90" />
+                                    </ViewportAnimationBoundary>
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0c] via-transparent to-transparent" />
                                 </div>
 
@@ -142,7 +145,9 @@ const NewICP = () => {
                                         Not a Match
                                     </span>
                                 </div>
-                                <FilterRejectAnimation className="w-full h-full opacity-60 grayscale mix-blend-screen" />
+                                <ViewportAnimationBoundary className="w-full h-full" rootMargin="-10% 0px">
+                                    <FilterRejectAnimation className="w-full h-full opacity-60 grayscale mix-blend-screen" />
+                                </ViewportAnimationBoundary>
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#050505] to-transparent" />
                             </div>
 

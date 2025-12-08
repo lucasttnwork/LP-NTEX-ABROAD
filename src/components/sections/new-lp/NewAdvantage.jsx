@@ -6,6 +6,7 @@ import {
     AIAcceleratorAnimation,
     ClarityMatrixAnimation,
 } from '../../animations';
+import ViewportAnimationBoundary from '../../animations/ViewportAnimationBoundary';
 
 const NewAdvantage = () => {
     return (
@@ -69,9 +70,9 @@ const NewAdvantage = () => {
                                     }}
                                     className="group relative rounded-2xl bg-black/40 border border-white/10 overflow-hidden transition-all duration-500 flex flex-col"
                                 >
-                                    <div className="aspect-[4/3] overflow-hidden relative">
-                                        <BlueprintBuildAnimation className="w-full h-full" />
-                                    </div>
+                            <ViewportAnimationBoundary className="aspect-[4/3] overflow-hidden relative" rootMargin="-5% 0px">
+                                <BlueprintBuildAnimation className="w-full h-full" />
+                            </ViewportAnimationBoundary>
                                     <div className="p-6 flex flex-col flex-grow">
                                         <h3 className="text-xl font-heading font-bold mb-2 text-white">
                                             We Don't Gamble. We Build.
@@ -103,9 +104,9 @@ const NewAdvantage = () => {
                                     }}
                                     className="group relative rounded-2xl bg-black/40 border border-white/10 overflow-hidden transition-all duration-500 flex flex-col"
                                 >
-                                     <div className="aspect-[4/3] overflow-hidden relative">
+                                    <ViewportAnimationBoundary className="aspect-[4/3] overflow-hidden relative" rootMargin="-5% 0px">
                                         <AIAcceleratorAnimation className="w-full h-full" />
-                                    </div>
+                                    </ViewportAnimationBoundary>
                                     <div className="p-6 flex flex-col flex-grow">
                                         <h3 className="text-xl font-heading font-bold mb-2 text-white">
                                             Accelerated by AI.
@@ -137,9 +138,9 @@ const NewAdvantage = () => {
                                     }}
                                     className="group relative rounded-2xl bg-black/40 border border-white/10 overflow-hidden transition-all duration-500 flex flex-col"
                                 >
-                                     <div className="aspect-[4/3] overflow-hidden relative">
+                                    <ViewportAnimationBoundary className="aspect-[4/3] overflow-hidden relative" rootMargin="-5% 0px">
                                         <ClarityMatrixAnimation className="w-full h-full" />
-                                    </div>
+                                    </ViewportAnimationBoundary>
                                     <div className="p-6 flex flex-col flex-grow">
                                         <h3 className="text-xl font-heading font-bold mb-2 text-white">
                                             Predictability & Clarity.

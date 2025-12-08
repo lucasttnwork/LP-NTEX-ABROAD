@@ -1,6 +1,15 @@
 import React, { useMemo, useState, useEffect, useRef } from 'react';
 import { ArrowRight, Brain, TrendingUp, Zap } from 'lucide-react';
 import { motion as Motion, AnimatePresence } from 'framer-motion';
+import OptimizedImage from '../../ui/OptimizedImage';
+import ViewportAnimationBoundary from '../../animations/ViewportAnimationBoundary';
+
+const heroImageSources = [
+    { type: 'image/avif', srcSet: '/images/hero-woman-v3.avif' },
+    { type: 'image/webp', srcSet: '/images/hero-woman-v3.webp' },
+];
+
+const HERO_IMAGE_FALLBACK = '/images/hero-woman-v3.png';
 
 // ============================================================================
 // PRISMATIC BACKGROUND - Orbs de luz animadas (FIXED - Higher z-index and opacity)
@@ -903,8 +912,12 @@ const NewHero = ({ onContactRequest }) => {
             {/* ================================================================
                 BACKGROUND LAYERS
             ================================================================ */}
-            <PrismaticBackground />
-            <FloatingParticles />
+            <ViewportAnimationBoundary className="absolute inset-0 pointer-events-none" rootMargin="-5% 0px">
+                <PrismaticBackground />
+            </ViewportAnimationBoundary>
+            <ViewportAnimationBoundary className="absolute inset-0 pointer-events-none" rootMargin="-5% 0px">
+                <FloatingParticles />
+            </ViewportAnimationBoundary>
             <GridOverlay />
 
             {/* ================================================================
@@ -929,18 +942,27 @@ const NewHero = ({ onContactRequest }) => {
                             <BentoCard className="relative h-[320px] md:h-[380px]" delay={0.3} glowColor="purple">
                                 {/* Image */}
                                 <div className="absolute inset-0 overflow-hidden rounded-2xl">
-                                    <Motion.img
-                                        src="/images/hero-woman-v3.webp"
-                                        alt="AI-Powered Growth"
-                                        className="w-full h-full object-cover object-center"
+                                    <Motion.div
                                         style={{
                                             maskImage: 'radial-gradient(ellipse 90% 85% at 50% 40%, black 60%, transparent 100%)',
                                             WebkitMaskImage: 'radial-gradient(ellipse 90% 85% at 50% 40%, black 60%, transparent 100%)',
                                         }}
+                                        className="absolute inset-0"
                                         initial={{ scale: 1.1, opacity: 0 }}
                                         animate={{ scale: 1, opacity: 1 }}
                                         transition={{ duration: 1.2, delay: 0.5 }}
-                                    />
+                                    >
+                                        <OptimizedImage
+                                            src={HERO_IMAGE_FALLBACK}
+                                            sources={heroImageSources}
+                                            alt="AI-Powered Growth"
+                                            className="w-full h-full object-cover object-center"
+                                            loading="eager"
+                                            decoding="sync"
+                                            fetchPriority="high"
+                                            sizes="(min-width: 1024px) 40vw, 100vw"
+                                        />
+                                    </Motion.div>
                                     
                                     {/* Prismatic overlay */}
                                     <Motion.div
@@ -973,7 +995,9 @@ const NewHero = ({ onContactRequest }) => {
                                 >
                                     {({ isHovered, isActive }) => (
                                         <>
-                                            <NeuralNetworkMotion isActive={isActive} />
+                                            <ViewportAnimationBoundary className="absolute inset-0 overflow-hidden" rootMargin="-10% 0px">
+                                                <NeuralNetworkMotion isActive={isActive} />
+                                            </ViewportAnimationBoundary>
                                             <Motion.div 
                                                 className="absolute bottom-3 left-3 right-3 z-10"
                                                 animate={{ y: isHovered ? -2 : 0 }}
@@ -1001,7 +1025,9 @@ const NewHero = ({ onContactRequest }) => {
                                 >
                                     {({ isHovered, isActive }) => (
                                         <>
-                                            <GrowthChartMotion isActive={isActive} />
+                                            <ViewportAnimationBoundary className="absolute inset-0 overflow-hidden" rootMargin="-10% 0px">
+                                                <GrowthChartMotion isActive={isActive} />
+                                            </ViewportAnimationBoundary>
                                             <Motion.div 
                                                 className="absolute bottom-3 left-3 right-3 z-10"
                                                 animate={{ y: isHovered ? -2 : 0 }}
@@ -1029,7 +1055,9 @@ const NewHero = ({ onContactRequest }) => {
                                 >
                                     {({ isHovered, isActive }) => (
                                         <>
-                                            <SpeedGaugeMotion isActive={isActive} />
+                                            <ViewportAnimationBoundary className="absolute inset-0 overflow-hidden" rootMargin="-10% 0px">
+                                                <SpeedGaugeMotion isActive={isActive} />
+                                            </ViewportAnimationBoundary>
                                             <Motion.div 
                                                 className="absolute bottom-3 left-3 right-3 z-10"
                                                 animate={{ y: isHovered ? -2 : 0 }}
@@ -1055,7 +1083,11 @@ const NewHero = ({ onContactRequest }) => {
                                 glowColor="blue"
                                 onEntry={handleInfinityEntry}
                             >
-                                <InfinityCardMotion isReady={infinityReady} />
+                                <ViewportAnimationBoundary className="absolute inset-0" rootMargin="-10% 0px">
+                                    {({ isInView }) => (
+                                        <InfinityCardMotion isReady={infinityReady && isInView} />
+                                    )}
+                                </ViewportAnimationBoundary>
                                 <div className="absolute left-4 top-1/2 -translate-y-1/2 z-10">
                                     <p className="text-[10px] text-slate-500 uppercase tracking-wider">Continuous</p>
                                     <p className="text-xs font-medium text-slate-300">Optimization Loop</p>

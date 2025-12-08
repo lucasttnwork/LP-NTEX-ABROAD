@@ -8,6 +8,7 @@ import {
     IterationLagAnimation,
     VanityMetricsAnimation,
 } from '../../animations';
+import ViewportAnimationBoundary from '../../animations/ViewportAnimationBoundary';
 
 const realityPatternStyle = {
     backgroundImage: `
@@ -173,12 +174,14 @@ const NewReality = () => {
                             className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 md:col-span-2 md:row-span-2"
                         >
                             <div className="relative h-64 sm:h-80 md:h-full min-h-[300px]">
-                                <SystemFailureAnimation
-                                    isPlaying={hoverPlayback.isPlaying(cardIds.system)}
-                                    className="absolute inset-0 w-full h-full"
-                                    onMouseEnter={() => hoverPlayback.play(cardIds.system)}
-                                    onMouseLeave={() => hoverPlayback.pauseWithGrace(cardIds.system)}
-                                />
+                                <ViewportAnimationBoundary className="absolute inset-0" rootMargin="-10% 0px">
+                                    <SystemFailureAnimation
+                                        isPlaying={hoverPlayback.isPlaying(cardIds.system)}
+                                        className="absolute inset-0 w-full h-full"
+                                        onMouseEnter={() => hoverPlayback.play(cardIds.system)}
+                                        onMouseLeave={() => hoverPlayback.pauseWithGrace(cardIds.system)}
+                                    />
+                                </ViewportAnimationBoundary>
                                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                                 
                                 <div className="absolute bottom-0 left-0 p-6 sm:p-8 w-full">
@@ -230,12 +233,14 @@ const NewReality = () => {
                                     Campaigns launch before you hear from your customers, missing the cues your audience cares about.
                                 </p>
                                 <div className="mt-auto rounded-lg overflow-hidden border border-white/10 aspect-video relative">
-                                    <BlindSignalsAnimation
-                                        isPlaying={hoverPlayback.isPlaying(cardIds.signals)}
-                                        className="w-full h-full"
-                                        onMouseEnter={() => hoverPlayback.play(cardIds.signals)}
-                                        onMouseLeave={() => hoverPlayback.pauseWithGrace(cardIds.signals)}
-                                    />
+                                    <ViewportAnimationBoundary className="w-full h-full" rootMargin="-15% 0px">
+                                        <BlindSignalsAnimation
+                                            isPlaying={hoverPlayback.isPlaying(cardIds.signals)}
+                                            className="w-full h-full"
+                                            onMouseEnter={() => hoverPlayback.play(cardIds.signals)}
+                                            onMouseLeave={() => hoverPlayback.pauseWithGrace(cardIds.signals)}
+                                        />
+                                    </ViewportAnimationBoundary>
                                 </div>
                             </div>
                         </motion.div>
@@ -263,12 +268,14 @@ const NewReality = () => {
                                     Creative variations are refreshed once a month—long after poorly performing ads burn through budget.
                                 </p>
                                 <div className="mt-auto rounded-lg overflow-hidden border border-white/10 aspect-video relative">
-                                    <CreativeLoopAnimation
-                                        isPlaying={hoverPlayback.isPlaying(cardIds.creative)}
-                                        className="w-full h-full"
-                                        onMouseEnter={() => hoverPlayback.play(cardIds.creative)}
-                                        onMouseLeave={() => hoverPlayback.pauseWithGrace(cardIds.creative)}
-                                    />
+                                    <ViewportAnimationBoundary className="w-full h-full" rootMargin="-15% 0px">
+                                        <CreativeLoopAnimation
+                                            isPlaying={hoverPlayback.isPlaying(cardIds.creative)}
+                                            className="w-full h-full"
+                                            onMouseEnter={() => hoverPlayback.play(cardIds.creative)}
+                                            onMouseLeave={() => hoverPlayback.pauseWithGrace(cardIds.creative)}
+                                        />
+                                    </ViewportAnimationBoundary>
                                 </div>
                             </div>
                         </motion.div>
@@ -293,12 +300,14 @@ const NewReality = () => {
                                     Spend is dictated by what felt right last quarter instead of a model that forecasts ROI.
                                 </p>
                                 <div className="mt-auto rounded-lg overflow-hidden border border-white/10 aspect-video relative">
-                                    <BudgetTiltAnimation
-                                        isPlaying={hoverPlayback.isPlaying(cardIds.budget)}
-                                        className="w-full h-full"
-                                        onMouseEnter={() => hoverPlayback.play(cardIds.budget)}
-                                        onMouseLeave={() => hoverPlayback.pauseWithGrace(cardIds.budget)}
-                                    />
+                                    <ViewportAnimationBoundary className="w-full h-full" rootMargin="-15% 0px">
+                                        <BudgetTiltAnimation
+                                            isPlaying={hoverPlayback.isPlaying(cardIds.budget)}
+                                            className="w-full h-full"
+                                            onMouseEnter={() => hoverPlayback.play(cardIds.budget)}
+                                            onMouseLeave={() => hoverPlayback.pauseWithGrace(cardIds.budget)}
+                                        />
+                                    </ViewportAnimationBoundary>
                                 </div>
                             </div>
                         </motion.div>
@@ -323,12 +332,14 @@ const NewReality = () => {
                                     There is no cadence for analysis, so the campaign only changes when someone notices a drop.
                                 </p>
                                  <div className="mt-auto rounded-lg overflow-hidden border border-white/10 aspect-video relative">
-                                    <IterationLagAnimation
-                                        isPlaying={hoverPlayback.isPlaying(cardIds.iteration)}
-                                        className="w-full h-full"
-                                        onMouseEnter={() => hoverPlayback.play(cardIds.iteration)}
-                                        onMouseLeave={() => hoverPlayback.pauseWithGrace(cardIds.iteration)}
-                                    />
+                                    <ViewportAnimationBoundary className="w-full h-full" rootMargin="-15% 0px">
+                                        <IterationLagAnimation
+                                            isPlaying={hoverPlayback.isPlaying(cardIds.iteration)}
+                                            className="w-full h-full"
+                                            onMouseEnter={() => hoverPlayback.play(cardIds.iteration)}
+                                            onMouseLeave={() => hoverPlayback.pauseWithGrace(cardIds.iteration)}
+                                        />
+                                    </ViewportAnimationBoundary>
                                 </div>
                             </div>
                         </motion.div>
@@ -353,12 +364,14 @@ const NewReality = () => {
                                     Reports celebrate impressions and clicks while the revenue column stays empty.
                                 </p>
                                  <div className="mt-auto rounded-lg overflow-hidden border border-white/10 aspect-video relative">
-                                    <VanityMetricsAnimation
-                                        isPlaying={hoverPlayback.isPlaying(cardIds.vanity)}
-                                        className="w-full h-full"
-                                        onMouseEnter={() => hoverPlayback.play(cardIds.vanity)}
-                                        onMouseLeave={() => hoverPlayback.pauseWithGrace(cardIds.vanity)}
-                                    />
+                                    <ViewportAnimationBoundary className="w-full h-full" rootMargin="-15% 0px">
+                                        <VanityMetricsAnimation
+                                            isPlaying={hoverPlayback.isPlaying(cardIds.vanity)}
+                                            className="w-full h-full"
+                                            onMouseEnter={() => hoverPlayback.play(cardIds.vanity)}
+                                            onMouseLeave={() => hoverPlayback.pauseWithGrace(cardIds.vanity)}
+                                        />
+                                    </ViewportAnimationBoundary>
                                 </div>
                             </div>
                         </motion.div>
